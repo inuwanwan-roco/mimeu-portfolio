@@ -260,6 +260,12 @@
     gap: var(--content-gap);
 }
 
+@media screen and (min-width: 769px) {
+    .p-aboutme__grid {
+        column-gap: clamp(24px, 3vw, 48px);
+    }
+}
+
 .p-aboutme__visual {
     min-width: 0;
     /* SVGのviewBox幅628に対する「A」の左余白30を、表示幅に比例させる */
@@ -279,7 +285,7 @@
 }
 
 .p-aboutme__label {
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-1);
     color: var(--color-accent);
     font-size: clamp(0.8rem, 1vw, 0.95rem);
     letter-spacing: 0.14em;
@@ -289,6 +295,19 @@
     color: var(--color-title);
     font-size: clamp(2rem, 4vw, 4rem);
     font-weight: 500;
+    line-height: 1.2;
+}
+
+.p-aboutme__name-divider {
+    width: min(100%, clamp(144px, 18vw, 256px));
+    gap: var(--space-1);
+    margin-inline: 0;
+    margin-top: var(--space-1);
+}
+
+.p-aboutme__name-divider .c-section-divider__diamond {
+    width: 4px;
+    height: 4px;
 }
 
 .p-aboutme__meta {
@@ -297,7 +316,15 @@
 }
 
 .p-aboutme__text {
-    margin-block: clamp(24px, 4vw, 48px);
+    margin-block: clamp(24px, 4vw, 48px) var(--space-3);
+}
+
+.p-aboutme__read-more {
+    display: flex;
+    width: max-content;
+    max-width: 100%;
+    margin-inline-start: auto;
+    margin-inline-end: clamp(32px, 6vw, 80px);
 }
 
 @media screen and (max-width: 768px) {
@@ -310,10 +337,6 @@
     }
 
     .p-aboutme__read-more {
-        display: flex;
-        width: max-content;
-        max-width: 100%;
-        margin-inline-start: auto;
         margin-inline-end: clamp(24px, 8vw, 40px);
     }
 }
