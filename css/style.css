@@ -185,9 +185,13 @@
 04. About Me
 ================================================== */
 
+.p-aboutme {
+    --about-title-width: clamp(286px, 36vw, 588px);
+}
+
 .p-about__title-image {
     /* SVG内部の余白と文字比率を補正し、Worksと視覚的な高さを合わせる */
-    width: clamp(286px, 36vw, 588px);
+    width: var(--about-title-width);
 }
 
 .p-aboutme__grid {
@@ -199,6 +203,8 @@
 
 .p-aboutme__visual {
     min-width: 0;
+    /* SVGのviewBox幅628に対する「A」の左余白30を、表示幅に比例させる */
+    padding-inline-start: calc(var(--about-title-width) * 30 / 628);
 }
 
 .p-aboutme__image {
