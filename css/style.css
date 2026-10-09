@@ -1,0 +1,339 @@
+@charset "UTF-8";
+
+/* Miméu studio TOP PAGE STYLE */
+
+/* ==================================================
+01. Loading
+================================================== */
+
+.p-loading {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-loading);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background-color: var(--color-surface);
+
+    /* Loading背景画像を入れる */
+    background-image: url("../assets/images/0.loading/background.webp");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition:
+        opacity var(--duration-slow) var(--ease-base),
+        visibility var(--duration-slow) var(--ease-base);
+}
+
+.p-loading.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.p-loading__inner {
+    display: grid;
+    place-items: center;
+    gap: var(--space-4);
+    width: min(78vw, 560px);
+}
+
+.p-loading__logo {
+    width: clamp(220px, 32vw, 480px);
+}
+
+.p-loading__line {
+    position: relative;
+    display: block;
+    width: min(70%, 360px);
+    height: 1px;
+    overflow: hidden;
+    background: rgba(0, 41, 90, 0.16);
+}
+
+.p-loading__line::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--color-title);
+    transform: translateX(-100%);
+    animation: loading-line 1.6s var(--ease-base) forwards;
+}
+
+@keyframes loading-line {
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* ==================================================
+02. Hero
+================================================== */
+
+.p-hero {
+    position: relative;
+    display: grid;
+    align-items: center;
+    padding-top: calc(var(--header-height) + clamp(16px, 2vw, 32px));
+    padding-bottom: clamp(64px, 6vw, 96px);
+}
+
+.p-hero__inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
+    align-items: center;
+    gap: var(--content-gap);
+}
+
+.p-hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.p-hero__eyebrow {
+    margin-bottom: clamp(24px, 4vw, 56px);
+    color: var(--color-title);
+    font-size: clamp(0.78rem, 1vw, 0.95rem);
+    letter-spacing: 0.1em;
+}
+
+.p-hero__title-image {
+    width: clamp(280px, 41vw, 640px);
+    filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.4));
+}
+
+.p-hero__lead {
+    margin-top: clamp(32px, 5vw, 64px);
+    font-size: clamp(0.95rem, 1.25vw, 1.125rem);
+    line-height: 2;
+}
+
+.p-hero__category {
+    margin-top: clamp(24px, 4vw, 48px);
+    color: var(--color-secondary);
+    font-size: clamp(0.75rem, 1vw, 0.9rem);
+    letter-spacing: 0.08em;
+}
+
+.p-hero__visual {
+    position: relative;
+    min-width: 0;
+}
+
+.p-hero__visual-image {
+    width: 100%;
+    min-height: clamp(360px, 50vw, 550px);
+    object-fit: cover;
+    border-radius: clamp(120px, 15vw, 240px) clamp(24px, 4vw, 64px);
+    background: var(--color-surface);
+}
+
+/* ==================================================
+03. Works
+================================================== */
+
+.p-works__accordion {
+    display: grid;
+    gap: 0;
+}
+
+.p-works__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+    gap: clamp(24px, 4vw, 56px);
+}
+
+.p-works__graphic-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+    align-items: center;
+    gap: clamp(24px, 4vw, 48px);
+}
+
+.p-works__graphic-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-l);
+    background: var(--color-surface);
+}
+
+/* ==================================================
+04. About Me
+================================================== */
+
+.p-aboutme__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
+    align-items: center;
+    gap: var(--content-gap);
+}
+
+.p-aboutme__visual {
+    min-width: 0;
+}
+
+.p-aboutme__image {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
+    background: var(--color-surface);
+}
+
+.p-aboutme__content {
+    max-width: 620px;
+}
+
+.p-aboutme__label {
+    margin-bottom: var(--space-2);
+    color: var(--color-accent);
+    font-size: clamp(0.8rem, 1vw, 0.95rem);
+    letter-spacing: 0.14em;
+}
+
+.p-aboutme__name {
+    color: var(--color-title);
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: 500;
+}
+
+.p-aboutme__meta {
+    margin-top: var(--space-1);
+    color: var(--color-secondary);
+}
+
+.p-aboutme__text {
+    margin-block: clamp(24px, 4vw, 48px);
+}
+
+/* ==================================================
+05. Skills
+================================================== */
+
+.p-skills__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
+    align-items: center;
+    gap: var(--content-gap);
+}
+
+.p-skills__content {
+    display: grid;
+    gap: clamp(32px, 5vw, 64px);
+}
+
+.p-skills__group-title,
+.p-skills__chart-title {
+    color: var(--color-title);
+    font-size: clamp(1.75rem, 3vw, 3rem);
+    font-weight: 500;
+}
+
+.p-skills__group-text {
+    margin-top: var(--space-2);
+}
+
+.p-skills__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    margin-top: var(--space-3);
+}
+
+.p-skills__tags li {
+    padding: 8px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    color: var(--color-secondary);
+    font-size: 0.8rem;
+}
+
+.p-skills__chart {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-4);
+}
+
+.p-skills__chart-image {
+    width: min(100%, 560px);
+}
+
+/* ==================================================
+06. Contact
+================================================== */
+
+.p-contact__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
+    align-items: start;
+    gap: var(--content-gap);
+}
+
+.p-contact__image {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
+    background: var(--color-surface);
+}
+
+.p-contact__content {
+    display: grid;
+    gap: clamp(40px, 6vw, 72px);
+}
+
+.p-contact__form {
+    display: grid;
+    gap: var(--space-3);
+}
+
+.p-contact__field {
+    display: grid;
+    gap: var(--space-1);
+}
+
+.p-contact__label {
+    font-size: 0.875rem;
+}
+
+.p-contact__input,
+.p-contact__textarea {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--color-border);
+    background: transparent;
+    transition: border-color var(--transition-base);
+}
+
+.p-contact__input:focus,
+.p-contact__textarea:focus {
+    border-color: var(--color-title);
+}
+
+.p-contact__input::placeholder,
+.p-contact__textarea::placeholder {
+    color: color-mix(in srgb, var(--color-secondary) 60%, transparent);
+}
+
+.p-contact__links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr));
+    gap: var(--space-2);
+}
+
+.p-contact__link {
+    display: grid;
+    gap: 4px;
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--color-border);
+}
+
+.p-contact__link-title {
+    color: var(--color-title);
+}
+
+.p-contact__link-text {
+    color: var(--color-secondary);
+    font-size: 0.8rem;
+}

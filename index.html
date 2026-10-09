@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Miméu studioのWeb・Graphicデザインポートフォリオサイトです。">
+        <title>Miméu studio | Design Portfolio</title>
+        <!-- Bodoni Moda -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&display=swap" rel="stylesheet">
+        <!-- Gen Interface JP -->
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gen-interface-jp@0.8.0/cdn/400.css">
+        <!-- CSS / JS -->
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/main.js" defer></script>
+    </head>
+    <body>
+        <!-- Loading / 初回アクセス時のみ表示 -->
+        <div class="p-loading" id="js-loading" aria-hidden="true">
+            <div class="p-loading__inner">
+                <img class="p-loading__logo" src="assets/images/0.loading/Mimeustudio.svg" alt="Miméu studio">
+                <span class="p-loading__line" aria-hidden="true"></span>
+            </div>
+        </div>
+        <!-- Header -->
+        <header class="l-header">
+            <div class="l-header__inner l-container">
+                <a class="l-header__brand" href="#top" aria-label="Miméu studio トップへ">
+                    <img class="l-header__logo" src="assets/images/1.header/Mimeustudio.svg" alt="Miméu studio">
+                </a>
+                <!-- ヘッダー装飾ライン -->
+                <div class="l-header__line" aria-hidden="true"></div>
+                <!-- PC用ナビゲーションメニュー -->
+                <div class="l-header__navigation">
+                    <nav class="l-header__nav" aria-label="メインナビゲーション">
+                        <a class="l-header__nav-link u-font-en" href="#works">WORKS</a>
+                        <a class="l-header__nav-link u-font-en" href="#aboutme">ABOUT ME</a>
+                        <a class="l-header__nav-link u-font-en" href="#skills">SKILLS</a>
+                        <a class="l-header__nav-link u-font-en" href="#contact">CONTACT</a>
+                    </nav>
+                    <!-- スマホ用ハンバーガーメニュー -->
+                    <button class="c-menu-button" id="js-menu-button"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="js-global-menu"
+                        aria-label="メニューを開く">
+                        <span class="c-menu-button__line"></span>
+                        <span class="c-menu-button__line"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <!-- Global Menu -->
+        <div class="c-global-menu" id="js-global-menu" hidden>
+            <div class="c-global-menu__inner l-container">
+                <nav class="c-global-menu__nav" aria-label="メインナビゲーション">
+                    <a class="c-global-menu__link u-font-en" href="#works">WORKS</a>
+                    <a class="c-global-menu__link u-font-en" href="#aboutme">ABOUTME</a>
+                    <a class="c-global-menu__link u-font-en" href="#skills">SKILLS</a>
+                    <a class="c-global-menu__link u-font-en" href="#contact">CONTACT</a>
+                </nav>
+            </div>
+        </div>
+        <main>
+            <!-- 01 Hero -->
+            <section class="p-hero" id="top" aria-labelledby="hero-title">
+                <div class="p-hero__inner l-container">
+                    <div class="p-hero__content">
+                        <p class="p-hero__eyebrow u-font-en">DESIGN CREATES NEW VALUE.</p>
+                        <h1 class="p-hero__title" id="hero-title">
+                            <img class="p-hero__title-image" 
+                                src="assets/images/2.top/designportfolio-rogo2.svg" alt="DESIGN PORTFOLIO">
+                        </h1>
+                        <div class="p-hero__lead">
+                            <p>想いを、デザインでカタチに。</p>
+                            <p>見た瞬間、伝わる美しさをつくりたい。</p>
+                        </div>
+                        <p class="p-hero__category u-font-en">
+                            BRANDING / GRAPHIC DESIGN / WEB DESIGN
+                        </p>
+                    </div>
+                    <div class="p-hero__visual">
+                        <!-- TOP Hero Visual画像を入れる -->
+                        <img class="p-hero__visual-image"
+                            src="assets/images/hero/hero-visual.webp"
+                            alt="Miméu studioのメインビジュアル">
+                    </div>
+                </div>
+                <a class="c-scroll-cue u-font-en" href="#works">
+                    <span class="c-scroll-cue__text">SCROLL</span>
+                    <span class="c-scroll-cue__line" aria-hidden="true"></span>
+                </a>
+                <div class="c-section-indicator" aria-hidden="true">
+                    <span class="c-section-indicator__current">01</span>
+                    <span class="c-section-indicator__line"></span>
+                    <span class="c-section-indicator__total">05</span>
+                </div>
+            </section>
+            <!-- 02 Works -->
+            <section class="p-works l-section" id="works" aria-labelledby="works-title">
+                <div class="l-container">
+                    <header class="c-section-heading">
+                        <h2 class="c-section-heading__title" id="works-title">
+                            <img class="c-section-heading__title-image"
+                                src="assets/images/3.works/works.svg" alt="Works">
+                        </h2>
+                        <p class="c-section-heading__description">
+                            制作したポートフォリオを、カテゴリーごとにご覧いただけます。
+                        </p>
+                    </header>
+                    <div class="p-works__accordion">
+                        <!-- WEB SITE / 初期状態OPEN -->
+                        <article class="c-accordion is-open">
+                            <h3 class="c-accordion__heading">
+                                <button
+                                    class="c-accordion__trigger u-font-en"
+                                    type="button"
+                                    aria-expanded="true">
+                                    <span>WEB SITE</span>
+                                    <span class="c-accordion__icon" aria-hidden="true">−</span>
+                                </button>
+                            </h3>
+                            <div class="c-accordion__panel">
+                                <div class="p-works__grid">
+                                    <article class="c-work-card">
+                                        <a class="c-work-card__link" href="works/mi-nuit.html">
+                                            <!-- MI/NUITのWebサイトモックアップ画像を入れる -->
+                                            <img class="c-work-card__image"
+                                                src="assets/images/works/mi-nuit.webp"
+                                                alt="MI/NUITのWebサイトモックアップ">
+                                            <div class="c-work-card__body">
+                                                <h4 class="c-work-card__title u-font-en">MI/NUIT</h4>
+                                                <p class="c-work-card__text">架空の化粧品ブランドECサイト</p>
+                                            </div>
+                                        </a>
+                                    </article>
+                                    <article class="c-work-card">
+                                        <a class="c-work-card__link" href="works/profile-site.html">
+                                            <img class="c-work-card__image"
+                                                src="assets/images/3.works/profilesite-mock-up.webp"
+                                                alt="自己紹介サイトのWebサイトモックアップ">
+                                            <div class="c-work-card__body">
+                                                <h4 class="c-work-card__title u-font-en">PROFILE SITE</h4>
+                                                <p class="c-work-card__text">課題で制作した自己紹介サイト</p>
+                                            </div>
+                                        </a>
+                                    </article>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- GRAPHIC / 初期状態CLOSED -->
+                        <article class="c-accordion">
+                            <h3 class="c-accordion__heading">
+                                <button class="c-accordion__trigger u-font-en"
+                                    type="button"
+                                    aria-expanded="false">
+                                    <span>GRAPHIC</span>
+                                    <span class="c-accordion__icon" aria-hidden="true">＋</span>
+                                </button>
+                            </h3>
+                            <div class="c-accordion__panel" hidden>
+                                <div class="p-works__graphic-preview">
+                                    <!-- Graphic代表作品1の画像を入れる -->
+                                    <img class="p-works__graphic-image"
+                                        src="assets/images/works/graphic-preview-01.webp"
+                                        alt="Graphic作品1">
+
+                                    <!-- Graphic代表作品2の画像を入れる -->
+                                    <img class="p-works__graphic-image"
+                                        src="assets/images/works/graphic-preview-02.webp"
+                                        alt="Graphic作品2">
+                                    <a class="c-text-link u-font-en" href="works/graphic.html">
+                                        Gallery Page →
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="c-section-indicator" aria-hidden="true">
+                    <span class="c-section-indicator__current">02</span>
+                    <span class="c-section-indicator__line"></span>
+                    <span class="c-section-indicator__total">05</span>
+                </div>
+            </section>
+            <!-- 03 AboutMe -->
+            <section class="p-aboutme l-section" id="aboutme" aria-labelledby="aboutme-title">
+                <div class="l-container">
+                    <header class="c-section-heading">
+                        <h2 class="c-section-heading__title" id="aboutme-title">
+                            <img class="c-section-heading__title-image"
+                                src="assets/images/4.aboutme/aboutme.svg"
+                                alt="About Me">
+                        </h2>
+                    </header>
+                    <div class="p-aboutme__grid">
+                        <figure class="p-aboutme__visual">
+                            <!-- TOP About用プロフィール画像を入れる -->
+                            <img class="p-aboutme__image"
+                                src="assets/images/4.aboutme/profile.webp"
+                                alt="nemimiのプロフィールビジュアル">
+                        </figure>
+                        <div class="p-aboutme__content">
+                            <p class="p-aboutme__label u-font-en">PROFILE</p>
+                            <h3 class="p-aboutme__name u-font-en">nemimi</h3>
+                            <p class="p-aboutme__meta">
+                                1999.06.05 / MBTI:ISFP-A(冒険家)<br>
+                                栃木県 那須塩原市出身 / 北海道札幌市在住
+                            </p>
+                            <p class="p-aboutme__text">
+                                現在、Webデザイン・グラフィックデザインを中心に勉強中。<br>
+                                幼い頃から、ホグワーツ魔法魔術学校に入学を夢見るマグル。<br>
+                                わくわくすること、面白いことが大好き。
+                            </p>
+                            <a class="c-text-link u-font-en" href="aboutme.html">READ MORE →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-section-indicator" aria-hidden="true">
+                    <span class="c-section-indicator__current">03</span>
+                    <span class="c-section-indicator__line"></span>
+                    <span class="c-section-indicator__total">05</span>
+                </div>
+            </section>
+            <!-- 04 Skills -->
+            <section class="p-skills l-section" id="skills" aria-labelledby="skills-title">
+                <div class="l-container">
+                    <header class="c-section-heading">
+                        <h2 class="c-section-heading__title" id="skills-title">
+                            <img class="c-section-heading__title-image"
+                                src="assets/images/5.skills/skills.svg" alt="Skills">
+                        </h2>
+                        <p class="c-section-heading__description">
+                            スキルとツール習熟度をレーダーチャートで可視化しました。
+                        </p>
+                    </header>
+                    <div class="p-skills__grid">
+                        <div class="p-skills__content">
+                            <article class="p-skills__group">
+                                <h3 class="p-skills__group-title u-font-en">Web Design</h3>
+                                <p class="p-skills__group-text">
+                                    見やすく、使いやすく、<br>
+                                    想いが伝わるWebデザイン。
+                                </p>
+                                <ul class="p-skills__tags" aria-label="Web Design tools">
+                                    <li>HTML / CSS</li>
+                                    <li>JavaScript</li>
+                                    <li>Figma</li>
+                                    <li>VS Code</li>
+                                </ul>
+                            </article>
+                            <article class="p-skills__group">
+                                <h3 class="p-skills__group-title u-font-en">Graphic Design</h3>
+                                <p class="p-skills__group-text">
+                                    目的やターゲットに合わせ、<br>
+                                    印象に残るグラフィックを制作します。
+                                </p>
+                                <ul class="p-skills__tags" aria-label="Graphic Design tools">
+                                    <li>Illustrator</li>
+                                    <li>Photoshop</li>
+                                </ul>
+                            </article>
+                        </div>
+                        <figure class="p-skills__chart">
+                            <figcaption class="p-skills__chart-title u-font-en">Tools</figcaption>
+                            <img class="p-skills__chart-image"
+                                src="assets/images/5.skills/radarchart.svg"
+                                alt="使用ツールの習熟度を示すレーダーチャート">
+                        </figure>
+                    </div>
+                </div>
+                <div class="c-section-indicator" aria-hidden="true">
+                    <span class="c-section-indicator__current">04</span>
+                    <span class="c-section-indicator__line"></span>
+                    <span class="c-section-indicator__total">05</span>
+                </div>
+            </section>
+            <!-- 05 Contact -->
+            <section class="p-contact l-section" id="contact" aria-labelledby="contact-title">
+                <div class="l-container">
+                    <header class="c-section-heading">
+                        <h2 class="c-section-heading__title" id="contact-title">
+                            <img class="c-section-heading__title-image"
+                                src="assets/images/6.contact/contact.svg"
+                                alt="Contact">
+                        </h2>
+                        <p class="c-section-heading__description">
+                            お仕事のご相談・ご依頼など、お気軽にお問い合わせください。
+                        </p>
+                    </header>
+                    <div class="p-contact__grid">
+                        <figure class="p-contact__visual">
+                            <!-- Contact用ビジュアル画像を入れる -->
+                            <img
+                                class="p-contact__image"
+                                src="assets/images/contact/contact-visual.webp"
+                                alt="Contactページのビジュアル"
+                            >
+                        </figure>
+                        <div class="p-contact__content">
+                            <form class="p-contact__form" id="js-contact-form" action="#" method="post">
+                                <label class="p-contact__field">
+                                    <span class="p-contact__label">お名前/会社名</span>
+                                    <input class="p-contact__input" type="text" name="name" autocomplete="name" placeholder="例）山田 花子 / 株式会社Miméu">
+                                </label>
+                                <label class="p-contact__field">
+                                    <span class="p-contact__label">メールアドレス</span>
+                                    <input class="p-contact__input" type="email" name="email" autocomplete="email" placeholder="例）you@example.com">
+                                </label>
+                                <label class="p-contact__field">
+                                    <span class="p-contact__label">お問い合わせ内容</span>
+                                    <textarea class="p-contact__textarea" name="message" rows="6" placeholder="恋愛相談でもなぞなぞでも、どんなことでもお気軽にご記入ください">
+                                    </textarea>
+                                </label>
+                                <button class="c-button c-button--primary" type="submit">送信する</button>
+                            </form>
+                            <div class="p-contact__links">
+                                <a class="p-contact__link" href="mailto:mimeu.studio@gmail.com">
+                                    <span class="p-contact__link-title u-font-en">EMAIL</span>
+                                    <span class="p-contact__link-text">mimeu.studio@gmail.com</span>
+                                </a>
+                                <a class="p-contact__link" href="https://www.instagram.com/mimeu_studio/" target="_blank" rel="noopener noreferrer">
+                                    <span class="p-contact__link-title u-font-en">INSTAGRAM</span>
+                                    <span class="p-contact__link-text">@mimeu_studio</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-section-indicator" aria-hidden="true">
+                    <span class="c-section-indicator__current">05</span>
+                    <span class="c-section-indicator__line"></span>
+                    <span class="c-section-indicator__total">05</span>
+                </div>
+            </section>
+        </main>
+        <!-- Footer -->
+        <footer class="l-footer">
+            <div class="l-footer__inner l-container">
+                <a class="l-footer__brand" href="#top" aria-label="Miméu studio トップへ">
+                    <!-- Footer用Miméu studioロゴSVGを入れる -->
+                    <img
+                        class="l-footer__logo"
+                        src="assets/images/7.footer/Mimeustudio.svg"
+                        alt="Miméu studio"
+                    >
+                </a>
+                <nav class="l-footer__nav" aria-label="フッターナビゲーション">
+                    <a class="l-footer__link u-font-en" href="#works">WORKS</a>
+                    <a class="l-footer__link u-font-en" href="#aboutme">ABOUTME</a>
+                    <a class="l-footer__link u-font-en" href="#skills">SKILLS</a>
+                    <a class="l-footer__link u-font-en" href="#contact">CONTACT</a>
+                    <a class="l-footer__link u-font-en" href="https://www.instagram.com/mimeu_studio/" 
+                        target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+                </nav>
+                <small class="l-footer__copyright">© Miméu studio</small>
+                <a class="c-back-to-top u-font-en" href="#top">BACK TO TOP ↑</a>
+            </div>
+        </footer>
+    </body>
+</html>
