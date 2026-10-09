@@ -391,6 +391,16 @@ Section Heading
     font-size: clamp(16px, 1.2vw, 19px);
 }
 
+@media screen and (max-width: 768px) {
+    .c-section-heading__title {
+        text-align: center;
+    }
+
+    .c-section-heading__title-image {
+        margin-inline: auto;
+    }
+}
+
 /* ------------------------------------------
 Section Indicator
 ------------------------------------------ */
@@ -640,6 +650,16 @@ Back To Top
 
 .u-font-en {
     font-family: var(--font-en);
+}
+
+.u-sp-only {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .u-sp-only {
+        display: initial;
+    }
 }
 
 .u-visually-hidden {
