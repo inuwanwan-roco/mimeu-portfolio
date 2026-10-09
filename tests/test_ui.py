@@ -58,6 +58,28 @@ class PortfolioUITests(unittest.TestCase):
         self.assertEqual(button.get_attribute("aria-expanded"), "false")
         self.assertTrue(self.page.locator("#js-global-menu").evaluate("menu => menu.hidden"))
 
+    def test_mobile_hero_layers_and_profile_alignment(self):
+        for width in [390, 440]:
+            with self.subTest(width=width):
+                self.page.set_viewport_size({"width": width, "height": 1000})
+                title = self.page.locator('.p-hero__title-image').bounding_box()
+                visual = self.page.locator('.p-hero__visual-image').bounding_box()
+                self.assertAlmostEqual(title['x'] + title['width'] / 2, width / 2, delta=1)
+                self.assertGreater(
+                    min(title['x'] + title['width'], visual['x'] + visual['width']),
+                    max(title['x'], visual['x']),
+                )
+                self.assertGreater(
+                    min(title['y'] + title['height'], visual['y'] + visual['height']),
+                    max(title['y'], visual['y']),
+                )
+                image = self.page.locator('.p-aboutme__image').bounding_box()
+                self.assertAlmostEqual(image['x'] + image['width'] / 2, width / 2, delta=1)
+                content = self.page.locator('.p-aboutme__content').bounding_box()
+                link = self.page.locator('.p-aboutme__read-more').bounding_box()
+                self.assertGreater(link['x'], content['x'] + 60)
+                self.assertGreaterEqual(width - link['x'] - link['width'], 40)
+
 
 if __name__ == "__main__":
     unittest.main()
