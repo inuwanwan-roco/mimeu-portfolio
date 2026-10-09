@@ -100,22 +100,19 @@ function initGlobalMenu() {
 Accordion
 ================================================== */
 
-const accordions = document.querySelectorAll(".c-accordion");
+function initAccordion() {
+    document.querySelectorAll('.c-accordion').forEach((accordion) => {
+        const trigger = accordion.querySelector('.c-accordion__trigger');
+        if (!trigger) return;
 
-accordions.forEach((accordion) => {
-    const trigger = accordion.querySelector(".c-accordion__trigger");
+        trigger.setAttribute('aria-expanded', String(accordion.classList.contains('is-open')));
 
-    trigger.addEventListener("click", () => {
-        const isOpen = accordion.classList.contains("is-open");
-
-        accordion.classList.toggle("is-open");
-
-        trigger.setAttribute(
-            "aria-expanded",
-            String(!isOpen)
-        );
+        trigger.addEventListener('click', () => {
+            const isOpen = accordion.classList.toggle('is-open');
+            trigger.setAttribute('aria-expanded', String(isOpen));
+        });
     });
-});
+}
 
 /* ------------------------------------------
 Contact Form
