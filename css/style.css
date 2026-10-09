@@ -185,6 +185,11 @@
 04. About Me
 ================================================== */
 
+.p-about__title-image {
+    /* SVG内部の余白と文字比率を補正し、Worksと視覚的な高さを合わせる */
+    width: clamp(286px, 36vw, 588px);
+}
+
 .p-aboutme__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
