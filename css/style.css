@@ -447,3 +447,55 @@
     color: var(--color-secondary);
     font-size: 0.8rem;
 }
+
+/* ==================================================
+07. TOP / Smartphone Section Titles and Works
+================================================== */
+
+@media screen and (max-width: 768px) {
+    :is(.p-works, .p-aboutme, .p-skills, .p-contact) {
+        --sp-title-reference-width: calc(100vw - 2 * var(--container-gutter));
+    }
+
+    :is(.p-works, .p-aboutme, .p-skills, .p-contact) .c-section-heading__title {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        place-items: center;
+        margin-inline: calc(-1 * var(--container-gutter));
+        /* SVGの透明余白だけを画面幅で切り、文字を中央に保つ */
+        overflow: clip;
+    }
+
+    :is(.p-works, .p-aboutme, .p-skills, .p-contact) .c-section-heading__title-image {
+        max-width: none;
+        margin-inline: 0;
+        justify-self: center;
+    }
+
+    /* Contactの文字領域の面積を基準に、SVGごとの内部余白を補正 */
+    .p-works__title-image {
+        width: calc(var(--sp-title-reference-width) * 1.188);
+    }
+
+    .p-about__title-image {
+        width: calc(var(--sp-title-reference-width) * 1.223);
+    }
+
+    .p-skills__title-image {
+        width: calc(var(--sp-title-reference-width) * 0.912);
+    }
+
+    .p-contact__title-image {
+        width: var(--sp-title-reference-width);
+    }
+
+    .p-works > .c-section-indicator {
+        inset-inline-end: 0;
+        width: var(--container-gutter);
+    }
+
+    .p-works__gallery-link {
+        justify-self: end;
+        margin-inline-end: clamp(24px, 8vw, 40px);
+    }
+}
