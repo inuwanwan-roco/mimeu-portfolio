@@ -59,7 +59,7 @@
             <div class="c-global-menu__inner l-container">
                 <nav class="c-global-menu__nav" aria-label="メインナビゲーション">
                     <a class="c-global-menu__link u-font-en" href="#works">WORKS</a>
-                    <a class="c-global-menu__link u-font-en" href="#aboutme">ABOUTME</a>
+                    <a class="c-global-menu__link u-font-en" href="#aboutme">ABOUT ME</a>
                     <a class="c-global-menu__link u-font-en" href="#skills">SKILLS</a>
                     <a class="c-global-menu__link u-font-en" href="#contact">CONTACT</a>
                 </nav>
@@ -80,7 +80,7 @@
                             <p>見た瞬間、伝わる美しさをつくりたい。</p>
                         </div>
                         <p class="p-hero__category u-font-en">
-                            BRANDING / GRAPHIC DESIGN / WEB DESIGN
+                            GRAPHIC DESIGN / WEB DESIGN
                         </p>
                     </div>
                     <div class="p-hero__visual">
@@ -90,22 +90,24 @@
                             alt="Miméu studioのメインビジュアル">
                     </div>
                 </div>
-                <a class="c-scroll-cue u-font-en" href="#works">
-                    <span class="c-scroll-cue__text">SCROLL</span>
-                    <span class="c-scroll-cue__line" aria-hidden="true"></span>
-                </a>
                 <div class="c-section-indicator" aria-hidden="true">
                     <span class="c-section-indicator__current">01</span>
                     <span class="c-section-indicator__line"></span>
                     <span class="c-section-indicator__total">05</span>
                 </div>
             </section>
+            <!-- セクション区切り線 -->
+            <div class="c-section-divider" aria-hidden="true">
+                <span class="c-section-divider__diamond"></span>
+                <span class="c-section-divider__line"></span>
+                <span class="c-section-divider__diamond"></span>
+            </div>
             <!-- 02 Works -->
             <section class="p-works l-section" id="works" aria-labelledby="works-title">
                 <div class="l-container">
-                    <header class="c-section-heading">
+                    <header class="c-section-heading p-works__heading">
                         <h2 class="c-section-heading__title" id="works-title">
-                            <img class="c-section-heading__title-image"
+                            <img class="c-section-heading__title-image p-works__title-image"
                                 src="assets/images/3.works/works.svg" alt="Works">
                         </h2>
                         <p class="c-section-heading__description">
@@ -121,7 +123,7 @@
                                     type="button"
                                     aria-expanded="true">
                                     <span>WEB SITE</span>
-                                    <span class="c-accordion__icon" aria-hidden="true">−</span>
+                                    <span class="c-accordion__icon" aria-hidden="true"></span>
                                 </button>
                             </h3>
                             <div class="c-accordion__panel">
@@ -159,20 +161,28 @@
                                     type="button"
                                     aria-expanded="false">
                                     <span>GRAPHIC</span>
-                                    <span class="c-accordion__icon" aria-hidden="true">＋</span>
+                                    <span class="c-accordion__icon" aria-hidden="true"></span>
                                 </button>
                             </h3>
-                            <div class="c-accordion__panel" hidden>
+                            <div class="c-accordion__panel">
                                 <div class="p-works__graphic-preview">
                                     <!-- Graphic代表作品1の画像を入れる -->
-                                    <img class="p-works__graphic-image"
-                                        src="assets/images/works/graphic-preview-01.webp"
-                                        alt="Graphic作品1">
+                                    <a
+                                        class="p-works__graphic-link"
+                                        href="works/graphic.html#graphic-01">
+                                        <img class="p-works__graphic-image"
+                                            src="assets/images/works/graphic-preview-01.webp"
+                                            alt="Graphic作品1">
+                                    </a>
 
                                     <!-- Graphic代表作品2の画像を入れる -->
-                                    <img class="p-works__graphic-image"
-                                        src="assets/images/works/graphic-preview-02.webp"
-                                        alt="Graphic作品2">
+                                    <a
+                                        class="p-works__graphic-link"
+                                        href="works/graphic.html#graphic-02">
+                                        <img class="p-works__graphic-image"
+                                            src="assets/images/works/graphic-preview-02.webp"
+                                            alt="Graphic作品2">
+                                    </a>
                                     <a class="c-text-link u-font-en" href="works/graphic.html">
                                         Gallery Page →
                                     </a>
@@ -187,6 +197,12 @@
                     <span class="c-section-indicator__total">05</span>
                 </div>
             </section>
+            <!-- セクション区切り線 -->
+            <div class="c-section-divider" aria-hidden="true">
+                <span class="c-section-divider__diamond"></span>
+                <span class="c-section-divider__line"></span>
+                <span class="c-section-divider__diamond"></span>
+            </div>
             <!-- 03 AboutMe -->
             <section class="p-aboutme l-section" id="aboutme" aria-labelledby="aboutme-title">
                 <div class="l-container">
@@ -226,6 +242,12 @@
                     <span class="c-section-indicator__total">05</span>
                 </div>
             </section>
+            <!-- セクション区切り線 -->
+            <div class="c-section-divider" aria-hidden="true">
+                <span class="c-section-divider__diamond"></span>
+                <span class="c-section-divider__line"></span>
+                <span class="c-section-divider__diamond"></span>
+            </div>
             <!-- 04 Skills -->
             <section class="p-skills l-section" id="skills" aria-labelledby="skills-title">
                 <div class="l-container">
@@ -279,6 +301,12 @@
                     <span class="c-section-indicator__total">05</span>
                 </div>
             </section>
+            <!-- セクション区切り線 -->
+            <div class="c-section-divider" aria-hidden="true">
+                <span class="c-section-divider__diamond"></span>
+                <span class="c-section-divider__line"></span>
+                <span class="c-section-divider__diamond"></span>
+            </div>
             <!-- 05 Contact -->
             <section class="p-contact l-section" id="contact" aria-labelledby="contact-title">
                 <div class="l-container">

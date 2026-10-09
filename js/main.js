@@ -96,30 +96,26 @@ function initGlobalMenu() {
     });
 }
 
-/* ------------------------------------------
-Works Accordion
------------------------------------------- */
+/* ==================================================
+Accordion
+================================================== */
 
-function initAccordion() {
-    const accordions = document.querySelectorAll('.c-accordion');
+const accordions = document.querySelectorAll(".c-accordion");
 
-    accordions.forEach((accordion) => {
-        const trigger = accordion.querySelector('.c-accordion__trigger');
-        const panel = accordion.querySelector('.c-accordion__panel');
-        const icon = accordion.querySelector('.c-accordion__icon');
+accordions.forEach((accordion) => {
+    const trigger = accordion.querySelector(".c-accordion__trigger");
 
-        if (!trigger || !panel || !icon) return;
+    trigger.addEventListener("click", () => {
+        const isOpen = accordion.classList.contains("is-open");
 
-        trigger.addEventListener('click', () => {
-            const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+        accordion.classList.toggle("is-open");
 
-            trigger.setAttribute('aria-expanded', String(!isOpen));
-            panel.hidden = isOpen;
-            accordion.classList.toggle('is-open', !isOpen);
-            icon.textContent = isOpen ? '＋' : '−';
-        });
+        trigger.setAttribute(
+            "aria-expanded",
+            String(!isOpen)
+        );
     });
-}
+});
 
 /* ------------------------------------------
 Contact Form

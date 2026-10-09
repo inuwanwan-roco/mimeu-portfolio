@@ -44,7 +44,8 @@ Responsive   : Fluid Design */
     --space-20: 160px;
 
     /* Fluid Space */
-    --section-space: clamp(80px, 10vw, 160px);
+    --section-space-top: clamp(40px, 4vw, 64px);
+    --section-space-bottom: clamp(56px, 6vw, 96px);
     --content-gap: clamp(32px, 5vw, 80px);
 
     /* Radius */
@@ -96,7 +97,8 @@ Section
 
 .l-section {
     position: relative;
-    padding-block: var(--section-space);
+padding-top: var(--section-space-top);
+    padding-bottom: var(--section-space-bottom);
 }
 
 /* ------------------------------------------
@@ -198,6 +200,33 @@ Header
 
 .l-header__nav-link:hover {
     opacity: 0.55;
+}
+
+/* ==================================================
+Section Divider
+================================================== */
+
+.c-section-divider {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 12px;
+    width: min(100% - clamp(32px, 8vw, 128px), 1360px);
+    margin-inline: auto;
+}
+
+/* ひし形 */
+.c-section-divider__diamond {
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-border);
+    transform: rotate(45deg);
+}
+
+/* ライン */
+.c-section-divider__line {
+    height: 1px;
+    background-color: var(--color-border);
 }
 
 /* ------------------------------------------
@@ -350,13 +379,16 @@ Section Heading
 }
 
 .c-section-heading__title-image {
-    width: clamp(170px, 22vw, 360px);
+    display: block;
+    width: auto;
+    height: auto;
     filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.4));
 }
 
 .c-section-heading__description {
     max-width: 560px;
     color: var(--color-secondary);
+    font-size: clamp(16px, 1.2vw, 19px);
 }
 
 /* ------------------------------------------
@@ -392,62 +424,104 @@ Section Indicator
 }
 
 /* ------------------------------------------
-Scroll Cue
------------------------------------------- */
-
-.c-scroll-cue {
-    position: absolute;
-    bottom: clamp(24px, 4vw, 56px);
-    left: var(--container-gutter);
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: 0.75rem;
-    letter-spacing: 0.14em;
-}
-
-.c-scroll-cue__line {
-    display: block;
-    width: 1px;
-    height: clamp(48px, 7vw, 96px);
-    background: var(--color-primary);
-}
-
-/* ------------------------------------------
 Accordion
 ------------------------------------------ */
 
 .c-accordion {
-    border-top: 1px solid var(--color-border);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--color-bg);
 }
 
-.c-accordion:last-child {
-    border-bottom: 1px solid var(--color-border);
+.c-accordion + .c-accordion {
+    margin-top: var(--space-2);
 }
 
+/* アコーディオン見出し */
 .c-accordion__trigger {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding-block: clamp(24px, 3vw, 40px);
+    padding: clamp(18px, 2vw, 24px) clamp(20px, 3vw, 32px);
     color: var(--color-title);
-    font-size: clamp(1.4rem, 2.2vw, 2.25rem);
+    background-color: #f7fcff;
+    font-size: clamp(1.15rem, 1.7vw, 1.6rem);
     text-align: left;
+    transition:
+        background-color var(--transition-base),
+        color var(--transition-base);
 }
 
+/* 開いているアコーディオン */
+.c-accordion.is-open .c-accordion__trigger {
+    background-color: var(--color-surface);
+}
+
+/* 開閉アイコン */
 .c-accordion__icon {
-    display: grid;
-    place-items: center;
-    width: 40px;
-    aspect-ratio: 1;
-    font-family: var(--font-ja);
-    font-size: 1.5rem;
+    position: relative;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
 }
 
+/* 横線 */
+.c-accordion__icon::before,
+.c-accordion__icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 1px;
+    background-color: var(--color-title);
+    transform: translate(-50%, -50%);
+    transition:
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.3s ease;
+}
+
+/* 縦線 */
+.c-accordion__icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+/* OPEN時：縦線だけ回転させて消す */
+.c-accordion.is-open .c-accordion__icon::after {
+    transform: translate(-50%, -50%) rotate(180deg);
+    opacity: 0;
+}
+
+/* 中身 */
 .c-accordion__panel {
-    padding-bottom: clamp(40px, 6vw, 80px);
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    overflow: hidden;
+    padding:
+        0
+        clamp(20px, 3vw, 32px);
+    background-color: var(--color-bg);
+    transition:
+        grid-template-rows 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.35s ease,
+        padding 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.c-accordion__panel > * {
+    min-height: 0;
+}
+
+.c-accordion.is-open .c-accordion__panel {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    padding:
+        clamp(32px, 4vw, 56px)
+        clamp(20px, 3vw, 32px)
+        clamp(40px, 5vw, 72px);
+    border-top: 1px solid var(--color-border);
 }
 
 /* ------------------------------------------

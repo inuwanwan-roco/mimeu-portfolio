@@ -99,7 +99,7 @@
 }
 
 .p-hero__title-image {
-    width: clamp(280px, 41vw, 640px);
+    width: clamp(280px, 60vw, 720px);
     filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.4));
 }
 
@@ -133,6 +133,23 @@
 03. Works
 ================================================== */
 
+.p-works__heading {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: clamp(56px, 9vw, 160px);
+    margin-bottom: clamp(32px, 4vw, 64px);
+}
+
+/* Works description */
+.p-works__heading .c-section-heading__description {
+    max-width: none;
+    margin: 0;
+}
+
+.p-works__title-image {
+    width: clamp(280px, 32vw, 520px);
+}
+
 .p-works__accordion {
     display: grid;
     gap: 0;
@@ -157,6 +174,11 @@
     object-fit: cover;
     border-radius: var(--radius-l);
     background: var(--color-surface);
+    transition: transform var(--transition-base);
+}
+
+.p-works__graphic-image:hover {
+    transform: translateY(-6px);
 }
 
 /* ==================================================
