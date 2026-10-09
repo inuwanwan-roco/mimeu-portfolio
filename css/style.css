@@ -140,6 +140,13 @@
     margin-bottom: clamp(32px, 4vw, 64px);
 }
 
+/* スマートフォンではロゴの下に説明文を配置する */
+@media screen and (max-width: 768px) {
+    .p-works__heading {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
 /* Works description */
 .p-works__heading .c-section-heading__description {
     max-width: none;
