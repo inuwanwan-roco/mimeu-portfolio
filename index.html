@@ -347,7 +347,7 @@
             <!-- 05 Contact -->
             <section class="p-contact l-section" id="contact" aria-labelledby="contact-title">
                 <div class="l-container">
-                    <header class="c-section-heading">
+                    <header class="c-section-heading p-contact__heading">
                         <h2 class="c-section-heading__title" id="contact-title">
                             <img class="c-section-heading__title-image p-contact__title-image"
                                 src="assets/images/6.contact/contact.svg"
@@ -357,42 +357,48 @@
                             お仕事のご相談・ご依頼など、お気軽にお問い合わせください。
                         </p>
                     </header>
-                    <div class="p-contact__grid">
-                        <figure class="p-contact__visual">
-                            <!-- Contact用ビジュアル画像を入れる -->
-                            <img
-                                class="p-contact__image"
-                                src="assets/images/contact/contact-visual.webp"
-                                alt="Contactページのビジュアル"
-                            >
-                        </figure>
-                        <div class="p-contact__content">
-                            <form class="p-contact__form" id="js-contact-form" action="#" method="post">
-                                <label class="p-contact__field">
-                                    <span class="p-contact__label">お名前/会社名</span>
-                                    <input class="p-contact__input" type="text" name="name" autocomplete="name" placeholder="例）山田 花子 / 株式会社Miméu">
-                                </label>
-                                <label class="p-contact__field">
-                                    <span class="p-contact__label">メールアドレス</span>
-                                    <input class="p-contact__input" type="email" name="email" autocomplete="email" placeholder="例）you@example.com">
-                                </label>
-                                <label class="p-contact__field">
-                                    <span class="p-contact__label">お問い合わせ内容</span>
-                                    <textarea class="p-contact__textarea" name="message" rows="6" placeholder="恋愛相談でもなぞなぞでも、どんなことでもお気軽にご記入ください">
-                                    </textarea>
-                                </label>
-                                <button class="c-button c-button--primary" type="submit">送信する</button>
-                            </form>
-                            <div class="p-contact__links">
-                                <a class="p-contact__link" href="mailto:mimeu.studio@gmail.com">
-                                    <span class="p-contact__link-title u-font-en">EMAIL</span>
-                                    <span class="p-contact__link-text">mimeu.studio@gmail.com</span>
-                                </a>
-                                <a class="p-contact__link" href="https://www.instagram.com/mimeu_studio/" target="_blank" rel="noopener noreferrer">
-                                    <span class="p-contact__link-title u-font-en">INSTAGRAM</span>
-                                    <span class="p-contact__link-text">@mimeu_studio</span>
-                                </a>
-                            </div>
+                    <div class="p-contact__content">
+                        <!-- デザイン確認用フォーム。実際のメール送信は未接続 -->
+                        <form class="p-contact__form" id="js-contact-form" action="#" method="post">
+                            <label class="p-contact__field">
+                                <span class="p-contact__label">お名前</span>
+                                <input class="p-contact__input" type="text" name="name" autocomplete="name" placeholder="例）山田 花子" required>
+                            </label>
+                            <label class="p-contact__field">
+                                <span class="p-contact__label">メールアドレス</span>
+                                <input class="p-contact__input" type="email" name="email" autocomplete="email" placeholder="例）example@email.com" required>
+                            </label>
+                            <label class="p-contact__field">
+                                <span class="p-contact__label">会社名・所属 <span class="p-contact__optional">（任意）</span></span>
+                                <input class="p-contact__input" type="text" name="organization" autocomplete="organization" placeholder="例）株式会社○○">
+                            </label>
+                            <label class="p-contact__field">
+                                <span class="p-contact__label">お問い合わせ種別</span>
+                                <span class="p-contact__select-wrap">
+                                    <select class="p-contact__select" name="category" required>
+                                        <option value="" selected disabled>お問い合わせ種別を選択してください</option>
+                                        <option value="web-design">Webサイト・デザイン制作について</option>
+                                        <option value="graphic-design">バナー・グラフィック制作について</option>
+                                        <option value="work">お仕事のご相談</option>
+                                        <option value="other">その他</option>
+                                    </select>
+                                </span>
+                            </label>
+                            <label class="p-contact__field">
+                                <span class="p-contact__label">お問い合わせ内容</span>
+                                <textarea class="p-contact__textarea" name="message" rows="5" placeholder="どんなことでもお気軽にご相談ください" required></textarea>
+                            </label>
+                            <button class="c-button p-contact__submit" type="submit">送信する</button>
+                        </form>
+                        <div class="p-contact__links">
+                            <a class="p-contact__link" href="mailto:mimeu.studio@gmail.com">
+                                <span class="p-contact__link-title">E-mail</span>
+                                <span class="p-contact__link-text">mimeu.studio@gmail.com</span>
+                            </a>
+                            <a class="p-contact__link" href="https://www.instagram.com/mimeu_studio/" target="_blank" rel="noopener noreferrer">
+                                <span class="p-contact__link-title">Instagram</span>
+                                <span class="p-contact__link-text">@mimeu_studio</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -403,6 +409,13 @@
                 </div>
             </section>
         </main>
+        <!-- CONTACTとfooterの間の独立したトップ導線 -->
+        <div class="p-home-back-to-top l-container">
+            <a class="c-back-to-top p-home-back-to-top__link u-font-en" href="#top" aria-label="ページ最上部へ戻る">
+                <span class="p-home-back-to-top__text">BACK TO TOP</span>
+                <span class="p-home-back-to-top__arrow" aria-hidden="true"></span>
+            </a>
+        </div>
         <!-- Footer -->
         <footer class="l-footer">
             <div class="l-footer__inner l-container">
@@ -423,7 +436,6 @@
                         target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
                 </nav>
                 <small class="l-footer__copyright">© Miméu studio</small>
-                <a class="c-back-to-top u-font-en" href="#top">BACK TO TOP ↑</a>
             </div>
         </footer>
     </body>
