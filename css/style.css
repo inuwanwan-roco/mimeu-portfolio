@@ -374,6 +374,17 @@
     height: 4px;
 }
 
+/* タイトルの実際の文字幅に、小さな余白を添える */
+.p-skills__group-heading {
+    width: fit-content;
+    max-width: 100%;
+    padding-inline-end: var(--space-2);
+}
+
+.p-skills__group-heading .p-skills__divider {
+    width: calc(100% + var(--space-2));
+}
+
 .p-skills__chart-heading {
     display: grid;
     justify-items: center;
@@ -388,12 +399,16 @@
     .p-skills__heading .c-section-heading__description {
         text-align: center;
     }
+
+    .p-skills__chart-heading {
+        justify-items: start;
+    }
 }
 
 .p-skills__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
-    align-items: center;
+    align-items: start;
     gap: var(--content-gap);
 }
 
@@ -438,7 +453,7 @@
 .p-skills__chart {
     display: grid;
     justify-items: center;
-    gap: var(--space-4);
+    gap: clamp(32px, 2.8vw, 40px);
 }
 
 .p-skills__chart-visual {
