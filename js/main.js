@@ -60,7 +60,7 @@ function initGlobalMenu() {
     const menu = document.querySelector('#js-global-menu');
     if (!button || !menu) return;
     const closeButton = menu.querySelector('.c-global-menu__close');
-    const background = [document.querySelector('.l-header'), document.querySelector('main'), document.querySelector('.p-home-back-to-top'), document.querySelector('.l-footer')].filter(Boolean);
+    const background = [document.querySelector('.l-header'), document.querySelector('main'), document.querySelector('.c-page-top'), document.querySelector('.l-footer')].filter(Boolean);
     const mobile = window.matchMedia('(max-width: 768px)');
 
     const closeMenu = (restoreFocus = true) => {
@@ -157,12 +157,12 @@ function initContactForm() {
 }
 
 /* ------------------------------------------
-TOPの戻るボタン：footer区切り線の範囲内でPCナビに合わせる
+共通の戻るボタン：footer区切り線の範囲内でPCナビに合わせる
 ------------------------------------------ */
 function initBackToTopAlignment() {
-    const link = document.querySelector('.p-home-back-to-top__link');
-    const text = document.querySelector('.p-home-back-to-top__text');
-    const contact = document.querySelector('.l-header__nav-link[href="#contact"]');
+    const link = document.querySelector('.c-page-top__link');
+    const text = document.querySelector('.c-page-top__text');
+    const contact = document.querySelector('.l-header__nav-link[href$="#contact"]');
     const divider = document.querySelector('.l-footer > .c-section-divider .c-section-divider__line');
     if (!link || !text || !contact || !divider) return;
 

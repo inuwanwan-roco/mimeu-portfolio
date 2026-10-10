@@ -1,0 +1,437 @@
+@charset "UTF-8";
+
+/* ABOUT DETAIL / FLOCSS + BEM / 共通デザイントークンを再利用 */
+.p-about-detail {
+    --detail-gap: clamp(24px, 4.5vw, 64px);
+    padding-top: calc(var(--header-height) + var(--space-2));
+    padding-bottom: var(--space-8);
+}
+
+.p-about-detail__breadcrumb {
+    color: var(--color-secondary);
+    font-size: 0.875rem;
+}
+
+.p-about-detail__breadcrumb ol {
+    display: flex;
+    gap: var(--space-1);
+}
+
+.p-about-detail__breadcrumb li + li::before {
+    content: "/";
+    margin-inline-end: var(--space-1);
+}
+
+.p-about-detail__breadcrumb a:hover {
+    color: var(--color-title);
+}
+
+.p-about-detail__overview {
+    display: grid;
+    grid-template-columns: minmax(0, 0.46fr) minmax(0, 0.54fr);
+    column-gap: var(--detail-gap);
+    margin-top: var(--space-1);
+}
+
+.p-about-detail__heading {
+    grid-column: 1;
+}
+
+.p-about-detail__title {
+    width: clamp(320px, 44vw, 628px);
+    max-width: none;
+}
+
+.p-about-detail__subtitle {
+    margin-top: var(--space-2);
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+}
+
+.p-about-detail__visuals {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    position: relative;
+    padding-top: clamp(200px, 19vw, 272px);
+    padding-bottom: var(--space-8);
+}
+
+.p-about-detail__visual {
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-l);
+    background: #edf3f6;
+}
+
+.p-about-detail__visual--main {
+    width: 70%;
+    margin-left: var(--space-4);
+}
+
+.p-about-detail__visual--sub {
+    position: absolute;
+    top: var(--space-6);
+    right: var(--space-6);
+    width: 45%;
+    border-radius: var(--radius-s);
+}
+
+.p-about-detail__image {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 470 / 496;
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+}
+
+.p-about-detail__visual--sub .p-about-detail__image {
+    aspect-ratio: 296 / 272;
+}
+
+.p-about-detail__profile {
+    grid-column: 1;
+    margin-top: var(--space-4);
+}
+
+.p-about-detail__profile-label {
+    color: var(--color-accent);
+    font-size: clamp(24px, 2.2vw, 32px);
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.p-about-detail__name-block {
+    width: fit-content;
+    margin-top: var(--space-2);
+}
+
+.p-about-detail__name {
+    padding-inline: var(--space-2);
+    font-size: clamp(40px, 4.5vw, 64px);
+    font-weight: 400;
+    color: var(--color-title);
+    line-height: 1.2;
+}
+
+.p-about-detail__name-divider {
+    width: 100%;
+    margin-top: var(--space-1);
+    gap: var(--space-1);
+}
+
+.p-about-detail__information {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+}
+
+.p-about-detail__bubble {
+    width: fit-content;
+    max-width: 100%;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-xl);
+    background: var(--color-surface);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    font-size: clamp(13px, 1.05vw, 16px);
+    letter-spacing: 0;
+    line-height: 1.6;
+}
+
+.p-about-detail__bubble--meta {
+    padding: var(--space-2) var(--space-3);
+    font-size: clamp(12px, 0.95vw, 14px);
+    line-height: 1.6;
+    border-radius: var(--radius-l);
+}
+
+.p-about-detail__bubble--dream {
+    padding-inline: var(--space-4);
+}
+
+.p-about-detail__socials {
+    display: flex;
+    gap: var(--space-4);
+    margin: var(--space-6) 0 0 var(--space-2);
+}
+
+.p-about-detail__social {
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    font-size: 0.875rem;
+    transition: background var(--transition-base), transform var(--transition-base);
+}
+
+.p-about-detail__social:hover {
+    background: var(--color-accent);
+    transform: translateY(-2px);
+}
+
+.p-about-detail__interests {
+    display: grid;
+    grid-template-columns: minmax(0, 0.34fr) minmax(0, 0.66fr);
+    align-items: end;
+    gap: var(--detail-gap);
+    margin-top: calc(-1 * var(--space-6));
+}
+
+.p-about-detail__career {
+    padding-bottom: var(--space-2);
+}
+
+.p-about-detail__career-heading {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.p-about-detail__career-heading h2,
+.p-about-detail__philosophy > h2 {
+    font-size: clamp(28px, 2.5vw, 36px);
+    font-weight: 400;
+    color: var(--color-title);
+    line-height: 1.4;
+}
+
+.p-about-detail__career-divider {
+    flex: 1;
+    width: auto;
+    gap: var(--space-1);
+}
+
+.p-about-detail__timeline {
+    margin: var(--space-2) 0 0 var(--space-2);
+}
+
+.p-about-detail__timeline li {
+    position: relative;
+    display: flex;
+    gap: var(--space-2);
+    padding: 0 0 var(--space-2) var(--space-3);
+    border-left: 1px solid var(--color-border);
+    font-size: clamp(14px, 1.25vw, 18px);
+    letter-spacing: 0;
+    line-height: 1.5;
+}
+
+.p-about-detail__timeline li:last-child {
+    padding-bottom: 0;
+    border-color: transparent;
+}
+
+.p-about-detail__timeline li::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+}
+
+.p-about-detail__timeline time {
+    white-space: nowrap;
+}
+
+.p-about-detail__likes {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(48px, 0.18fr);
+    gap: var(--space-2);
+}
+
+.p-about-detail__likes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2);
+}
+
+.p-about-detail__like-card,
+.p-about-detail__likes-heading {
+    position: relative;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    background: var(--color-surface);
+    box-shadow: 0 4px 2px rgba(0, 0, 0, 0.18);
+}
+
+.p-about-detail__like-card {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    aspect-ratio: 1.65;
+    padding: var(--space-2) var(--space-3);
+}
+
+.p-about-detail__like-card h3 {
+    font-size: clamp(12px, 1.1vw, 16px);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.4;
+}
+
+.p-about-detail__like-icon {
+    width: 80%;
+    height: 100%;
+    max-height: 180px;
+    /* 既存アイコンの黒をブランドのネイビーに統一（静的処理）。 */
+    filter: brightness(0) saturate(100%) invert(14%) sepia(87%) saturate(1055%) hue-rotate(187deg) brightness(91%) contrast(106%);
+    object-fit: contain;
+    justify-self: center;
+    min-height: 0;
+}
+
+.p-about-detail__like-plus {
+    position: absolute;
+    right: var(--space-2);
+    bottom: var(--space-1);
+    width: clamp(24px, 3vw, 44px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: var(--color-white);
+}
+
+.p-about-detail__like-plus::before,
+.p-about-detail__like-plus::after {
+    content: "";
+    position: absolute;
+    inset: 50% 22% auto;
+    height: 1px;
+    background: var(--color-primary);
+}
+
+.p-about-detail__like-plus::after {
+    transform: rotate(90deg);
+}
+
+.p-about-detail__likes-heading {
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: #f7fcff;
+}
+
+.p-about-detail__likes-heading img {
+    position: absolute;
+    width: 280%;
+    max-width: none;
+    transform: rotate(90deg);
+}
+
+.p-about-detail__divider {
+    width: 100%;
+    margin-top: var(--space-8);
+}
+
+.p-about-detail__philosophy {
+    padding-top: var(--space-6);
+}
+
+.p-about-detail__philosophy-subtitle {
+    margin-top: var(--space-3);
+    font-size: 1rem;
+    color: var(--color-secondary);
+}
+
+.p-about-detail__principles {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--detail-gap);
+    margin-top: var(--space-8);
+}
+
+.p-about-detail__principle {
+    padding: var(--space-3) var(--space-4) var(--space-5);
+    border-radius: var(--radius-l);
+    background: var(--color-surface);
+    font-size: clamp(13px, 1.05vw, 16px);
+    letter-spacing: 0;
+    line-height: 1.8;
+}
+
+.p-about-detail__principle h3 {
+    margin-bottom: var(--space-1);
+    font-size: clamp(20px, 1.7vw, 24px);
+    font-weight: 400;
+    color: var(--color-title);
+}
+
+.p-about-detail__principle p + p {
+    margin-top: var(--space-3);
+}
+
+/* 構造が切り替わるスマートフォンのみ */
+@media screen and (max-width: 768px) {
+    .p-about-detail__overview,
+    .p-about-detail__interests {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .p-about-detail__title {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .p-about-detail__visuals {
+        grid-column: 1;
+        grid-row: auto;
+        margin-top: var(--space-4);
+        padding-top: var(--space-10);
+        padding-bottom: 0;
+    }
+
+    .p-about-detail__visual--main {
+        margin-left: 0;
+        width: 72%;
+    }
+
+    .p-about-detail__visual--sub {
+        top: 0;
+        right: 0;
+        width: 46%;
+    }
+
+    .p-about-detail__profile {
+        margin-top: var(--space-5);
+    }
+
+    .p-about-detail__desktop-break {
+        display: none;
+    }
+
+    .p-about-detail__interests {
+        margin-top: var(--space-8);
+        gap: var(--space-8);
+    }
+
+    .p-about-detail__likes {
+        gap: var(--space-1);
+        grid-template-columns: minmax(0, 1fr) 19%;
+    }
+
+    .p-about-detail__likes-grid {
+        gap: var(--space-1);
+    }
+
+    .p-about-detail__like-card {
+        aspect-ratio: 0.78;
+        padding: var(--space-2) var(--space-1) var(--space-4);
+    }
+
+    .p-about-detail__like-icon {
+        width: 88%;
+    }
+
+    .p-about-detail__like-plus {
+        right: var(--space-1);
+    }
+
+    .p-about-detail__principles {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--space-3);
+        margin-top: var(--space-5);
+    }
+}
