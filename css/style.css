@@ -292,6 +292,8 @@
 }
 
 .p-aboutme__name {
+    width: min(100%, clamp(144px, 18vw, 256px));
+    text-align: center;
     color: var(--color-title);
     font-size: clamp(2rem, 4vw, 4rem);
     font-weight: 500;
