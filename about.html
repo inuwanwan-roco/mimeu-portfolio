@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="css/common.css">
         <link rel="stylesheet" href="css/about.css">
         <script src="js/main.js" defer></script>
+        <script src="js/about.js" defer></script>
     </head>
     <body id="top">
         <!-- Header -->
@@ -156,27 +157,31 @@
                 <section class="p-about-detail__likes" aria-labelledby="likes-title">
                     <div class="p-about-detail__likes-grid">
                         <article class="p-about-detail__like-card">
-                            <h3>MUSIC</h3>
+                            <h3 id="likes-music-title">MUSIC</h3>
+                            <button class="p-about-detail__like-trigger" type="button" data-like="music" aria-haspopup="dialog" aria-controls="likes-dialog" aria-labelledby="likes-music-title"></button>
                             <img class="p-about-detail__like-icon" src="assets/images/4.aboutme/music.svg" alt="" loading="lazy">
-                            <!-- ＋はカンプの装飾。モーダル機能は次工程で実装します。 -->
+                            <!-- カード全体がクリック可能。＋は装飾として残します。 -->
                             <span class="p-about-detail__like-plus" aria-hidden="true"></span>
                         </article>
                         <article class="p-about-detail__like-card">
-                            <h3>ANIME</h3>
+                            <h3 id="likes-anime-title">ANIME</h3>
+                            <button class="p-about-detail__like-trigger" type="button" data-like="anime" aria-haspopup="dialog" aria-controls="likes-dialog" aria-labelledby="likes-anime-title"></button>
                             <img class="p-about-detail__like-icon" src="assets/images/4.aboutme/anime.svg" alt="" loading="lazy">
-                            <!-- ＋はカンプの装飾。モーダル機能は次工程で実装します。 -->
+                            <!-- カード全体がクリック可能。＋は装飾として残します。 -->
                             <span class="p-about-detail__like-plus" aria-hidden="true"></span>
                         </article>
                         <article class="p-about-detail__like-card">
-                            <h3>DOG</h3>
+                            <h3 id="likes-dog-title">DOG</h3>
+                            <button class="p-about-detail__like-trigger" type="button" data-like="dog" aria-haspopup="dialog" aria-controls="likes-dialog" aria-labelledby="likes-dog-title"></button>
                             <img class="p-about-detail__like-icon" src="assets/images/4.aboutme/dog.svg" alt="" loading="lazy">
-                            <!-- ＋はカンプの装飾。モーダル機能は次工程で実装します。 -->
+                            <!-- カード全体がクリック可能。＋は装飾として残します。 -->
                             <span class="p-about-detail__like-plus" aria-hidden="true"></span>
                         </article>
                         <article class="p-about-detail__like-card">
-                            <h3>MOVIES</h3>
+                            <h3 id="likes-movies-title">MOVIES</h3>
+                            <button class="p-about-detail__like-trigger" type="button" data-like="movies" aria-haspopup="dialog" aria-controls="likes-dialog" aria-labelledby="likes-movies-title"></button>
                             <img class="p-about-detail__like-icon" src="assets/images/4.aboutme/movies.svg" alt="" loading="lazy">
-                            <!-- ＋はカンプの装飾。モーダル機能は次工程で実装します。 -->
+                            <!-- カード全体がクリック可能。＋は装飾として残します。 -->
                             <span class="p-about-detail__like-plus" aria-hidden="true"></span>
                         </article>
                     </div>
@@ -250,5 +255,25 @@
                 <small class="l-footer__copyright">© Miméu studio</small>
             </div>
         </footer>
+        <!-- 4カテゴリで共用するモーダル。詳細は下のtemplateで差し替えます。 -->
+        <dialog class="p-likes-modal" id="likes-dialog" role="dialog" aria-modal="true" aria-labelledby="likes-dialog-title">
+            <div class="p-likes-modal__panel">
+                <button class="p-likes-modal__close" type="button" aria-label="モーダルを閉じる" autofocus><span aria-hidden="true">×</span></button>
+                <h2 class="p-likes-modal__title" id="likes-dialog-title"></h2>
+                <div class="p-likes-modal__content"></div>
+            </div>
+        </dialog>
+        <template id="likes-content-music">
+            <!-- MUSICの詳細文・画像はこの領域に追加してください。 -->
+        </template>
+        <template id="likes-content-anime">
+            <!-- ANIMEの詳細文・画像はこの領域に追加してください。 -->
+        </template>
+        <template id="likes-content-dog">
+            <!-- DOGの詳細文・画像はこの領域に追加してください。 -->
+        </template>
+        <template id="likes-content-movies">
+            <!-- MOVIESの詳細文・画像はこの領域に追加してください。 -->
+        </template>
     </body>
 </html>
