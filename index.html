@@ -256,7 +256,7 @@
             <!-- 04 Skills -->
             <section class="p-skills l-section" id="skills" aria-labelledby="skills-title">
                 <div class="l-container">
-                    <header class="c-section-heading">
+                    <header class="c-section-heading p-skills__heading">
                         <h2 class="c-section-heading__title" id="skills-title">
                             <img class="c-section-heading__title-image p-skills__title-image"
                                 src="assets/images/5.skills/skills.svg" alt="Skills">
@@ -269,34 +269,62 @@
                         <div class="p-skills__content">
                             <article class="p-skills__group">
                                 <h3 class="p-skills__group-title u-font-en">Web Design</h3>
+                                <div class="c-section-divider p-skills__divider" aria-hidden="true">
+                                    <span class="c-section-divider__diamond"></span>
+                                    <span class="c-section-divider__line"></span>
+                                    <span class="c-section-divider__diamond"></span>
+                                </div>
                                 <p class="p-skills__group-text">
                                     見やすく、使いやすく、<br>
                                     想いが伝わるWebデザイン。
                                 </p>
                                 <ul class="p-skills__tags" aria-label="Web Design tools">
-                                    <li>HTML / CSS</li>
-                                    <li>JavaScript</li>
-                                    <li>Figma</li>
-                                    <li>VS Code</li>
+                                    <li class="p-skills__tag">HTML/CSS</li>
+                                    <li class="p-skills__tag">Figma</li>
+                                    <li class="p-skills__tag">JavaScript<br>(jQuery)</li>
+                                    <li class="p-skills__tag">Visual Studio<br>Code</li>
                                 </ul>
                             </article>
                             <article class="p-skills__group">
                                 <h3 class="p-skills__group-title u-font-en">Graphic Design</h3>
+                                <div class="c-section-divider p-skills__divider" aria-hidden="true">
+                                    <span class="c-section-divider__diamond"></span>
+                                    <span class="c-section-divider__line"></span>
+                                    <span class="c-section-divider__diamond"></span>
+                                </div>
                                 <p class="p-skills__group-text">
                                     目的やターゲットに合わせ、<br>
                                     印象に残るグラフィックを制作します。
                                 </p>
                                 <ul class="p-skills__tags" aria-label="Graphic Design tools">
-                                    <li>Illustrator</li>
-                                    <li>Photoshop</li>
+                                    <li class="p-skills__tag">Illustrator</li>
+                                    <li class="p-skills__tag">Photoshop</li>
                                 </ul>
                             </article>
                         </div>
                         <figure class="p-skills__chart">
-                            <figcaption class="p-skills__chart-title u-font-en">Tools</figcaption>
-                            <img class="p-skills__chart-image"
-                                src="assets/images/5.skills/radarchart.svg"
-                                alt="使用ツールの習熟度を示すレーダーチャート">
+                            <figcaption class="p-skills__chart-heading">
+                                <span class="p-skills__chart-title u-font-en">Tools</span>
+                                <div class="c-section-divider p-skills__divider" aria-hidden="true">
+                                    <span class="c-section-divider__diamond"></span>
+                                    <span class="c-section-divider__line"></span>
+                                    <span class="c-section-divider__diamond"></span>
+                                </div>
+                            </figcaption>
+                            <div class="p-skills__chart-visual">
+                                <!-- レーダーチャートSVGは維持し、項目名だけHTMLラベルで重ねる -->
+                                <img class="p-skills__chart-image"
+                                    src="assets/images/5.skills/radarchart.svg"
+                                    alt="使用ツールの習熟度を示すレーダーチャート">
+                                <ul class="p-skills__tool-tags" aria-label="Tools">
+                                    <li class="p-skills__tool-tag p-skills__tool-tag--html">HTML/CSS</li>
+                                    <li class="p-skills__tool-tag p-skills__tool-tag--figma">Figma</li>
+                                    <li class="p-skills__tool-tag p-skills__tool-tag--javascript">JavaScript<br>(jQuery)</li>
+                                    <li class="p-skills__tool-tag p-skills__tool-tag--vscode">Visual Studio<br>Code</li>
+                                    <li class="p-skills__tool-tag p-skills__tool-tag--illustrator">Illustrator</li>
+                                    <li class="p-skills__tool-tag p-skills__tool-tag--photoshop">Photoshop</li>
+                                </ul>
+                            </div>
                         </figure>
                     </div>
                 </div>

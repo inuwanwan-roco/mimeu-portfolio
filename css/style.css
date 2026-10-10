@@ -345,6 +345,51 @@
 05. Skills
 ================================================== */
 
+/* 共通の見出し配置をSkills専用に調整 */
+.p-skills__heading {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: clamp(56px, 9vw, 160px);
+    margin-bottom: clamp(32px, 4vw, 64px);
+}
+
+.p-skills__heading .c-section-heading__description {
+    max-width: none;
+    margin: 0;
+}
+
+.p-skills__title-image {
+    width: calc(439.4px - 2px);
+}
+
+.p-skills__divider {
+    width: min(100%, clamp(144px, 18vw, 256px));
+    gap: var(--space-1);
+    margin-inline: 0;
+    margin-top: var(--space-1);
+}
+
+.p-skills__divider .c-section-divider__diamond {
+    width: 4px;
+    height: 4px;
+}
+
+.p-skills__chart-heading {
+    display: grid;
+    justify-items: center;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .p-skills__heading {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .p-skills__heading .c-section-heading__description {
+        text-align: center;
+    }
+}
+
 .p-skills__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
@@ -369,18 +414,25 @@
 }
 
 .p-skills__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-1);
-    margin-top: var(--space-3);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* カンプのコンパクトな2列ラベル配置 */
+    gap: clamp(24px, 2.5vw, 40px) clamp(24px, 3.3vw, 48px);
+    width: min(100%, clamp(280px, 22.3vw, 336px));
+    margin-top: clamp(24px, 2.7vw, 40px);
 }
 
-.p-skills__tags li {
-    padding: 8px 16px;
-    border: 1px solid var(--color-border);
+.p-skills__tag {
+    display: grid;
+    place-content: center;
+    min-height: clamp(48px, 3.6vw, 52px);
+    padding: calc(var(--space-1) / 2) calc(var(--space-3) / 2);
     border-radius: var(--radius-pill);
+    background-color: var(--color-surface);
     color: var(--color-secondary);
-    font-size: 0.8rem;
+    font-size: clamp(0.8rem, 1vw, 0.95rem);
+    line-height: 1.5;
+    text-align: center;
 }
 
 .p-skills__chart {
@@ -389,8 +441,69 @@
     gap: var(--space-4);
 }
 
-.p-skills__chart-image {
+.p-skills__chart-visual {
+    position: relative;
     width: min(100%, 560px);
+    container-type: inline-size;
+}
+
+.p-skills__chart-image {
+    display: block;
+    width: 100%;
+}
+
+.p-skills__tool-tags {
+    position: absolute;
+    inset: 0;
+}
+
+.p-skills__tool-tag {
+    /* SVGのviewBoxを基準に、元の項目名だけを覆う */
+    position: absolute;
+    inset-inline-start: var(--tool-label-x);
+    inset-block-start: var(--tool-label-y);
+    display: grid;
+    place-content: center;
+    width: 23.2732%;
+    height: 11.6457%;
+    padding: 2px 4px;
+    transform: translate(-50%, -50%);
+    border-radius: var(--radius-pill);
+    background-color: var(--color-surface);
+    color: var(--color-secondary);
+    font-size: clamp(10px, 2.44cqw, 14px);
+    line-height: 1.3;
+    text-align: center;
+}
+
+.p-skills__tool-tag--html {
+    --tool-label-x: 47.5785%;
+    --tool-label-y: 8.765%;
+}
+
+.p-skills__tool-tag--figma {
+    --tool-label-x: 12.4855%;
+    --tool-label-y: 34.4009%;
+}
+
+.p-skills__tool-tag--javascript {
+    --tool-label-x: 85.419%;
+    --tool-label-y: 35.642%;
+}
+
+.p-skills__tool-tag--vscode {
+    --tool-label-x: 87.212%;
+    --tool-label-y: 73.137%;
+}
+
+.p-skills__tool-tag--illustrator {
+    --tool-label-x: 48.7666%;
+    --tool-label-y: 93.5795%;
+}
+
+.p-skills__tool-tag--photoshop {
+    --tool-label-x: 11.3672%;
+    --tool-label-y: 70.8244%;
 }
 
 /* ==================================================
@@ -505,7 +618,7 @@
     }
 
     .p-skills__title-image {
-        width: calc(var(--sp-title-reference-width) * 0.912);
+        width: calc(var(--sp-title-reference-width) * 0.912 - 2px);
     }
 
     .p-contact__title-image {
