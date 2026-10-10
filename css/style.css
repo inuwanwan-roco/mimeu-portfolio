@@ -407,8 +407,29 @@
         text-align: center;
     }
 
+    .p-skills__description-line {
+        white-space: nowrap;
+    }
+
+    .p-skills__group {
+        text-align: center;
+    }
+
+    .p-skills__group-heading {
+        margin-inline: auto;
+        padding-inline: var(--space-1);
+    }
+
+    .p-skills__group-heading .p-skills__divider {
+        margin-inline: calc(-1 * var(--space-1));
+    }
+
+    .p-skills__tags {
+        margin-inline: auto;
+    }
+
     .p-skills__chart-heading {
-        justify-items: start;
+        justify-items: center;
     }
 }
 
