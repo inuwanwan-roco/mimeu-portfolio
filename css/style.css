@@ -352,6 +352,11 @@
         margin-inline: auto;
     }
 
+    .p-aboutme__text {
+        /* 改行を減らしてもREAD MOREの従来位置を保つ */
+        min-height: 8lh;
+    }
+
     .p-aboutme__read-more {
         text-align: start;
         margin-inline-end: clamp(24px, 8vw, 40px);

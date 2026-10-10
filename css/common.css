@@ -234,15 +234,24 @@ Footer
 ------------------------------------------ */
 
 .l-footer {
-    padding-block: clamp(56px, 7vw, 96px);
-    border-top: 1px solid var(--color-border);
+    padding-bottom: clamp(32px, 4vw, 56px);
 }
 
 .l-footer__inner {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
-    align-items: end;
-    gap: var(--space-4);
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    grid-template-areas:
+        "brand nav socials"
+        ". tagline ."
+        ". copyright .";
+    align-items: center;
+    gap: var(--space-2) var(--space-3);
+    padding-top: clamp(24px, 3vw, 48px);
+}
+
+.l-footer__brand {
+    grid-area: brand;
+    justify-self: start;
 }
 
 .l-footer__logo {
@@ -250,23 +259,87 @@ Footer
 }
 
 .l-footer__nav {
+    grid-area: nav;
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-2) var(--space-4);
+    justify-content: center;
+    gap: var(--space-2) clamp(16px, 2vw, 32px);
 }
 
 .l-footer__link {
     font-size: 0.875rem;
-    transition: color var(--transition-base);
+    white-space: nowrap;
+    transition: color var(--transition-base), opacity var(--transition-base);
 }
 
 .l-footer__link:hover {
-    color: var(--color-accent);
+    color: var(--color-title);
+    opacity: 0.65;
+}
+
+.l-footer__socials {
+    grid-area: socials;
+    display: flex;
+    justify-self: end;
+    gap: var(--space-2);
+}
+
+.l-footer__social-link {
+    display: grid;
+    place-items: center;
+    width: var(--space-5);
+    height: var(--space-5);
+    color: var(--color-primary);
+    transition: color var(--transition-base), transform var(--transition-base);
+}
+
+.l-footer__social-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.l-footer__social-link:hover {
+    color: var(--color-title);
+    transform: translateY(-2px);
+}
+
+.l-footer__brand:focus-visible,
+.l-footer__link:focus-visible,
+.l-footer__social-link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+.l-footer__tagline {
+    grid-area: tagline;
+    margin-top: var(--space-2);
+    font-size: 0.875rem;
+    text-align: center;
 }
 
 .l-footer__copyright {
+    grid-area: copyright;
     color: var(--color-secondary);
     font-size: 0.75rem;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .l-footer__inner {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "brand" "nav" "socials" "tagline" "copyright";
+        justify-items: center;
+        row-gap: var(--space-3);
+    }
+
+    .l-footer__brand,
+    .l-footer__socials {
+        justify-self: center;
+    }
+
+    .l-footer__tagline {
+        margin-top: 0;
+    }
 }
 
 /* ==================================================

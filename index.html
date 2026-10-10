@@ -233,8 +233,8 @@
                                 栃木県 那須塩原市出身 / 北海道札幌市在住
                             </p>
                             <p class="p-aboutme__text">
-                                現在、Webデザイン・<br class="u-sp-only">グラフィックデザインを<br class="u-sp-only">中心に勉強中。<br><br class="u-sp-only">
-                                幼い頃から、<br class="u-sp-only">ホグワーツ魔法魔術学校に入学を<br class="u-sp-only">夢見るマグル。<br>
+                                現在、Webデザイン・グラフィックデザインを<br class="u-sp-only">中心に勉強中です。<br><br class="u-sp-only">
+                                幼い頃から、ホグワーツ魔法魔術学校に<br class="u-sp-only">入学を夢見るマグルです。<br>
                                 わくわくすること、面白いことが大好き。
                             </p>
                             <a class="c-text-link p-aboutme__read-more u-font-en" href="aboutme.html">READ MORE →</a>
@@ -416,25 +416,40 @@
                 <span class="p-home-back-to-top__arrow" aria-hidden="true"></span>
             </a>
         </div>
-        <!-- Footer -->
+        <!-- 共通Footer。下層ではロゴとTOPアンカーの相対パスを階層に合わせる -->
         <footer class="l-footer">
+            <div class="c-section-divider" aria-hidden="true">
+                <span class="c-section-divider__diamond"></span>
+                <span class="c-section-divider__line"></span>
+                <span class="c-section-divider__diamond"></span>
+            </div>
             <div class="l-footer__inner l-container">
                 <a class="l-footer__brand" href="#top" aria-label="Miméu studio トップへ">
-                    <!-- Footer用Miméu studioロゴSVGを入れる -->
-                    <img
-                        class="l-footer__logo"
-                        src="assets/images/7.footer/Mimeustudio.svg"
-                        alt="Miméu studio"
-                    >
+                    <!-- サイト共通のMiméu studioロゴSVG -->
+                    <img class="l-footer__logo" src="assets/images/7.footer/Mimeustudio.svg" alt="Miméu studio">
                 </a>
                 <nav class="l-footer__nav" aria-label="フッターナビゲーション">
                     <a class="l-footer__link u-font-en" href="#works">WORKS</a>
-                    <a class="l-footer__link u-font-en" href="#aboutme">ABOUTME</a>
+                    <a class="l-footer__link u-font-en" href="#aboutme">ABOUT ME</a>
                     <a class="l-footer__link u-font-en" href="#skills">SKILLS</a>
                     <a class="l-footer__link u-font-en" href="#contact">CONTACT</a>
-                    <a class="l-footer__link u-font-en" href="https://www.instagram.com/mimeu_studio/" 
-                        target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
                 </nav>
+                <div class="l-footer__socials">
+                    <a class="l-footer__social-link" href="https://www.instagram.com/mimeu_studio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram（新しいタブで開く）">
+                        <svg class="l-footer__social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                            <circle cx="12" cy="12" r="4"></circle>
+                            <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"></circle>
+                        </svg>
+                    </a>
+                    <a class="l-footer__social-link" href="mailto:mimeu.studio@gmail.com" aria-label="E-mailでお問い合わせ">
+                        <svg class="l-footer__social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                            <path d="m4 6 8 7 8-7"></path>
+                        </svg>
+                    </a>
+                </div>
+                <p class="l-footer__tagline u-font-en">DESIGN PORTFOLIO</p>
                 <small class="l-footer__copyright">© Miméu studio</small>
             </div>
         </footer>
