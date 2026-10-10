@@ -954,6 +954,285 @@ Back To Top
 }
 
 /* ==================================================
+制作実績の下層ページ共通 / Project Detail
+================================================== */
+.c-work-detail {
+    --work-preview-surface: #edf3f6;
+    padding-top: calc(var(--header-height) + var(--space-1));
+    padding-bottom: var(--space-4);
+}
+
+.c-work-detail__breadcrumb {
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+}
+
+.c-work-detail__breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+}
+
+.c-work-detail__breadcrumb li + li::before {
+    content: "/";
+    margin-inline-end: var(--space-1);
+}
+
+.c-work-detail__breadcrumb a:hover {
+    color: var(--color-title);
+}
+
+.c-work-detail__title {
+    font-size: clamp(36px, 5.6vw, 80px);
+    font-weight: 400;
+    color: var(--color-title);
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.22);
+    overflow-wrap: anywhere;
+}
+
+.c-work-detail__subtitle {
+    margin-top: var(--space-2);
+    color: var(--color-secondary);
+    font-size: clamp(13px, 1vw, 16px);
+}
+
+.c-project__heading {
+    margin-top: var(--space-4);
+}
+
+.c-project__lead {
+    margin-top: var(--space-1);
+    font-size: clamp(14px, 1.1vw, 16px);
+    letter-spacing: 0;
+}
+
+.c-project__visual {
+    width: min(100%, var(--project-visual-width, 960px));
+    /* 透過モックアップ内の上余白を補正し、カンプの可視位置に合わせる。 */
+    margin: calc(-1 * var(--space-6)) auto var(--space-2);
+}
+
+.c-project__mockup {
+    width: 100%;
+    aspect-ratio: 1948 / 1300;
+    object-fit: contain;
+}
+
+.c-project__overview {
+    width: min(100%, 720px);
+    margin-inline: auto;
+}
+
+.c-project__section-title {
+    font-size: clamp(28px, 2.5vw, 36px);
+    font-weight: 400;
+    color: var(--project-heading-color, var(--color-primary));
+    line-height: 1.4;
+}
+
+.c-project__facts {
+    display: grid;
+    gap: var(--space-1);
+    margin-top: var(--space-3);
+    font-size: clamp(14px, 1.4vw, 20px);
+    line-height: 1.5;
+    letter-spacing: 0;
+}
+
+.c-project__facts > div {
+    display: grid;
+    grid-template-columns: minmax(80px, 0.2fr) minmax(0, 0.8fr);
+    gap: var(--space-3);
+}
+
+.c-project__facts dt {
+    font-size: clamp(18px, 1.6vw, 24px);
+}
+
+.c-project__facts dd {
+    color: var(--color-secondary);
+}
+
+.c-project__divider {
+    width: 100%;
+    margin-block: var(--space-6);
+}
+
+.c-project__details {
+    display: grid;
+    gap: var(--space-6);
+}
+
+.c-project__detail {
+    display: grid;
+    grid-template-columns: minmax(0, 0.25fr) minmax(0, 0.75fr);
+    align-items: center;
+    gap: var(--space-5);
+}
+
+.c-project__detail p {
+    color: var(--color-secondary);
+    font-size: clamp(14px, 1.25vw, 18px);
+    letter-spacing: 0;
+}
+
+.c-project__preview {
+    margin-top: var(--space-6);
+}
+
+.c-project__preview-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-6) clamp(24px, 5vw, 72px);
+    margin-top: var(--space-4);
+}
+
+.c-project__preview-item {
+    position: relative;
+}
+
+.c-project__preview-item img {
+    width: 100%;
+    aspect-ratio: 620 / 170;
+    object-fit: contain;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-l);
+    background: var(--work-preview-surface);
+    color: var(--color-secondary);
+    font-size: 0.875rem;
+}
+
+.c-project__preview-caption {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+}
+
+@media screen and (max-width: 768px) {
+    .c-project__visual {
+        margin-top: var(--space-2);
+    }
+
+    .c-project__detail {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--space-1);
+    }
+
+    .c-project__preview-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--space-3);
+    }
+
+    .c-project__facts > div {
+        gap: var(--space-2);
+    }
+}
+
+/* LIKES modal / ネイティブdialogのフォーカス制御を利用 */
+body.is-likes-modal-open,
+body.is-content-modal-open {
+    overflow: hidden;
+}
+
+:is(.p-likes-modal, .c-content-modal) {
+    position: fixed;
+    inset: 0;
+    width: min(calc(100% - var(--space-6)), 640px);
+    max-width: none;
+    max-height: calc(100svh - var(--space-6));
+    margin: auto;
+    padding: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-l);
+    color: var(--color-primary);
+    background: var(--color-white);
+    box-shadow: var(--shadow-soft);
+    overflow: auto;
+    overscroll-behavior: contain;
+    opacity: 0;
+    transform: scale(0.97);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+:is(.p-likes-modal, .c-content-modal)::backdrop {
+    background: rgba(228, 246, 255, 0.7);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+:is(.p-likes-modal, .c-content-modal).is-open {
+    opacity: 1;
+    transform: scale(1);
+}
+
+:is(.p-likes-modal, .c-content-modal).is-open::backdrop {
+    opacity: 1;
+}
+
+:is(.p-likes-modal__panel, .c-content-modal__panel) {
+    padding: 0 clamp(24px, 4vw, 48px) clamp(32px, 5vw, 64px);
+}
+
+:is(.p-likes-modal__close, .c-content-modal__close) {
+    position: sticky;
+    top: var(--space-2);
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: var(--space-6);
+    height: var(--space-6);
+    margin: var(--space-2) calc(-1 * var(--space-1)) var(--space-1) auto;
+    border-radius: var(--radius-pill);
+    background: var(--color-white);
+    color: var(--color-primary);
+    font-size: 2rem;
+    line-height: 1;
+    transition: background var(--transition-base);
+}
+
+:is(.p-likes-modal__close, .c-content-modal__close):hover {
+    background: var(--color-surface);
+}
+
+:is(.p-likes-modal__close, .c-content-modal__close):focus-visible,
+:is(.p-likes-modal__content, .c-content-modal__content) a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+:is(.p-likes-modal__title, .c-content-modal__title) {
+    margin-bottom: var(--space-3);
+    color: var(--color-title);
+    font-family: var(--font-en);
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 400;
+}
+
+:is(.p-likes-modal__content, .c-content-modal__content) {
+    min-height: var(--space-12);
+    overflow-wrap: anywhere;
+    color: var(--color-secondary);
+}
+
+:is(.p-likes-modal__content, .c-content-modal__content) > * + * {
+    margin-top: var(--space-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :is(.p-likes-modal, .c-content-modal),
+    :is(.p-likes-modal, .c-content-modal)::backdrop {
+        transition: none;
+        transform: none;
+    }
+}
+
+/* ==================================================
 04. Utility
 ================================================== */
 

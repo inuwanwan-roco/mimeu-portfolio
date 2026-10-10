@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+/* MI/NUIT / 共通のc-projectを使用し、作品固有の値を定義 */
+.p-mi-nuit {
+    --project-visual-width: 960px;
+    --project-heading-color: var(--color-primary);
+}
+
+/* モックアップ素材未配置。カンプの画像領域をimgの比率で保持。 */
+.p-mi-nuit .c-project__mockup {
+    background: var(--work-preview-surface);
+    border-radius: var(--radius-l);
+    color: var(--color-secondary);
+}
+
+.p-mi-nuit .c-project__visual {
+    margin-top: var(--space-3);
+}

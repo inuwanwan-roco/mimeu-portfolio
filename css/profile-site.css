@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+/* Profile Site / モックアップは既存の透過WebPをそのまま使用 */
+.p-profile-site {
+    --project-visual-width: 960px;
+    --project-heading-color: var(--color-primary);
+}
+
+.p-profile-site .c-project__preview > .c-project__section-title {
+    color: var(--color-title);
+}

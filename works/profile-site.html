@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Miméu studioの制作実績：Portfolio Siteをご紹介します。">
+        <title>Portfolio Site | Miméu studio</title>
+        <!-- Bodoni Moda -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&display=swap" rel="stylesheet">
+        <!-- Gen Interface JP -->
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gen-interface-jp@0.8.0/cdn/400.css">
+        <!-- CSS / JS -->
+        <link rel="stylesheet" href="../css/reset.css">
+        <link rel="stylesheet" href="../css/common.css">
+        <link rel="stylesheet" href="../css/profile-site.css">
+        <script src="../js/main.js" defer></script>
+    </head>
+    <body id="top">
+        <!-- Header -->
+        <header class="l-header">
+            <div class="l-header__inner l-container">
+                <a class="l-header__brand" href="../index.html#top" aria-label="Miméu studio トップへ">
+                    <img class="l-header__logo" src="../assets/images/1.header/Mimeustudio.svg" alt="Miméu studio">
+                </a>
+                <!-- ヘッダー装飾ライン -->
+                <div class="l-header__line" aria-hidden="true"></div>
+                <!-- PC用ナビゲーションメニュー -->
+                <div class="l-header__navigation">
+                    <nav class="l-header__nav" aria-label="メインナビゲーション">
+                        <div class="l-header__nav-item">
+                            <a class="l-header__nav-link u-font-en" href="../index.html#works">WORKS</a>
+                            <div class="l-header__dropdown" aria-label="WORKSの下層ページ">
+                                <a class="l-header__dropdown-link u-font-en" href="mi-nuit.html">MI/NUIT</a>
+                                <a class="l-header__dropdown-link u-font-en" href="profile-site.html">PROFILE SITE</a>
+                                <a class="l-header__dropdown-link u-font-en" href="graphic.html">GRAPHIC GALLERY</a>
+                            </div>
+                        </div>
+                        <div class="l-header__nav-item">
+                            <a class="l-header__nav-link u-font-en" href="../index.html#aboutme">ABOUT ME</a>
+                            <div class="l-header__dropdown" aria-label="ABOUT MEの下層ページ">
+                                <a class="l-header__dropdown-link u-font-en" href="../about.html">ABOUT DETAIL</a>
+                            </div>
+                        </div>
+                        <a class="l-header__nav-link u-font-en" href="../index.html#skills">SKILLS</a>
+                        <a class="l-header__nav-link u-font-en" href="../index.html#contact">CONTACT</a>
+                    </nav>
+                    <!-- スマホ用ハンバーガーメニュー -->
+                    <button class="c-menu-button" id="js-menu-button"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="js-global-menu"
+                        aria-label="メニューを開く">
+                        <span class="c-menu-button__line"></span>
+                        <span class="c-menu-button__line"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <!-- スマートフォン用Vertical Menu -->
+        <div class="c-global-menu" id="js-global-menu" role="dialog" aria-modal="true" aria-label="メインメニュー" aria-hidden="true" inert>
+            <div class="c-global-menu__top l-container">
+                <a class="c-global-menu__brand" href="../index.html#top" aria-label="Miméu studio トップへ">
+                    <img class="l-header__logo" src="../assets/images/1.header/Mimeustudio.svg" alt="Miméu studio">
+                </a>
+                <button class="c-menu-button c-global-menu__close" type="button" aria-label="メニューを閉じる" aria-expanded="true">
+                    <span class="c-menu-button__line"></span>
+                    <span class="c-menu-button__line"></span>
+                </button>
+            </div>
+            <nav class="c-global-menu__nav" aria-label="メインナビゲーション">
+                <div class="c-global-menu__item">
+                    <div class="c-global-menu__row">
+                        <a class="c-global-menu__link u-font-en" href="../index.html#works"><span class="c-global-menu__number">01</span>WORKS</a>
+                        <button class="c-global-menu__toggle" type="button" aria-expanded="false" aria-controls="menu-children-1" aria-label="WORKSの子メニューを開閉"><span aria-hidden="true"></span></button>
+                    </div>
+                    <div class="c-global-menu__children" id="menu-children-1" inert>
+                        <div class="c-global-menu__children-inner">
+                            <a class="c-global-menu__child-link u-font-en" href="mi-nuit.html">MI/NUIT</a>
+                            <a class="c-global-menu__child-link u-font-en" href="profile-site.html">PROFILE SITE</a>
+                            <a class="c-global-menu__child-link u-font-en" href="graphic.html">GRAPHIC GALLERY</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-global-menu__item">
+                    <div class="c-global-menu__row">
+                        <a class="c-global-menu__link u-font-en" href="../index.html#aboutme"><span class="c-global-menu__number">02</span>ABOUT ME</a>
+                        <button class="c-global-menu__toggle" type="button" aria-expanded="false" aria-controls="menu-children-2" aria-label="ABOUT MEの子メニューを開閉"><span aria-hidden="true"></span></button>
+                    </div>
+                    <div class="c-global-menu__children" id="menu-children-2" inert>
+                        <div class="c-global-menu__children-inner">
+                            <a class="c-global-menu__child-link u-font-en" href="../about.html">ABOUT DETAIL</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-global-menu__item">
+                    <div class="c-global-menu__row">
+                        <a class="c-global-menu__link u-font-en" href="../index.html#skills"><span class="c-global-menu__number">03</span>SKILLS</a>
+                    </div>
+                </div>
+                <div class="c-global-menu__item">
+                    <div class="c-global-menu__row">
+                        <a class="c-global-menu__link u-font-en" href="../index.html#contact"><span class="c-global-menu__number">04</span>CONTACT</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <main class="c-work-detail p-profile-site l-container">
+            <nav class="c-work-detail__breadcrumb u-font-en" aria-label="パンくずリスト">
+                <ol><li><a href="../index.html">HOME</a></li><li><a href="../index.html#works">WORKS</a></li><li aria-current="page">PORTFOLIO SITE</li></ol>
+            </nav>
+            <header class="c-project__heading">
+                <h1 class="c-work-detail__title u-font-en">Portfolio Site</h1>
+                <p class="c-work-detail__subtitle u-font-en">WEB SITE / PROFILE SITE</p>
+                <p class="c-project__lead">在学中、2回目の課題で制作した私の自己紹介サイトです。</p>
+            </header>
+            <figure class="c-project__visual">
+                <!-- Portfolio SiteのPC・スマートフォン統合モックアップ。未配置の場合はこのsrcへ素材を配置してください。 -->
+                <img class="c-project__mockup" src="../assets/images/3.works/profilesite-mock-up.webp" width="1948" height="1300" alt="Portfolio SiteのPC・スマートフォンモックアップ">
+            </figure>
+            <section class="c-project__overview" aria-labelledby="overview-title">
+                <h2 class="c-project__section-title u-font-en" id="overview-title">Project Overview</h2>
+                <dl class="c-project__facts">
+                    <div><dt class="u-font-en">Role</dt><dd class="u-font-en">Design / Coding</dd></div>
+                    <div id="tools"><dt class="u-font-en">Tools</dt><dd><span class="u-font-en">Figma / HTML / CSS / JS / ChatGPT</span><br>サイト内に使用されている画像は生成AIによるものです。</dd></div>
+                    <!-- 制作期間が確定したらカンプの仮値を更新してください。 -->
+                    <div><dt class="u-font-en">Period</dt><dd class="u-font-en">00 weeks</dd></div>
+                </dl>
+            </section>
+            <div class="c-section-divider c-project__divider" aria-hidden="true">
+                <span class="c-section-divider__diamond"></span>
+                <span class="c-section-divider__line"></span>
+                <span class="c-section-divider__diamond"></span>
+            </div>
+            <div class="c-project__details">
+                <section class="c-project__detail" aria-labelledby="concept-title">
+                    <h2 class="c-project__section-title u-font-en" id="concept-title">Concept</h2>
+                    <!-- Conceptの本文はカンプの仮文言。確定内容に差し替えてください。 -->
+                    <p>制作背景とコンセプト説明。</p>
+                </section>
+                <section class="c-project__detail" aria-labelledby="target-title">
+                    <h2 class="c-project__section-title u-font-en" id="target-title">Target</h2>
+                    <!-- Targetの本文はカンプの仮文言。確定内容に差し替えてください。 -->
+                    <p>想定ユーザー・課題・目的。</p>
+                </section>
+                <section class="c-project__detail" aria-labelledby="design-title">
+                    <h2 class="c-project__section-title u-font-en" id="design-title">Design</h2>
+                    <!-- Designの本文はカンプの仮文言。確定内容に差し替えてください。 -->
+                    <p>配色・タイポグラフィ・UI設計の意図。</p>
+                </section>
+                <section class="c-project__detail" aria-labelledby="process-title">
+                    <h2 class="c-project__section-title u-font-en" id="process-title">Process</h2>
+                    <!-- Processの本文はカンプの仮文言。確定内容に差し替えてください。 -->
+                    <p>情報整理 → Wireframe → Design → Implementation。</p>
+                </section>
+            </div>
+            <section class="c-project__preview" aria-labelledby="preview-title">
+                <h2 class="c-project__section-title u-font-en" id="preview-title">Design Preview</h2>
+                <div class="c-project__preview-grid">
+                    <figure class="c-project__preview-item">
+                        <!-- Portfolio SiteのPC Preview画像1を入れる。縦長画像にも対応。 -->
+                        <img src="../assets/images/works/profile-site-pc-preview-01.webp" width="620" height="170" alt="PC Preview 1" loading="lazy">
+                        <figcaption class="c-project__preview-caption u-font-en">PC Preview</figcaption>
+                    </figure>
+                    <figure class="c-project__preview-item">
+                        <!-- Portfolio SiteのMobile Preview画像1を入れる。縦長画像にも対応。 -->
+                        <img src="../assets/images/works/profile-site-mobile-preview-01.webp" width="620" height="170" alt="Mobile Preview 1" loading="lazy">
+                        <figcaption class="c-project__preview-caption u-font-en">Mobile Preview</figcaption>
+                    </figure>
+                    <figure class="c-project__preview-item">
+                        <!-- Portfolio SiteのPC Preview画像2を入れる。縦長画像にも対応。 -->
+                        <img src="../assets/images/works/profile-site-pc-preview-02.webp" width="620" height="170" alt="PC Preview 2" loading="lazy">
+                        <figcaption class="c-project__preview-caption u-font-en">PC Preview</figcaption>
+                    </figure>
+                    <figure class="c-project__preview-item">
+                        <!-- Portfolio SiteのMobile Preview画像2を入れる。縦長画像にも対応。 -->
+                        <img src="../assets/images/works/profile-site-mobile-preview-02.webp" width="620" height="170" alt="Mobile Preview 2" loading="lazy">
+                        <figcaption class="c-project__preview-caption u-font-en">Mobile Preview</figcaption>
+                    </figure>
+                </div>
+            </section>
+        </main>
+        <!-- footer直前の共通Back to Top -->
+        <div class="c-page-top l-container">
+            <a class="c-back-to-top c-page-top__link u-font-en" href="#top" aria-label="ページ最上部へ戻る">
+                <span class="c-page-top__text">BACK TO TOP</span>
+                <span class="c-page-top__arrow" aria-hidden="true"></span>
+            </a>
+        </div>
+        <!-- 共通Footer。下層ではロゴとTOPアンカーの相対パスを階層に合わせる -->
+        <footer class="l-footer">
+            <div class="c-section-divider" aria-hidden="true">
+                <span class="c-section-divider__diamond"></span>
+                <span class="c-section-divider__line"></span>
+                <span class="c-section-divider__diamond"></span>
+            </div>
+            <div class="l-footer__inner l-container">
+                <a class="l-footer__brand" href="#top" aria-label="Miméu studio トップへ">
+                    <!-- サイト共通のMiméu studioロゴSVG -->
+                    <img class="l-footer__logo" src="../assets/images/7.footer/Mimeustudio.svg" alt="Miméu studio">
+                </a>
+                <nav class="l-footer__nav" aria-label="フッターナビゲーション">
+                    <a class="l-footer__link u-font-en" href="../index.html#works">WORKS</a>
+                    <a class="l-footer__link u-font-en" href="../index.html#aboutme">ABOUT ME</a>
+                    <a class="l-footer__link u-font-en" href="../index.html#skills">SKILLS</a>
+                    <a class="l-footer__link u-font-en" href="../index.html#contact">CONTACT</a>
+                </nav>
+                <div class="l-footer__socials">
+                    <a class="l-footer__social-link" href="https://www.instagram.com/mimeu_studio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram（新しいタブで開く）">
+                        <svg class="l-footer__social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                            <circle cx="12" cy="12" r="4"></circle>
+                            <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"></circle>
+                        </svg>
+                    </a>
+                    <a class="l-footer__social-link" href="mailto:mimeu.studio@gmail.com" aria-label="E-mailでお問い合わせ">
+                        <svg class="l-footer__social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                            <path d="m4 6 8 7 8-7"></path>
+                        </svg>
+                    </a>
+                </div>
+                <p class="l-footer__tagline u-font-en">DESIGN PORTFOLIO</p>
+                <small class="l-footer__copyright">© Miméu studio</small>
+            </div>
+        </footer>
+    </body>
+</html>
