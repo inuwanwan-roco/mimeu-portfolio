@@ -15,14 +15,112 @@
     overflow: hidden;
     background-color: var(--color-surface);
 
-    /* Loading背景画像を入れる */
-    background-image: url("../assets/images/0.loading/background.webp");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    isolation: isolate;
     transition:
         opacity var(--duration-slow) var(--ease-base),
         visibility var(--duration-slow) var(--ease-base);
+}
+
+/* 112%の背景面に余裕を持たせ、画面端を見せずにゆっくり漂わせる。 */
+.p-loading::before,
+.p-loading::after {
+    content: "";
+    position: absolute;
+    inset: -6%;
+    pointer-events: none;
+}
+
+.p-loading::before {
+    z-index: 0;
+    background: url("../assets/images/0.loading/background.webp") center / cover no-repeat;
+    animation: loading-water 10s ease-in-out infinite;
+}
+
+.p-loading::after {
+    z-index: 1;
+    background:
+        radial-gradient(ellipse at 24% 32%, rgba(255, 255, 255, 0.3), transparent 52%),
+        radial-gradient(ellipse at 78% 76%, rgba(156, 225, 255, 0.18), transparent 48%);
+    animation: loading-light 12s ease-in-out infinite;
+}
+
+.p-loading__sparkles {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.p-loading__sparkle {
+    position: absolute;
+    inset-inline-start: var(--sparkle-x);
+    inset-block-start: var(--sparkle-y);
+    width: var(--sparkle-size);
+    aspect-ratio: 1;
+    background: var(--sparkle-color, var(--color-white));
+    clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+    opacity: 0;
+    animation: loading-sparkle var(--sparkle-duration) ease-in-out var(--sparkle-delay) infinite;
+}
+
+.p-loading__sparkle:nth-child(1) {
+    --sparkle-x: 13%; --sparkle-y: 23%; --sparkle-size: 12px;
+    --sparkle-duration: 7s; --sparkle-delay: -2s;
+}
+
+.p-loading__sparkle:nth-child(2) {
+    --sparkle-x: 29%; --sparkle-y: 14%; --sparkle-size: 7px;
+    --sparkle-duration: 8.3s; --sparkle-delay: -5.6s;
+    --sparkle-color: var(--color-surface);
+}
+
+.p-loading__sparkle:nth-child(3) {
+    --sparkle-x: 82%; --sparkle-y: 28%; --sparkle-size: 15px;
+    --sparkle-duration: 9.1s; --sparkle-delay: -3.2s;
+}
+
+.p-loading__sparkle:nth-child(4) {
+    --sparkle-x: 88%; --sparkle-y: 73%; --sparkle-size: 8px;
+    --sparkle-duration: 7.7s; --sparkle-delay: -6.3s;
+    --sparkle-color: var(--color-surface);
+}
+
+.p-loading__sparkle:nth-child(5) {
+    --sparkle-x: 19%; --sparkle-y: 78%; --sparkle-size: 14px;
+    --sparkle-duration: 8.7s; --sparkle-delay: -0.9s;
+}
+
+.p-loading__sparkle:nth-child(6) {
+    --sparkle-x: 69%; --sparkle-y: 87%; --sparkle-size: 6px;
+    --sparkle-duration: 6.8s; --sparkle-delay: -4.1s;
+}
+
+@keyframes loading-water {
+    0%, 100% { transform: translate(-0.8%, 0.6%) scale(1); }
+    25% { transform: translate(0.7%, -0.8%) scale(1.012); }
+    50% { transform: translate(1.2%, 0.4%) scale(1.025); }
+    75% { transform: translate(-0.4%, 1%) scale(1.01); }
+}
+
+@keyframes loading-light {
+    0%, 100% { transform: translate(1.5%, -1%) scale(1.02); opacity: 0.4; }
+    50% { transform: translate(-1.5%, 1.2%) scale(1); opacity: 0.7; }
+}
+
+@keyframes loading-sparkle {
+    0%, 62%, 100% { opacity: 0; transform: translateY(2px) scale(0.65); }
+    24% { opacity: 0.55; transform: translateY(0) scale(1); }
+    40% { opacity: 0.25; transform: translateY(-1px) scale(0.85); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .p-loading::before,
+    .p-loading::after,
+    .p-loading__sparkle {
+        animation: none;
+    }
+
+    .p-loading::after { opacity: 0.4; }
 }
 
 .p-loading.is-hidden {
@@ -32,6 +130,8 @@
 }
 
 .p-loading__inner {
+    position: relative;
+    z-index: 3;
     display: grid;
     place-items: center;
     gap: var(--space-4);
@@ -156,21 +256,42 @@
         margin-bottom: clamp(40px, 10vw, 56px);
     }
 
+    .p-hero__title {
+        /* SVG内部の透明余白を利用し、文字は画面内に収める */
+        width: calc(100vw - var(--space-3));
+        overflow: clip;
+    }
+
     .p-hero__title-image {
-        width: 100%;
+        width: calc(100vw + 4px);
+        max-width: none;
+        margin-inline: -14px;
     }
 
     .p-hero__lead {
-        margin-top: var(--space-3);
+        margin-top: var(--space-4);
     }
 
     .p-hero__visual {
-        inset-block-start: var(--space-4);
-        inset-inline-end: var(--space-3);
-        width: clamp(128px, 38vw, 176px);
+        inset-block-start: var(--space-6);
+        inset-inline-end: var(--space-1);
+        width: clamp(176px, 52vw, 240px);
+        pointer-events: none;
+    }
+
+    .p-hero__visual::after {
+        /* 将来の画像と文字の間に、白い薄膜を重ねて可読性を保つ */
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: clamp(48px, 12vw, 80px) var(--radius-l);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.85));
     }
 
     .p-hero__visual-image {
+        /* 画像未配置時の代替文字がロゴ背面へ重ならないようにする */
+        font-size: 0;
+        color: transparent;
         min-height: 0;
         aspect-ratio: 4 / 5;
         border-radius: clamp(48px, 12vw, 80px) var(--radius-l);
