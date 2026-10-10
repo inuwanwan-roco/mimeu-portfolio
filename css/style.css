@@ -327,7 +327,7 @@
 }
 
 .p-works__title-image {
-    width: clamp(280px, 32vw, 520px);
+    width: calc(clamp(280px, 32vw, 520px) - 2px);
 }
 
 .p-works__accordion {
@@ -1003,7 +1003,7 @@
 
     /* Contactの文字領域の面積を基準に、SVGごとの内部余白を補正 */
     .p-works__title-image {
-        width: calc(var(--sp-title-reference-width) * 1.188);
+        width: calc(var(--sp-title-reference-width) * 1.188 - 2px);
     }
 
     .p-about__title-image {
