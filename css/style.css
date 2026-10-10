@@ -134,12 +134,12 @@
     z-index: 3;
     display: grid;
     place-items: center;
-    gap: var(--space-4);
+    gap: var(--space-5);
     width: min(78vw, 560px);
 }
 
 .p-loading__logo {
-    width: clamp(220px, 32vw, 480px);
+    width: clamp(240px, 35vw, 520px);
 }
 
 .p-loading__line {
