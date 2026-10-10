@@ -675,9 +675,11 @@
 .p-contact__link {
     display: grid;
     place-content: center;
+    justify-self: center;
+    width: calc(100% - 4px);
     gap: var(--space-1);
-    min-height: clamp(88px, 7vw, 104px);
-    padding: var(--space-2) var(--space-3);
+    min-height: calc(clamp(88px, 7vw, 104px) - 4px);
+    padding: calc(var(--space-2) - 2px) calc(var(--space-3) - 2px);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-pill);
     text-align: center;
@@ -721,6 +723,17 @@
     color: var(--color-title);
     font-size: 0.75rem;
     letter-spacing: 0.12em;
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    background-color: var(--color-bg);
+    transition: color var(--transition-base), background-color var(--transition-base), transform var(--transition-base);
+}
+
+.p-home-back-to-top__link:hover {
+    color: var(--color-title);
+    background-color: var(--color-surface);
+    transform: translateY(-2px);
 }
 
 .p-home-back-to-top__arrow {
