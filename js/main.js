@@ -68,33 +68,69 @@ function initGlobalMenu() {
     const button = document.querySelector('#js-menu-button');
     const menu = document.querySelector('#js-global-menu');
     if (!button || !menu) return;
+    const closeButton = menu.querySelector('.c-global-menu__close');
+    const background = [document.querySelector('.l-header'), document.querySelector('main'), document.querySelector('.p-home-back-to-top'), document.querySelector('.l-footer')].filter(Boolean);
+    const mobile = window.matchMedia('(max-width: 768px)');
 
-    const closeMenu = () => {
+    const closeMenu = (restoreFocus = true) => {
+        if (!menu.classList.contains('is-open')) return;
+        menu.classList.remove('is-open');
+        menu.inert = true;
+        menu.setAttribute('aria-hidden', 'true');
         button.setAttribute('aria-expanded', 'false');
-        button.setAttribute('aria-label', 'メニューを開く');
-        menu.hidden = true;
         document.body.classList.remove('is-menu-open');
+        background.forEach((element) => { element.inert = false; });
+        if (restoreFocus) button.focus({ preventScroll: true });
     };
 
     const openMenu = () => {
+        if (!mobile.matches) return;
+        menu.inert = false;
+        menu.removeAttribute('aria-hidden');
+        menu.classList.add('is-open');
         button.setAttribute('aria-expanded', 'true');
-        button.setAttribute('aria-label', 'メニューを閉じる');
-        menu.hidden = false;
         document.body.classList.add('is-menu-open');
+        background.forEach((element) => { element.inert = true; });
+        closeButton.focus({ preventScroll: true });
     };
 
-    button.addEventListener('click', () => {
-        const isOpen = button.getAttribute('aria-expanded') === 'true';
-        isOpen ? closeMenu() : openMenu();
+    button.addEventListener('click', openMenu);
+    closeButton.addEventListener('click', () => closeMenu());
+    menu.addEventListener('click', (event) => {
+        if (event.target === menu || event.target.classList.contains('c-global-menu__top') || event.target === menu.querySelector('.c-global-menu__nav')) closeMenu();
     });
-
     menu.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', closeMenu);
+        link.addEventListener('click', () => {
+            closeMenu(false);
+            const target = link.getAttribute('href');
+            if (target.startsWith('#')) {
+                const section = document.querySelector(target);
+                if (section) {
+                    section.setAttribute('tabindex', '-1');
+                    section.focus({ preventScroll: true });
+                }
+            }
+        });
     });
-
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') closeMenu();
+    menu.querySelectorAll('.c-global-menu__toggle').forEach((toggle) => {
+        const panel = document.getElementById(toggle.getAttribute('aria-controls'));
+        toggle.addEventListener('click', () => {
+            const open = toggle.getAttribute('aria-expanded') !== 'true';
+            toggle.setAttribute('aria-expanded', String(open));
+            panel.classList.toggle('is-open', open);
+            panel.inert = !open;
+        });
     });
+    menu.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') { event.preventDefault(); closeMenu(); }
+        if (event.key !== 'Tab') return;
+        const focusable = [...menu.querySelectorAll('a, button')].filter((element) => !element.closest('[inert]'));
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    });
+    mobile.addEventListener('change', () => { if (!mobile.matches) closeMenu(false); });
 }
 
 /* ==================================================

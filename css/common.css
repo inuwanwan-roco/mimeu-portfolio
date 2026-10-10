@@ -110,20 +110,23 @@ Header
     inset: 0 0 auto;
     z-index: var(--z-header);
     min-height: var(--header-height);
-    background: rgba(255, 255, 255, 0.72);
+    background: var(--color-white);
     border-bottom: 1px solid transparent;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(0);
+    -webkit-backdrop-filter: blur(0);
     transition:
         background var(--transition-base),
         border-color var(--transition-base),
-        box-shadow var(--transition-base);
+        box-shadow var(--transition-base),
+        backdrop-filter var(--transition-base);
 }
 
 .l-header.is-scrolled {
-    background: rgba(255, 255, 255, 0.92);
-    border-color: var(--color-border);
-    box-shadow: var(--shadow-soft);
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-color: rgba(213, 213, 213, 0.55);
+    box-shadow: 0 4px 16px rgba(0, 41, 90, 0.03);
 }
 
 .l-header__inner {
@@ -200,6 +203,59 @@ Header
 
 .l-header__nav-link:hover {
     opacity: 0.55;
+}
+
+.l-header__nav-item {
+    position: relative;
+}
+
+.l-header__dropdown {
+    position: absolute;
+    top: 100%;
+    left: calc(-1 * var(--space-2));
+    z-index: var(--z-menu);
+    display: grid;
+    gap: var(--space-1);
+    min-width: 192px;
+    padding: var(--space-2);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 25%, transparent);
+    border-radius: var(--radius-s);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: var(--shadow-soft);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity var(--transition-base), transform var(--transition-base), visibility var(--transition-base);
+}
+
+.l-header__nav-item:hover .l-header__dropdown,
+.l-header__nav-item:focus-within .l-header__dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.l-header__dropdown-link {
+    padding-block: 4px;
+    color: var(--color-primary);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    transition: color var(--transition-base);
+}
+
+.l-header__dropdown-link:hover {
+    color: var(--color-secondary);
+}
+
+.l-header__nav-link:focus-visible,
+.l-header__dropdown-link:focus-visible,
+.c-menu-button:focus-visible,
+.c-global-menu a:focus-visible,
+.c-global-menu__toggle:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
 }
 
 /* ==================================================
@@ -390,34 +446,145 @@ Global Menu
 
 .c-global-menu {
     position: fixed;
-    inset: var(--header-height) 0 auto;
+    inset: 0;
     z-index: var(--z-menu);
-    padding-block: clamp(32px, 5vw, 72px);
-    background: rgba(228, 246, 255, 0.95);
-    border-bottom: 1px solid var(--color-border);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.4s var(--ease-base), visibility 0.4s var(--ease-base);
+}
+
+.c-global-menu.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+body.is-menu-open {
+    overflow: hidden;
+}
+
+.c-global-menu__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--header-height);
+}
+
+.c-global-menu__brand {
+    display: inline-flex;
 }
 
 .c-global-menu__nav {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
-    gap: var(--space-3);
+    width: 76%;
+    max-width: 480px;
+    margin: clamp(32px, 7svh, 64px) auto;
+    transform: translateY(16px);
+    transition: transform 0.4s var(--ease-base);
+}
+
+.c-global-menu.is-open .c-global-menu__nav {
+    transform: translateY(0);
+}
+
+.c-global-menu__item {
+    padding-block: var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.c-global-menu__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
 }
 
 .c-global-menu__link {
-    padding-block: var(--space-2);
-    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
     color: var(--color-title);
-    font-size: clamp(1.5rem, 3vw, 3rem);
-    transition:
-        color var(--transition-base),
-        padding-left var(--transition-base);
+    font-size: clamp(1.25rem, 5vw, 1.5rem);
+    transition: color var(--transition-base);
 }
 
-.c-global-menu__link:hover {
-    padding-left: var(--space-1);
-    color: var(--color-accent);
+.c-global-menu__number {
+    font-size: 0.75rem;
+    color: var(--color-secondary);
+}
+
+.c-global-menu__toggle {
+    position: relative;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    color: var(--color-title);
+}
+
+.c-global-menu__toggle span::before,
+.c-global-menu__toggle span::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 1px;
+    background: currentColor;
+    transform: translate(-50%, -50%);
+    transition: transform 0.4s var(--ease-base), opacity 0.4s var(--ease-base);
+}
+
+.c-global-menu__toggle span::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.c-global-menu__toggle[aria-expanded="true"] span::after {
+    transform: translate(-50%, -50%) rotate(180deg);
+    opacity: 0;
+}
+
+.c-global-menu__children {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 0.4s var(--ease-base), opacity 0.4s var(--ease-base);
+}
+
+.c-global-menu__children.is-open {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.c-global-menu__children-inner {
+    display: grid;
+    min-height: 0;
+    overflow: hidden;
+    padding-inline-start: var(--space-4);
+}
+
+.c-global-menu__child-link {
+    padding-block: var(--space-1);
+    font-size: 0.9rem;
+    color: var(--color-primary);
+}
+
+.c-global-menu__link:hover,
+.c-global-menu__child-link:hover {
+    color: var(--color-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .c-global-menu,
+    .c-global-menu *,
+    .l-header,
+    .l-header__dropdown {
+        transition-duration: 0.01ms;
+    }
 }
 
 /* Responsive */

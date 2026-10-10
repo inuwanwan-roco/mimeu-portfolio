@@ -37,8 +37,20 @@
                 <!-- PC用ナビゲーションメニュー -->
                 <div class="l-header__navigation">
                     <nav class="l-header__nav" aria-label="メインナビゲーション">
-                        <a class="l-header__nav-link u-font-en" href="#works">WORKS</a>
-                        <a class="l-header__nav-link u-font-en" href="#aboutme">ABOUT ME</a>
+                        <div class="l-header__nav-item">
+                            <a class="l-header__nav-link u-font-en" href="#works">WORKS</a>
+                            <div class="l-header__dropdown" aria-label="WORKSの下層ページ">
+                                <a class="l-header__dropdown-link u-font-en" href="works/mi-nuit.html">MI/NUIT</a>
+                                <a class="l-header__dropdown-link u-font-en" href="works/profile-site.html">PROFILE SITE</a>
+                                <a class="l-header__dropdown-link u-font-en" href="works/graphic.html">GRAPHIC GALLERY</a>
+                            </div>
+                        </div>
+                        <div class="l-header__nav-item">
+                            <a class="l-header__nav-link u-font-en" href="#aboutme">ABOUT ME</a>
+                            <div class="l-header__dropdown" aria-label="ABOUT MEの下層ページ">
+                                <a class="l-header__dropdown-link u-font-en" href="aboutme.html">ABOUT DETAIL</a>
+                            </div>
+                        </div>
                         <a class="l-header__nav-link u-font-en" href="#skills">SKILLS</a>
                         <a class="l-header__nav-link u-font-en" href="#contact">CONTACT</a>
                     </nav>
@@ -54,16 +66,53 @@
                 </div>
             </div>
         </header>
-        <!-- Global Menu -->
-        <div class="c-global-menu" id="js-global-menu" hidden>
-            <div class="c-global-menu__inner l-container">
-                <nav class="c-global-menu__nav" aria-label="メインナビゲーション">
-                    <a class="c-global-menu__link u-font-en" href="#works">WORKS</a>
-                    <a class="c-global-menu__link u-font-en" href="#aboutme">ABOUT ME</a>
-                    <a class="c-global-menu__link u-font-en" href="#skills">SKILLS</a>
-                    <a class="c-global-menu__link u-font-en" href="#contact">CONTACT</a>
-                </nav>
+        <!-- スマートフォン用Vertical Menu -->
+        <div class="c-global-menu" id="js-global-menu" role="dialog" aria-modal="true" aria-label="メインメニュー" aria-hidden="true" inert>
+            <div class="c-global-menu__top l-container">
+                <a class="c-global-menu__brand" href="#top" aria-label="Miméu studio トップへ">
+                    <img class="l-header__logo" src="assets/images/1.header/Mimeustudio.svg" alt="Miméu studio">
+                </a>
+                <button class="c-menu-button c-global-menu__close" type="button" aria-label="メニューを閉じる" aria-expanded="true">
+                    <span class="c-menu-button__line"></span>
+                    <span class="c-menu-button__line"></span>
+                </button>
             </div>
+            <nav class="c-global-menu__nav" aria-label="メインナビゲーション">
+                <div class="c-global-menu__item">
+                    <div class="c-global-menu__row">
+                        <a class="c-global-menu__link u-font-en" href="#works"><span class="c-global-menu__number">01</span>WORKS</a>
+                        <button class="c-global-menu__toggle" type="button" aria-expanded="false" aria-controls="menu-children-1" aria-label="WORKSの子メニューを開閉"><span aria-hidden="true"></span></button>
+                    </div>
+                    <div class="c-global-menu__children" id="menu-children-1" inert>
+                        <div class="c-global-menu__children-inner">
+                            <a class="c-global-menu__child-link u-font-en" href="works/mi-nuit.html">MI/NUIT</a>
+                            <a class="c-global-menu__child-link u-font-en" href="works/profile-site.html">PROFILE SITE</a>
+                            <a class="c-global-menu__child-link u-font-en" href="works/graphic.html">GRAPHIC GALLERY</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-global-menu__item">
+                    <div class="c-global-menu__row">
+                        <a class="c-global-menu__link u-font-en" href="#aboutme"><span class="c-global-menu__number">02</span>ABOUT ME</a>
+                        <button class="c-global-menu__toggle" type="button" aria-expanded="false" aria-controls="menu-children-2" aria-label="ABOUT MEの子メニューを開閉"><span aria-hidden="true"></span></button>
+                    </div>
+                    <div class="c-global-menu__children" id="menu-children-2" inert>
+                        <div class="c-global-menu__children-inner">
+                            <a class="c-global-menu__child-link u-font-en" href="aboutme.html">ABOUT DETAIL</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-global-menu__item">
+                    <div class="c-global-menu__row">
+                        <a class="c-global-menu__link u-font-en" href="#skills"><span class="c-global-menu__number">03</span>SKILLS</a>
+                    </div>
+                </div>
+                <div class="c-global-menu__item">
+                    <div class="c-global-menu__row">
+                        <a class="c-global-menu__link u-font-en" href="#contact"><span class="c-global-menu__number">04</span>CONTACT</a>
+                    </div>
+                </div>
+            </nav>
         </div>
         <main>
             <!-- 01 Hero -->
@@ -354,7 +403,7 @@
                                 alt="Contact">
                         </h2>
                         <p class="c-section-heading__description">
-                            お仕事のご相談・ご依頼など、お気軽にお問い合わせください。
+                            お仕事のご相談・ご依頼など、<br class="u-sp-only">お気軽にお問い合わせください。
                         </p>
                     </header>
                     <div class="p-contact__content">
