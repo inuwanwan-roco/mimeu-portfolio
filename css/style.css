@@ -391,6 +391,11 @@
     width: 100%;
 }
 
+.p-skills__chart-title {
+    width: min(100%, clamp(144px, 18vw, 256px));
+    text-align: center;
+}
+
 @media screen and (max-width: 768px) {
     .p-skills__heading {
         grid-template-columns: minmax(0, 1fr);
