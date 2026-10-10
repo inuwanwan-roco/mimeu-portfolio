@@ -44,48 +44,31 @@
 
 .p-about-detail__subtitle {
     margin-top: var(--space-2);
-    font-size: 0.875rem;
+    font-size: clamp(16px, 1.2vw, 19px);
+    letter-spacing: 0.08em;
     color: var(--color-secondary);
 }
 
+/* TOPのプロフィール画像と同じ幅・正方形・角丸・背景色を使用。 */
 .p-about-detail__visuals {
     grid-column: 2;
-    grid-row: 1 / span 2;
-    position: relative;
-    padding-top: clamp(200px, 19vw, 272px);
-    padding-bottom: var(--space-8);
+    grid-row: 2;
+    display: grid;
+    justify-items: center;
+    align-content: start;
+    margin-top: var(--space-4);
 }
 
 .p-about-detail__visual {
-    overflow: hidden;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-l);
-    background: #edf3f6;
-}
-
-.p-about-detail__visual--main {
-    width: 70%;
-    margin-left: var(--space-4);
-}
-
-.p-about-detail__visual--sub {
-    position: absolute;
-    top: var(--space-6);
-    right: var(--space-6);
-    width: 45%;
-    border-radius: var(--radius-s);
+    width: min(100%, clamp(240px, 26vw, 400px));
 }
 
 .p-about-detail__image {
     width: 100%;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
-    aspect-ratio: 470 / 496;
-    font-size: 0.875rem;
-    color: var(--color-secondary);
-}
-
-.p-about-detail__visual--sub .p-about-detail__image {
-    aspect-ratio: 296 / 272;
+    border-radius: var(--radius-xl);
+    background: var(--color-surface);
 }
 
 .p-about-detail__profile {
@@ -266,6 +249,7 @@
 }
 
 .p-about-detail__like-card h3 {
+    font-family: var(--font-en);
     font-size: clamp(12px, 1.1vw, 16px);
     font-weight: 400;
     letter-spacing: 0;
@@ -375,27 +359,67 @@
         max-width: 100%;
     }
 
+    .p-about-detail__overview,
+    .p-about-detail__interests,
+    .p-about-detail__philosophy {
+        text-align: center;
+    }
+
+    .p-about-detail__heading,
+    .p-about-detail__visuals,
+    .p-about-detail__profile,
+    .p-about-detail__career,
+    .p-about-detail__likes {
+        min-width: 0;
+    }
+
     .p-about-detail__visuals {
         grid-column: 1;
         grid-row: auto;
         margin-top: var(--space-4);
-        padding-top: var(--space-10);
-        padding-bottom: 0;
     }
 
-    .p-about-detail__visual--main {
-        margin-left: 0;
-        width: 72%;
+    .p-about-detail__name-block {
+        margin-inline: auto;
     }
 
-    .p-about-detail__visual--sub {
-        top: 0;
-        right: 0;
-        width: 46%;
+    .p-about-detail__information {
+        justify-items: center;
+    }
+
+    .p-about-detail__socials {
+        justify-content: center;
+        margin-inline: 0;
+    }
+
+    .p-about-detail__career-heading {
+        flex-direction: column;
+        gap: var(--space-1);
+    }
+
+    .p-about-detail__career-divider {
+        flex: none;
+        width: min(100%, 12rem);
+    }
+
+    .p-about-detail__timeline {
+        width: fit-content;
+        max-width: calc(100% - var(--space-4));
+        margin-inline: auto;
+        text-align: left;
+    }
+
+    .p-about-detail__like-card,
+    .p-about-detail__principle {
+        text-align: left;
     }
 
     .p-about-detail__profile {
         margin-top: var(--space-5);
+    }
+
+    .p-about-detail__text-phrase {
+        white-space: nowrap;
     }
 
     .p-about-detail__desktop-break {
