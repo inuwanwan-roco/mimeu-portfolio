@@ -15,25 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ------------------------------------------
 Loading
-初回アクセス時のみ表示（同一タブのセッション内）
+ページ読み込み・更新のたびに表示
 ------------------------------------------ */
 
 function initLoading() {
     const loading = document.querySelector('#js-loading');
     if (!loading) return;
 
-    const storageKey = 'mimeu-loading-viewed';
-    const hasViewed = sessionStorage.getItem(storageKey) === 'true';
-
-    if (hasViewed) {
-        loading.remove();
-        return;
-    }
-
     window.addEventListener('load', () => {
         window.setTimeout(() => {
             loading.classList.add('is-hidden');
-            sessionStorage.setItem(storageKey, 'true');
 
             loading.addEventListener(
                 'transitionend',
