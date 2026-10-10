@@ -799,8 +799,14 @@
     }
 
     .p-contact__links {
-        grid-template-columns: minmax(0, 1fr);
-        width: min(100%, var(--contact-button-width));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+        column-gap: var(--space-2);
+    }
+
+    .p-contact__link {
+        width: 100%;
+        padding-inline: var(--space-1);
     }
 
     .p-contact > .c-section-indicator {
