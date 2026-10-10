@@ -533,6 +533,8 @@
 ================================================== */
 
 .p-contact {
+    --contact-button-width: clamp(176px, 15vw, 224px);
+    --contact-button-height: calc(1rem * 1.8 + 24px);
     --contact-control-height: clamp(56px, 4.5vw, 72px);
     --contact-placeholder: color-mix(in srgb, var(--color-secondary) 45%, var(--color-white));
 }
@@ -653,7 +655,7 @@
 
 .p-contact__submit {
     justify-self: center;
-    min-width: clamp(176px, 15vw, 224px);
+    min-width: var(--contact-button-width);
     min-height: 48px;
     color: var(--color-secondary);
     background-color: var(--color-surface);
@@ -666,20 +668,21 @@
 
 .p-contact__links {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
-    gap: var(--space-3) clamp(24px, 4vw, 64px);
-    width: min(100%, 560px);
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--contact-button-width), 100%), 1fr));
+    gap: var(--space-3) var(--space-4);
+    width: min(100%, calc(var(--contact-button-width) * 2 + var(--space-4)));
     margin-inline: auto;
+    padding-top: var(--space-2);
 }
 
 .p-contact__link {
     display: grid;
     place-content: center;
     justify-self: center;
-    width: calc(100% - 4px);
-    gap: var(--space-1);
-    min-height: calc(clamp(88px, 7vw, 104px) - 4px);
-    padding: calc(var(--space-2) - 2px) calc(var(--space-3) - 2px);
+    width: min(100%, var(--contact-button-width));
+    gap: 2px;
+    min-height: var(--contact-button-height);
+    padding: 4px;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-pill);
     text-align: center;
@@ -692,11 +695,14 @@
 }
 
 .p-contact__link-title {
+    line-height: 1.2;
     color: var(--color-primary);
     font-size: 1rem;
 }
 
 .p-contact__link-text {
+    line-height: 1.35;
+    letter-spacing: normal;
     color: var(--color-secondary);
     font-size: clamp(0.8rem, 1vw, 0.875rem);
     overflow-wrap: anywhere;
@@ -723,7 +729,8 @@
     color: var(--color-title);
     font-size: 0.75rem;
     letter-spacing: 0.12em;
-    padding: var(--space-1) var(--space-3);
+    padding: var(--space-1) var(--space-2);
+    margin-inline-end: var(--back-to-top-offset, 0px);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-pill);
     background-color: var(--color-bg);
@@ -754,6 +761,11 @@
     border-top: 1px solid currentColor;
     border-left: 1px solid currentColor;
     transform: rotate(45deg);
+    transition: border-color var(--transition-base);
+}
+
+.p-home-back-to-top__link:hover .p-home-back-to-top__arrow::before {
+    border-color: var(--color-accent);
 }
 
 .p-home-back-to-top__arrow::after {
@@ -784,6 +796,11 @@
     .p-contact__field {
         grid-template-columns: minmax(0, 1fr);
         gap: var(--space-1);
+    }
+
+    .p-contact__links {
+        grid-template-columns: minmax(0, 1fr);
+        width: min(100%, var(--contact-button-width));
     }
 
     .p-contact > .c-section-indicator {

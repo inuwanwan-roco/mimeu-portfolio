@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initGlobalMenu();
     initAccordion();
     initContactForm();
+    initBackToTopAlignment();
 });
 
 /* ------------------------------------------
@@ -126,4 +127,27 @@ function initContactForm() {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
     });
+}
+
+/* ------------------------------------------
+TOPの戻るボタン：PCナビCONTACTの文字開始位置に合わせる
+------------------------------------------ */
+function initBackToTopAlignment() {
+    const link = document.querySelector('.p-home-back-to-top__link');
+    const text = document.querySelector('.p-home-back-to-top__text');
+    const contact = document.querySelector('.l-header__nav-link[href="#contact"]');
+    if (!link || !text || !contact) return;
+
+    const align = () => {
+        link.style.removeProperty('--back-to-top-offset');
+        if (!contact.getClientRects().length) return;
+        const offset = text.getBoundingClientRect().left - contact.getBoundingClientRect().left;
+        link.style.setProperty('--back-to-top-offset', `${offset}px`);
+    };
+
+    const observer = new ResizeObserver(align);
+    observer.observe(contact);
+    observer.observe(document.documentElement);
+    document.fonts.ready.then(align);
+    align();
 }
