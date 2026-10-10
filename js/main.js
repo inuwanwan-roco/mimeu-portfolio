@@ -130,23 +130,30 @@ function initContactForm() {
 }
 
 /* ------------------------------------------
-TOPの戻るボタン：PCナビCONTACTの文字開始位置に合わせる
+TOPの戻るボタン：footer区切り線の範囲内でPCナビに合わせる
 ------------------------------------------ */
 function initBackToTopAlignment() {
     const link = document.querySelector('.p-home-back-to-top__link');
     const text = document.querySelector('.p-home-back-to-top__text');
     const contact = document.querySelector('.l-header__nav-link[href="#contact"]');
-    if (!link || !text || !contact) return;
+    const divider = document.querySelector('.l-footer > .c-section-divider .c-section-divider__line');
+    if (!link || !text || !contact || !divider) return;
 
     const align = () => {
         link.style.removeProperty('--back-to-top-offset');
-        if (!contact.getClientRects().length) return;
-        const offset = text.getBoundingClientRect().left - contact.getBoundingClientRect().left;
-        link.style.setProperty('--back-to-top-offset', `${offset}px`);
+        const button = link.getBoundingClientRect();
+        const bounds = divider.getBoundingClientRect();
+        const textInset = text.getBoundingClientRect().left - button.left;
+        const preferredLeft = contact.getClientRects().length
+            ? contact.getBoundingClientRect().left - textInset
+            : button.left;
+        const left = Math.max(bounds.left, Math.min(preferredLeft, bounds.right - button.width));
+        link.style.setProperty('--back-to-top-offset', `${button.left - left}px`);
     };
 
     const observer = new ResizeObserver(align);
     observer.observe(contact);
+    observer.observe(divider);
     observer.observe(document.documentElement);
     document.fonts.ready.then(align);
     align();
