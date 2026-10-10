@@ -330,6 +330,20 @@
 }
 
 @media screen and (max-width: 768px) {
+    :is(.p-hero, .p-works, .p-aboutme, .p-skills, .p-contact) > .c-section-indicator {
+        display: none;
+    }
+
+    .p-aboutme .c-section-heading__description,
+    .p-aboutme__content {
+        text-align: center;
+    }
+
+    .p-aboutme__name,
+    .p-aboutme__name-divider {
+        margin-inline: auto;
+    }
+
     .p-aboutme__visual {
         padding-inline-start: 0;
     }
@@ -339,6 +353,7 @@
     }
 
     .p-aboutme__read-more {
+        text-align: start;
         margin-inline-end: clamp(24px, 8vw, 40px);
     }
 }
