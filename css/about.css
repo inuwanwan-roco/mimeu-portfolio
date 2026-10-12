@@ -142,6 +142,7 @@
 .p-about-detail__bubble {
     width: fit-content;
     max-width: 100%;
+    text-align: left;
     padding: var(--space-2) var(--space-3);
     border-radius: var(--radius-xl);
     background: var(--color-surface);
@@ -300,8 +301,14 @@
 }
 
 .p-about-detail__like-icon--music { --like-icon-width: 82%; }
-.p-about-detail__like-icon--anime { --like-icon-width: 74%; }
-.p-about-detail__like-icon--dog { --like-icon-width: 76%; }
+.p-about-detail__like-icon--anime {
+    --like-icon-width: 74%;
+    transform: scale(1.1);
+}
+.p-about-detail__like-icon--dog {
+    --like-icon-width: 76%;
+    transform: scale(1.12);
+}
 .p-about-detail__like-icon--movies { --like-icon-width: 72%; }
 
 .p-about-detail__like-plus {
@@ -337,7 +344,7 @@
 
 .p-about-detail__likes-heading img {
     position: absolute;
-    width: 240%;
+    width: 260%;
     max-width: none;
     transform: rotate(90deg);
 }
@@ -452,14 +459,21 @@
         justify-content: center;
     }
 
+    .p-about-detail__career {
+        width: calc(100% - var(--space-2));
+        margin-inline: auto;
+    }
+
     .p-about-detail__career-heading {
+        padding-inline-start: var(--space-3);
+        padding-inline-end: var(--space-2);
         text-align: left;
     }
 
     .p-about-detail__timeline {
-        width: fit-content;
-        max-width: calc(100% - var(--space-4));
-        margin-inline: auto;
+        width: 100%;
+        max-width: none;
+        margin-inline: 0;
         text-align: left;
     }
 
