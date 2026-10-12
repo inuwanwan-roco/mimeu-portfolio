@@ -115,7 +115,13 @@
             <div class="p-about-detail__overview">
                 <header class="p-about-detail__heading">
                     <h1><img class="c-section-heading__title-image p-about-detail__title" src="assets/images/4.aboutme/aboutme.svg" alt="About Me"></h1>
-                    <p class="p-about-detail__subtitle u-font-en">PROFILE / PHILOSOPHY / CAREER</p>
+                    <nav class="p-about-detail__subtitle u-font-en" aria-label="ABOUT詳細のセクション">
+                        <ul>
+                            <li><a href="#profile-title">PROFILE</a></li>
+                            <li><a href="#philosophy-title">PHILOSOPHY</a></li>
+                            <li><a href="#career-title">CAREER</a></li>
+                        </ul>
+                    </nav>
                 </header>
                 <div class="p-about-detail__visuals">
                     <figure class="p-about-detail__visual p-about-detail__visual--main">
@@ -130,8 +136,8 @@
                         <div class="c-section-divider p-about-detail__name-divider" aria-hidden="true"><span class="c-section-divider__diamond"></span><span class="c-section-divider__line"></span><span class="c-section-divider__diamond"></span></div>
                     </div>
                     <div class="p-about-detail__information">
-                        <p class="p-about-detail__bubble p-about-detail__bubble--meta">1999.06.05 / MBTI : ISFP-A 冒険家（不定期に変わったりする）<br>栃木県 那須塩原市出身 / 北海道 札幌市在中</p>
-                        <p class="p-about-detail__bubble">高校は普通科を卒業し、約7年間地元の印刷・シール加工工場に<br class="p-about-detail__desktop-break">正社員として従事。　2026年2月に満を持して退社。<br>一時的なニートを満喫しつつ、<br>4月には北海道へ移住し、WEBデザイナーの道へ<br class="u-sp-only">進み始めました。</p>
+                        <p class="p-about-detail__bubble p-about-detail__bubble--meta">1999.06.05 / MBTI : ISFP-A 冒険家<br class="u-sp-only">（不定期に変わったりする）<br>栃木県 那須塩原市出身 / 北海道 札幌市在中</p>
+                        <p class="p-about-detail__bubble">高校は普通科を卒業し、約7年間地元の印刷・シール<br class="u-sp-only">加工工場に<br class="p-about-detail__desktop-break">正社員として従事。　2026年2月に<br class="u-sp-only">満を持して退社。<br><br class="u-sp-only">一時的なニートを満喫しつつ、<br>4月には北海道へ移住し、<br class="u-sp-only">WEBデザイナーの道へ進み始めました。</p>
                         <p class="p-about-detail__bubble p-about-detail__bubble--dream">いつか、わたしの名を多くの方に<span class="p-about-detail__text-phrase">知ってもらえるような、</span><br>そんなきっかけとなる代表作品をつくることが夢。<br><br>長く愛されるデザイナーを目指します。</p>
                     </div>
                     <div class="p-about-detail__socials">
@@ -155,28 +161,28 @@
                         <article class="p-about-detail__like-card">
                             <h3 id="likes-music-title">MUSIC</h3>
                             <button class="p-about-detail__like-trigger" type="button" data-like="music" aria-haspopup="dialog" aria-controls="likes-dialog" aria-labelledby="likes-music-title"></button>
-                            <img class="p-about-detail__like-icon" src="assets/images/4.aboutme/music.svg" alt="" loading="lazy">
+                            <img class="p-about-detail__like-icon p-about-detail__like-icon--music" src="assets/images/4.aboutme/music.svg" alt="" loading="lazy">
                             <!-- カード全体がクリック可能。＋は装飾として残します。 -->
                             <span class="p-about-detail__like-plus" aria-hidden="true"></span>
                         </article>
                         <article class="p-about-detail__like-card">
                             <h3 id="likes-anime-title">ANIME</h3>
                             <button class="p-about-detail__like-trigger" type="button" data-like="anime" aria-haspopup="dialog" aria-controls="likes-dialog" aria-labelledby="likes-anime-title"></button>
-                            <img class="p-about-detail__like-icon" src="assets/images/4.aboutme/anime.svg" alt="" loading="lazy">
+                            <img class="p-about-detail__like-icon p-about-detail__like-icon--anime" src="assets/images/4.aboutme/anime.svg" alt="" loading="lazy">
                             <!-- カード全体がクリック可能。＋は装飾として残します。 -->
                             <span class="p-about-detail__like-plus" aria-hidden="true"></span>
                         </article>
                         <article class="p-about-detail__like-card">
                             <h3 id="likes-dog-title">DOG</h3>
                             <button class="p-about-detail__like-trigger" type="button" data-like="dog" aria-haspopup="dialog" aria-controls="likes-dialog" aria-labelledby="likes-dog-title"></button>
-                            <img class="p-about-detail__like-icon" src="assets/images/4.aboutme/dog.svg" alt="" loading="lazy">
+                            <img class="p-about-detail__like-icon p-about-detail__like-icon--dog" src="assets/images/4.aboutme/dog.svg" alt="" loading="lazy">
                             <!-- カード全体がクリック可能。＋は装飾として残します。 -->
                             <span class="p-about-detail__like-plus" aria-hidden="true"></span>
                         </article>
                         <article class="p-about-detail__like-card">
                             <h3 id="likes-movies-title">MOVIES</h3>
                             <button class="p-about-detail__like-trigger" type="button" data-like="movies" aria-haspopup="dialog" aria-controls="likes-dialog" aria-labelledby="likes-movies-title"></button>
-                            <img class="p-about-detail__like-icon" src="assets/images/4.aboutme/movies.svg" alt="" loading="lazy">
+                            <img class="p-about-detail__like-icon p-about-detail__like-icon--movies" src="assets/images/4.aboutme/movies.svg" alt="" loading="lazy">
                             <!-- カード全体がクリック可能。＋は装飾として残します。 -->
                             <span class="p-about-detail__like-plus" aria-hidden="true"></span>
                         </article>

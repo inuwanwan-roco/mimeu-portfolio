@@ -44,9 +44,39 @@
 
 .p-about-detail__subtitle {
     margin-top: var(--space-2);
-    font-size: clamp(16px, 1.2vw, 19px);
-    letter-spacing: 0.08em;
+    font-size: clamp(14px, 1.2vw, 17px);
+    letter-spacing: 0.14em;
+    color: var(--color-title);
+}
+
+.p-about-detail__subtitle ul {
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 1.5vw, 24px);
+}
+
+.p-about-detail__subtitle li {
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 1.5vw, 24px);
+}
+
+.p-about-detail__subtitle li:not(:last-child)::after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border: 1px solid var(--color-accent);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+}
+
+.p-about-detail__subtitle a:hover {
     color: var(--color-secondary);
+}
+
+.p-about-detail__subtitle a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
 }
 
 /* TOPのプロフィール画像と同じ幅・正方形・角丸・背景色を使用。 */
@@ -222,8 +252,10 @@
 
 .p-about-detail__likes {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(48px, 0.18fr);
+    grid-template-columns: minmax(0, 1fr) clamp(40px, 4vw, 56px);
     gap: var(--space-2);
+    width: min(100%, 760px);
+    margin-inline: auto;
 }
 
 .p-about-detail__likes-grid {
@@ -244,7 +276,7 @@
 .p-about-detail__like-card {
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
-    aspect-ratio: 1.65;
+    aspect-ratio: 1.75;
     padding: var(--space-2) var(--space-3);
 }
 
@@ -257,9 +289,9 @@
 }
 
 .p-about-detail__like-icon {
-    width: 80%;
+    width: var(--like-icon-width, 66%);
     height: 100%;
-    max-height: 180px;
+    max-height: clamp(72px, 8vw, 120px);
     /* 既存アイコンの黒をブランドのネイビーに統一（静的処理）。 */
     filter: brightness(0) saturate(100%) invert(14%) sepia(87%) saturate(1055%) hue-rotate(187deg) brightness(91%) contrast(106%);
     object-fit: contain;
@@ -267,11 +299,16 @@
     min-height: 0;
 }
 
+.p-about-detail__like-icon--music { --like-icon-width: 82%; }
+.p-about-detail__like-icon--anime { --like-icon-width: 74%; }
+.p-about-detail__like-icon--dog { --like-icon-width: 76%; }
+.p-about-detail__like-icon--movies { --like-icon-width: 72%; }
+
 .p-about-detail__like-plus {
     position: absolute;
     right: var(--space-2);
     bottom: var(--space-1);
-    width: clamp(24px, 3vw, 44px);
+    width: clamp(20px, 2vw, 28px);
     aspect-ratio: 1;
     border-radius: 50%;
     border: 1px solid var(--color-border);
@@ -300,7 +337,7 @@
 
 .p-about-detail__likes-heading img {
     position: absolute;
-    width: 280%;
+    width: 240%;
     max-width: none;
     transform: rotate(90deg);
 }
@@ -345,6 +382,25 @@
 
 .p-about-detail__principle p + p {
     margin-top: var(--space-3);
+}
+
+/* 名前と画像を同じGrid行に置き、文字サイズの変化にも追従。 */
+@media screen and (min-width: 769px) {
+    .p-about-detail__profile {
+        grid-row: 2 / span 4;
+        display: grid;
+        grid-template-rows: subgrid;
+        margin-top: 0;
+    }
+
+    .p-about-detail__profile-label {
+        margin-top: var(--space-4);
+    }
+
+    .p-about-detail__visuals {
+        grid-row: 3 / span 3;
+        margin-top: var(--space-2);
+    }
 }
 
 /* 構造が切り替わるスマートフォンのみ */
@@ -392,14 +448,12 @@
         margin-inline: 0;
     }
 
-    .p-about-detail__career-heading {
-        flex-direction: column;
-        gap: var(--space-1);
+    .p-about-detail__subtitle ul {
+        justify-content: center;
     }
 
-    .p-about-detail__career-divider {
-        flex: none;
-        width: min(100%, 12rem);
+    .p-about-detail__career-heading {
+        text-align: left;
     }
 
     .p-about-detail__timeline {
@@ -432,21 +486,21 @@
     }
 
     .p-about-detail__likes {
-        gap: var(--space-1);
-        grid-template-columns: minmax(0, 1fr) 19%;
+        gap: 12px;
+        grid-template-columns: minmax(0, 1fr) 44px;
     }
 
     .p-about-detail__likes-grid {
-        gap: var(--space-1);
+        gap: 12px;
     }
 
     .p-about-detail__like-card {
-        aspect-ratio: 0.78;
-        padding: var(--space-2) var(--space-1) var(--space-4);
+        aspect-ratio: 1.15;
+        padding: var(--space-1) var(--space-1) var(--space-2);
     }
 
     .p-about-detail__like-icon {
-        width: 88%;
+        max-height: clamp(64px, 18vw, 80px);
     }
 
     .p-about-detail__like-plus {
