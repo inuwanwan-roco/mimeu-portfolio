@@ -460,7 +460,8 @@
     }
 
     .p-about-detail__career {
-        --career-content-indent: calc(var(--space-2) + var(--space-1) / 2);
+        /* 見出しのaと縦棒を揃え、年月・本文も同じ量だけ移動。 */
+        --career-content-indent: calc(var(--space-5) + var(--space-1) / 2);
         width: calc(100% - var(--space-2));
         margin-inline: auto;
     }
