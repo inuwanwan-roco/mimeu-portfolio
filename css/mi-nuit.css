@@ -17,16 +17,37 @@
     margin-top: var(--space-3);
 }
 
-/* Project Overview / Role行は既存規則のまま */
+/* Project Overview / 項目と値を同じ中央軸に配置 */
 .p-mi-nuit .c-project__overview > .c-project__section-title {
     text-align: center;
 }
 
+.p-mi-nuit .c-project__facts {
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+    text-align: center;
+}
+
+.p-mi-nuit .c-project__facts > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-1);
+}
+
 .p-mi-nuit__tools {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(24px, 2.5vw, 40px) clamp(24px, 3.3vw, 48px);
-    width: min(100%, clamp(280px, 22.3vw, 336px));
+    --tools-pill-width: clamp(96px, 7vw, 112px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2);
+    width: min(100%, calc(var(--tools-pill-width) * 4 + var(--space-2) * 3));
+    margin-inline: auto;
+}
+
+.p-mi-nuit__tools .c-skill-pill {
+    flex: 0 0 var(--tools-pill-width);
+    min-height: 36px;
+    padding: calc(var(--space-1) / 2) var(--space-1);
+    font-size: clamp(14px, 1vw, 16px);
 }
 
 .p-mi-nuit__tools-note {
@@ -54,5 +75,41 @@
 .p-mi-nuit__target dt {
     margin-bottom: var(--space-1);
     color: var(--color-primary);
-    font-weight: 400;
+    font-weight: 500;
+    font-size: clamp(18px, 1.5vw, 22px);
+    line-height: 1.5;
+}
+
+/* 本文カラム幅の水平線。既存のダイヤ付き区切りはこのページのみ非表示。 */
+.p-mi-nuit .c-project__divider {
+    display: none;
+}
+
+.p-mi-nuit .c-project__details {
+    gap: 0;
+}
+
+.p-mi-nuit .c-project__detail,
+.p-mi-nuit .c-project__preview {
+    position: relative;
+    padding-top: var(--space-6);
+    margin-top: var(--space-6);
+}
+
+.p-mi-nuit .c-project__detail::before,
+.p-mi-nuit .c-project__preview::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    inset-inline-start: calc((100% - var(--space-5)) * 0.25 + var(--space-5));
+    inset-inline-end: 0;
+    height: 1px;
+    background: var(--color-border);
+}
+
+@media screen and (max-width: 768px) {
+    .p-mi-nuit .c-project__detail::before,
+    .p-mi-nuit .c-project__preview::before {
+        inset-inline-start: 0;
+    }
 }
