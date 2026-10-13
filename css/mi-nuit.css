@@ -139,15 +139,17 @@
     }
 }
 
-/* スマホConceptの指定行を保持。PCの文言・改行は別領域で維持。 */
+/* スマホConcept・Target・Designの指定行を保持。PC本文は別領域で維持。 */
 .p-mi-nuit__concept--mobile,
-.p-mi-nuit__target--mobile {
+.p-mi-nuit__target--mobile,
+.p-mi-nuit__design--mobile {
     display: none;
 }
 
 @media screen and (max-width: 768px) {
     .p-mi-nuit__concept--desktop,
-    .p-mi-nuit__target--desktop {
+    .p-mi-nuit__target--desktop,
+    .p-mi-nuit__design--desktop {
         display: none;
     }
 
@@ -156,14 +158,16 @@
     }
 
     .p-mi-nuit__concept--mobile,
-    .p-mi-nuit__target--mobile {
+    .p-mi-nuit__target--mobile,
+    .p-mi-nuit__design--mobile {
         display: block;
         min-width: 0;
         line-height: 1.9;
     }
 
     .p-mi-nuit .p-mi-nuit__concept--mobile p,
-    .p-mi-nuit .p-mi-nuit__target--mobile dd {
+    .p-mi-nuit .p-mi-nuit__target--mobile dd,
+    .p-mi-nuit .p-mi-nuit__design--mobile p {
         font-size: var(--project-mobile-copy-font-size);
     }
 
