@@ -545,3 +545,162 @@
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
 }
+
+/* ==================================================
+LIKES modal / 添付Desktop・Mobileカンプの構成
+共通dialogの開閉・focus・スクロール制御はそのまま利用。
+================================================== */
+.p-likes-modal {
+    width: min(calc(100% - var(--space-6)), 808px);
+    max-height: calc(100svh - var(--space-6));
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-xl);
+    box-shadow: 8px 10px 0 rgba(0, 41, 90, 0.12);
+    transform: translateY(8px) scale(0.98);
+    transition: opacity 0.35s var(--ease-base), transform 0.35s var(--ease-base);
+}
+
+.p-likes-modal::backdrop {
+    background: rgba(0, 25, 45, 0.58);
+    /* 閉じるときは本体に少し遅れて消え、全体で0.54秒。 */
+    transition: opacity 0.38s var(--ease-base) 0.16s;
+}
+
+.p-likes-modal__panel {
+    padding: var(--space-3) var(--space-3) var(--space-3);
+}
+
+.p-likes-modal__heading {
+    text-align: left;
+    color: var(--color-primary);
+}
+
+.p-likes-modal__eyebrow,
+.p-likes-modal__title {
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.p-likes-modal__title {
+    margin-bottom: 0;
+    color: var(--color-primary);
+}
+
+.p-likes-modal__content {
+    min-height: 0;
+    color: var(--color-primary);
+}
+
+.p-likes-modal__content > * + * {
+    margin-top: 0;
+}
+
+.p-likes-modal__illustration {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+    place-items: center;
+    margin-top: calc(-1 * var(--space-5));
+    height: clamp(184px, 24vw, 260px);
+}
+
+.p-likes-modal__illustration img {
+    width: var(--modal-icon-width, 260px);
+    max-width: 100%;
+    height: 100%;
+    min-height: 0;
+    max-height: 100%;
+    object-fit: contain;
+    /* 既存SVGの黒をネイビーへ。filterはアニメーションしない。 */
+    filter: brightness(0) saturate(100%) invert(14%) sepia(87%) saturate(1055%) hue-rotate(187deg) brightness(91%) contrast(106%);
+}
+
+.p-likes-modal__illustration--music { --modal-icon-width: 304px; }
+.p-likes-modal__illustration--anime { --modal-icon-width: 248px; }
+.p-likes-modal__illustration--dog { --modal-icon-width: 272px; }
+.p-likes-modal__illustration--movies { --modal-icon-width: 256px; }
+
+.p-likes-modal.is-open {
+    transform: translateY(0) scale(1);
+}
+
+.p-likes-modal.is-open::backdrop {
+    transition-delay: 0s;
+}
+
+.p-likes-modal__illustration img {
+    opacity: 0;
+    transform: translateY(-32px);
+    transition: opacity 0.3s var(--ease-base), transform 0.3s var(--ease-base);
+}
+
+.p-likes-modal.is-open .p-likes-modal__illustration img {
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: 0.55s;
+    transition-delay: 0.12s;
+}
+
+.p-likes-modal__illustration-title {
+    margin-top: var(--space-2);
+    text-align: center;
+    font-size: clamp(28px, 3vw, 36px);
+    color: var(--color-primary);
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.p-likes-modal__body {
+    width: min(100%, 480px);
+    min-height: var(--space-16);
+    margin: var(--space-2) auto 0;
+    text-align: left;
+    font-size: clamp(16px, 1.4vw, 20px);
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.p-likes-modal__body > * + * {
+    margin-top: var(--space-3);
+}
+
+.p-likes-modal__close {
+    position: static;
+    width: clamp(48px, 4vw, 56px);
+    height: clamp(48px, 4vw, 56px);
+    margin: var(--space-3) auto 0;
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.p-likes-modal__close:hover {
+    background: var(--color-title);
+}
+
+@media screen and (max-width: 768px) {
+    .p-likes-modal__panel {
+        padding: var(--space-3) var(--space-3) var(--space-4);
+    }
+
+    .p-likes-modal__illustration {
+        height: clamp(176px, 46vw, 224px);
+        margin-top: var(--space-1);
+    }
+
+    .p-likes-modal__illustration-title {
+        display: none;
+    }
+
+    .p-likes-modal__body {
+        margin-top: var(--space-4);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .p-likes-modal,
+    .p-likes-modal::backdrop,
+    .p-likes-modal__illustration img,
+    .p-likes-modal.is-open .p-likes-modal__illustration img {
+        transition: none;
+        transform: none;
+    }
+}

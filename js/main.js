@@ -188,7 +188,7 @@ function initBackToTopAlignment() {
 }
 
 /* 共通dialog / LIKESとGraphic Galleryで再利用 */
-function initContentModal(modalSelector, triggerSelector, getContent, scrollClass = 'is-content-modal-open') {
+function initContentModal(modalSelector, triggerSelector, getContent, scrollClass = 'is-content-modal-open', options = {}) {
     const modal = document.querySelector(modalSelector);
     if (!modal) return;
 
@@ -211,7 +211,7 @@ function initContentModal(modalSelector, triggerSelector, getContent, scrollClas
             modal.close();
         };
         const onTransitionEnd = (event) => {
-            if (event.target === modal && event.propertyName === 'opacity') finish();
+            if (!options.closeDuration && event.target === modal && event.propertyName === 'opacity') finish();
         };
 
         if (reducedMotion.matches) {
@@ -219,7 +219,7 @@ function initContentModal(modalSelector, triggerSelector, getContent, scrollClas
         } else {
             modal.addEventListener('transitionend', onTransitionEnd);
             // 開く途中で閉じた場合など、transitionendが発生しない状況にも対応。
-            fallback = window.setTimeout(finish, 500);
+            fallback = window.setTimeout(finish, options.closeDuration ?? 500);
         }
     };
 

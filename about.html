@@ -260,22 +260,46 @@
         <!-- 4カテゴリで共用するモーダル。詳細は下のtemplateで差し替えます。 -->
         <dialog class="p-likes-modal" id="likes-dialog" role="dialog" aria-modal="true" aria-labelledby="likes-dialog-title">
             <div class="p-likes-modal__panel">
-                <button class="p-likes-modal__close" type="button" aria-label="モーダルを閉じる" autofocus><span aria-hidden="true">×</span></button>
-                <h2 class="p-likes-modal__title" id="likes-dialog-title"></h2>
+                <header class="p-likes-modal__heading">
+                    <p class="p-likes-modal__eyebrow">わたしの好きなもの</p>
+                    <h2 class="p-likes-modal__title" id="likes-dialog-title"></h2>
+                </header>
                 <div class="p-likes-modal__content"></div>
+                <button class="p-likes-modal__close" type="button" aria-label="モーダルを閉じる" autofocus><span aria-hidden="true">×</span></button>
             </div>
         </dialog>
         <template id="likes-content-music">
-            <!-- MUSICの詳細文・画像はこの領域に追加してください。 -->
+            <figure class="p-likes-modal__illustration p-likes-modal__illustration--music">
+                <img src="assets/images/4.aboutme/music.svg" alt="" width="240" height="260">
+            </figure>
+            <div class="p-likes-modal__body">
+                <!-- MUSICの本文・追加画像をこの領域に配置してください。 -->
+            </div>
         </template>
         <template id="likes-content-anime">
-            <!-- ANIMEの詳細文・画像はこの領域に追加してください。 -->
+            <figure class="p-likes-modal__illustration p-likes-modal__illustration--anime">
+                <img src="assets/images/4.aboutme/anime.svg" alt="" width="240" height="260">
+            </figure>
+            <div class="p-likes-modal__body">
+                <!-- ANIMEの本文・追加画像をこの領域に配置してください。 -->
+            </div>
         </template>
         <template id="likes-content-dog">
-            <!-- DOGの詳細文・画像はこの領域に追加してください。 -->
+            <figure class="p-likes-modal__illustration p-likes-modal__illustration--dog">
+                <img src="assets/images/4.aboutme/dog.svg" alt="" width="240" height="260">
+            </figure>
+            <h3 class="p-likes-modal__illustration-title u-font-en">ROCO</h3>
+            <div class="p-likes-modal__body">
+                <!-- DOGの本文・追加画像をこの領域に配置してください。 -->
+            </div>
         </template>
         <template id="likes-content-movies">
-            <!-- MOVIESの詳細文・画像はこの領域に追加してください。 -->
+            <figure class="p-likes-modal__illustration p-likes-modal__illustration--movies">
+                <img src="assets/images/4.aboutme/movies.svg" alt="" width="240" height="260">
+            </figure>
+            <div class="p-likes-modal__body">
+                <!-- MOVIESの本文・追加画像をこの領域に配置してください。 -->
+            </div>
         </template>
     </body>
 </html>
