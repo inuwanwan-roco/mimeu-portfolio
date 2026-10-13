@@ -6,3 +6,27 @@
     --project-visual-width: 960px;
     --project-heading-color: var(--color-primary);
 }
+
+/* PC本文とスマホ確定本文を分離。文字・余白は共通の作品詳細ルールを使用。 */
+.p-profile-site__copy--mobile {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .p-profile-site__copy--desktop {
+        display: none;
+    }
+
+    .p-profile-site__copy--mobile {
+        display: block;
+    }
+
+    .p-profile-site__wrap-line {
+        display: block;
+    }
+
+    .p-profile-site__fixed-line {
+        display: block;
+        white-space: nowrap;
+    }
+}
