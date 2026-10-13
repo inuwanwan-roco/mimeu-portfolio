@@ -2,7 +2,7 @@
 
 /* MI/NUIT / 共通のc-projectを使用し、作品固有の値を定義 */
 .p-mi-nuit {
-    --project-body-font-size: clamp(14px, 1.4vw, 20px);
+    --project-body-font-size: 17px;
     --project-visual-width: 960px;
     --project-heading-color: var(--color-primary);
 }
@@ -33,7 +33,7 @@
 
 .p-mi-nuit .c-project__facts > div {
     grid-template-columns: clamp(64px, 7vw, 96px) minmax(0, 1fr);
-    gap: clamp(16px, 2vw, 24px);
+    gap: clamp(24px, calc(2vw + var(--space-1)), 32px);
     align-items: start;
 }
 
@@ -124,4 +124,10 @@
 .p-mi-nuit__tools-note,
 .p-mi-nuit__tools .c-skill-pill {
     font-size: var(--project-body-font-size);
+}
+
+/* Role・Periodの値は英字装飾ではなく本文情報として扱う。 */
+.p-mi-nuit .c-project__facts > div:first-child dd,
+.p-mi-nuit .c-project__facts > div:last-child dd {
+    font-family: var(--font-ja);
 }
