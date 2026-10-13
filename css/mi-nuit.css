@@ -22,22 +22,12 @@
         display: none;
     }
 
-    .p-mi-nuit {
-        --project-mobile-copy-font-size: min(17px, calc((100vw - var(--container-gutter) * 2) / 24));
-    }
-
     .p-mi-nuit__concept--mobile,
     .p-mi-nuit__target--mobile,
     .p-mi-nuit__design--mobile {
         display: block;
         min-width: 0;
         line-height: 1.9;
-    }
-
-    .p-mi-nuit .p-mi-nuit__concept--mobile p,
-    .p-mi-nuit .p-mi-nuit__target--mobile dd,
-    .p-mi-nuit .p-mi-nuit__design--mobile p {
-        font-size: var(--project-mobile-copy-font-size);
     }
 
     .p-mi-nuit__fixed-line {

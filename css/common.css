@@ -1446,6 +1446,19 @@ body.is-content-modal-open {
     }
 }
 
+/* 作品詳細のスマホ本文 / MI/NUITで確定したサイズを両作品で共有。
+   Overview・Processは確定済み17pxを維持し、説明段落だけに適用。 */
+@media screen and (max-width: 768px) {
+    .c-project-page {
+        --project-mobile-copy-font-size: min(17px, calc((100vw - var(--container-gutter) * 2) / 24));
+    }
+
+    .c-project-page .c-project-copy p,
+    .c-project-page .c-project-target dd {
+        font-size: var(--project-mobile-copy-font-size);
+    }
+}
+
 /* ==================================================
 04. Utility
 ================================================== */
