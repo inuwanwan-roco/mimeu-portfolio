@@ -16,3 +16,43 @@
 .p-mi-nuit .c-project__visual {
     margin-top: var(--space-3);
 }
+
+/* Project Overview / Role行は既存規則のまま */
+.p-mi-nuit .c-project__overview > .c-project__section-title {
+    text-align: center;
+}
+
+.p-mi-nuit__tools {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(24px, 2.5vw, 40px) clamp(24px, 3.3vw, 48px);
+    width: min(100%, clamp(280px, 22.3vw, 336px));
+}
+
+.p-mi-nuit__tools-note {
+    margin-top: var(--space-3);
+    font-size: clamp(13px, 1vw, 16px);
+    line-height: 1.8;
+}
+
+/* 確定本文の段落・行間のみ。Processの配置規則は維持。 */
+.p-mi-nuit .c-project__detail:has(.p-mi-nuit__copy) {
+    align-items: start;
+}
+
+.p-mi-nuit__copy {
+    color: var(--color-secondary);
+    font-size: clamp(14px, 1.25vw, 18px);
+    line-height: 1.9;
+    letter-spacing: 0;
+}
+
+.p-mi-nuit__copy > * + * {
+    margin-top: var(--space-3);
+}
+
+.p-mi-nuit__target dt {
+    margin-bottom: var(--space-1);
+    color: var(--color-primary);
+    font-weight: 400;
+}

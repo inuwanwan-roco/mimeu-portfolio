@@ -1232,6 +1232,64 @@ body.is-content-modal-open {
     }
 }
 
+/* 下層タイトル共通 / ABOUT確定デザインを再利用 */
+.c-editorial-index {
+    margin-top: var(--space-2);
+    font-size: clamp(14px, 1.2vw, 17px);
+    letter-spacing: 0.14em;
+    color: var(--color-title);
+}
+
+.c-editorial-index ul {
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 1.5vw, 24px);
+}
+
+.c-editorial-index li {
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 1.5vw, 24px);
+}
+
+.c-editorial-index li:not(:last-child)::after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border: 1px solid var(--color-accent);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+}
+
+.c-editorial-index a:hover {
+    color: var(--color-secondary);
+}
+
+.c-editorial-index a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+@media screen and (max-width: 768px) {
+    .c-editorial-index ul {
+        justify-content: center;
+    }
+}
+
+/* TOP Skillsと制作ツール共通のpill */
+:is(.p-skills__tag, .c-skill-pill) {
+    display: grid;
+    place-content: center;
+    min-height: clamp(48px, 3.6vw, 52px);
+    padding: calc(var(--space-1) / 2) calc(var(--space-3) / 2);
+    border-radius: var(--radius-pill);
+    background-color: var(--color-surface);
+    color: var(--color-secondary);
+    font-size: clamp(0.8rem, 1vw, 0.95rem);
+    line-height: 1.5;
+    text-align: center;
+}
+
 /* ==================================================
 04. Utility
 ================================================== */
