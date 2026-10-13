@@ -107,7 +107,7 @@
                 </div>
             </nav>
         </div>
-        <main class="c-work-detail p-profile-site l-container">
+        <main class="c-work-detail c-project-page p-profile-site l-container">
             <nav class="c-work-detail__breadcrumb u-font-en" aria-label="パンくずリスト">
                 <ol><li><a href="../index.html">HOME</a></li><li><a href="../index.html#works">WORKS</a></li><li aria-current="page">PORTFOLIO SITE</li></ol>
             </nav>
@@ -129,9 +129,22 @@
                 <h2 class="c-project__section-title u-font-en" id="overview-title">Project Overview</h2>
                 <dl class="c-project__facts">
                     <div><dt class="u-font-en">Role</dt><dd class="u-font-en">Design / Coding</dd></div>
-                    <div id="tools"><dt class="u-font-en">Tools</dt><dd><span class="u-font-en">Figma / HTML / CSS / JS / ChatGPT</span><br>サイト内に使用されている画像は生成AIによるものです。</dd></div>
-                    <!-- 制作期間が確定したらカンプの仮値を更新してください。 -->
-                    <div><dt class="u-font-en">Period</dt><dd class="u-font-en">00 weeks</dd></div>
+                    <div id="tools">
+                        <dt class="u-font-en">Tools</dt>
+                        <dd>
+                            <ul class="c-project-tools" aria-label="使用ツール">
+                                <li class="c-skill-pill">Figma</li>
+                                <li class="c-skill-pill">HTML</li>
+                                <li class="c-skill-pill">CSS</li>
+                                <li class="c-skill-pill">JavaScript</li>
+                                <li class="c-skill-pill">ChatGPT</li>
+                            </ul>
+                            <p class="c-project-tools__note">サイト内に使用されている画像は<br class="u-sp-only">
+                                生成AIによるものです。
+                            </p>
+                        </dd>
+                    </div>
+                    <div><dt class="u-font-en">Period</dt><dd class="u-font-en">4–5 days</dd></div>
                 </dl>
             </section>
             <div class="c-section-divider c-project__divider" aria-hidden="true">
@@ -142,18 +155,27 @@
             <div class="c-project__details">
                 <section class="c-project__detail" aria-labelledby="concept-title">
                     <h2 class="c-project__section-title u-font-en" id="concept-title">Concept</h2>
-                    <!-- Conceptの本文はカンプの仮文言。確定内容に差し替えてください。 -->
-                    <p>制作背景とコンセプト説明。</p>
+                    <div class="c-project-copy">
+                        <p>プロフィールを通して、わたし自身のことを知ってもらうための自己紹介サイトを制作しました。</p>
+                        <p>好きなものやこれまでの経験、興味のあることなどをまとめ、情報を読むだけではなく、サイト全体の雰囲気からも自分らしさが伝わることを意識しています。</p>
+                        <p>親しみやすさと見やすさを大切にしながら、楽しんで見てもらえるプロフィールサイトを目指しました。</p>
+                    </div>
                 </section>
                 <section class="c-project__detail" aria-labelledby="target-title">
                     <h2 class="c-project__section-title u-font-en" id="target-title">Target</h2>
-                    <!-- Targetの本文はカンプの仮文言。確定内容に差し替えてください。 -->
-                    <p>想定ユーザー・課題・目的。</p>
+                    <dl class="c-project-target c-project-copy">
+                        <div><dt>想定ユーザー</dt><dd>わたしのことを初めて知る人</dd></div>
+                        <div><dt>目的</dt><dd>プロフィールや好きなもの、これまでの経験などを通して、自分のことを知ってもらうためのサイトを制作しました。<br>情報だけでなく、デザインや色、レイアウトからも自分らしさが伝わることを目的としています。</dd></div>
+                        <div><dt>課題</dt><dd>自分に関するさまざまな情報を掲載しながらも、内容が散らばって見えないよう整理する必要がありました。<br>情報の優先順位を考え、初めて見る人でも読み進めやすく、自分らしさも感じてもらえる構成を課題としました。</dd></div>
+                    </dl>
                 </section>
                 <section class="c-project__detail" aria-labelledby="design-title">
                     <h2 class="c-project__section-title u-font-en" id="design-title">Design</h2>
-                    <!-- Designの本文はカンプの仮文言。確定内容に差し替えてください。 -->
-                    <p>配色・タイポグラフィ・UI設計の意図。</p>
+                    <div class="c-project-copy">
+                        <p>水色と白をベースに、やわらかく親しみやすい印象に仕上げました。</p>
+                        <p>タイポグラフィは、デザイン性のある英字と読みやすい日本語書体を組み合わせ、かわいらしさと可読性のバランスを意識しています。</p>
+                        <p>UIでは、プロフィールや好きなものなど、それぞれの情報を分かりやすく区切りながら、サイト全体に統一感が出るよう余白や配置を整えました。</p>
+                    </div>
                 </section>
                 <section class="c-project__detail" aria-labelledby="process-title">
                     <h2 class="c-project__section-title u-font-en" id="process-title">Process</h2>

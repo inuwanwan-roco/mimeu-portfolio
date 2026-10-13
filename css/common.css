@@ -1290,6 +1290,162 @@ body.is-content-modal-open {
     text-align: center;
 }
 
+
+/* 作品詳細共通 / MI/NUIT確定レイアウト */
+.c-project-page {
+    --project-body-font-size: 17px;
+    --project-visual-width: 960px;
+    --project-heading-color: var(--color-primary);
+}
+
+.c-project-page .c-project__visual {
+    margin-top: var(--space-3);
+}
+
+/* Project Overview / 中央に置く情報ブロック内で項目・内容の列を揃える */
+.c-project-page .c-project__overview > .c-project__section-title {
+    text-align: center;
+}
+
+.c-project-page .c-project__facts {
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+    width: min(100%, 640px);
+    margin-inline: auto;
+    text-align: left;
+}
+
+.c-project-page .c-project__facts > div {
+    grid-template-columns: clamp(64px, 7vw, 96px) minmax(0, 1fr);
+    gap: clamp(24px, calc(2vw + var(--space-1)), 32px);
+    align-items: start;
+}
+
+.c-project-tools {
+    --tools-pill-width: clamp(112px, 8vw, 128px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: var(--space-2);
+    width: min(100%, calc(var(--tools-pill-width) * 4 + var(--space-2) * 3));
+    margin-inline: 0;
+}
+
+.c-project-tools .c-skill-pill {
+    flex: 0 0 var(--tools-pill-width);
+    min-height: 36px;
+    padding: calc(var(--space-1) / 2) var(--space-1);
+}
+
+.c-project-tools__note {
+    margin-top: var(--space-3);
+    line-height: 1.8;
+}
+
+/* 確定本文の段落・行間のみ。Processの配置規則は維持。 */
+.c-project-page .c-project__detail:has(.c-project-copy) {
+    align-items: start;
+}
+
+.c-project-copy {
+    color: var(--color-secondary);
+    line-height: 1.9;
+    letter-spacing: 0;
+}
+
+.c-project-copy > * + * {
+    margin-top: var(--space-3);
+}
+
+.c-project-target dt {
+    margin-bottom: var(--space-1);
+    color: var(--color-primary);
+    font-weight: 500;
+    font-size: clamp(18px, 1.5vw, 22px);
+    line-height: 1.5;
+}
+
+/* 本文カラム幅の水平線。既存のダイヤ付き区切りはこのページのみ非表示。 */
+.c-project-page .c-project__divider {
+    display: none;
+}
+
+.c-project-page .c-project__details {
+    gap: 0;
+}
+
+.c-project-page .c-project__detail,
+.c-project-page .c-project__preview {
+    position: relative;
+    padding-top: var(--space-6);
+    margin-top: var(--space-6);
+}
+
+.c-project-page .c-project__detail::before,
+.c-project-page .c-project__preview::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    inset-inline-start: calc((100% - var(--space-5)) * 0.25 + var(--space-5));
+    inset-inline-end: 0;
+    height: 1px;
+    background: var(--color-border);
+}
+
+@media screen and (max-width: 768px) {
+    .c-project-page .c-project__detail::before,
+    .c-project-page .c-project__preview::before {
+        inset-inline-start: 0;
+    }
+}
+
+/* 作品説明とOverviewの内容は同じfluid本文サイズ。見出しは既存値を維持。 */
+.c-project-page .c-project__facts dd,
+.c-project-page .c-project__lead,
+.c-project-page .c-project__detail p,
+.c-project-copy,
+.c-project-target dd,
+.c-project-tools__note,
+.c-project-tools .c-skill-pill {
+    font-size: var(--project-body-font-size);
+}
+
+/* Role・Periodの値は英字装飾ではなく本文情報として扱う。 */
+.c-project-page .c-project__facts > div:first-child dd,
+.c-project-page .c-project__facts > div:last-child dd {
+    font-family: var(--font-ja);
+}
+
+/* MI/NUITのSubのみ、スマートフォンではタイトルと同じ左端へ。 */
+@media screen and (max-width: 768px) {
+    .c-project-page .c-editorial-index ul {
+        justify-content: flex-start;
+    }
+}
+
+/* スマホの作品説明見出し */
+@media screen and (max-width: 768px) {
+    .c-project-page .c-project__detail,
+    .c-project-page .c-project__preview {
+        padding-top: var(--space-2);
+    }
+
+    .c-project-page .c-project__detail {
+        row-gap: calc(var(--space-5));
+    }
+
+    .c-project-page .c-project__preview-grid {
+        margin-top: calc(var(--space-4) + 7px);
+    }
+}
+
+/* スマホでもPC / Mobileプレビューを同幅の2列で表示。 */
+@media screen and (max-width: 768px) {
+    .c-project-page .c-project__preview-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
 /* ==================================================
 04. Utility
 ================================================== */
