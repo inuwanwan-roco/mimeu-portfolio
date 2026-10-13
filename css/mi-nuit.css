@@ -177,20 +177,15 @@
     }
 }
 
-/* スマホの作品説明見出し：横線直下を16px、本文側は当初より7px広く。 */
+/* スマホの作品説明見出し */
 @media screen and (max-width: 768px) {
     .p-mi-nuit .c-project__detail,
     .p-mi-nuit .c-project__preview {
         padding-top: var(--space-2);
     }
 
-    .p-mi-nuit .c-project__detail > .c-project__section-title,
-    .p-mi-nuit .c-project__preview > .c-project__section-title {
-        font-size: calc(clamp(28px, 2.5vw, 36px) + 1px);
-    }
-
     .p-mi-nuit .c-project__detail {
-        row-gap: calc(var(--space-1) + 7px);
+        row-gap: calc(var(--space-5));
     }
 
     .p-mi-nuit .c-project__preview-grid {
