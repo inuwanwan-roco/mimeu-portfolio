@@ -177,11 +177,11 @@
     }
 }
 
-/* スマホの作品説明見出し：横線へ2px近づけ、本文側へ2px余白を追加。 */
+/* スマホの作品説明見出し：横線直下を16px、本文側は既存より4px広く。 */
 @media screen and (max-width: 768px) {
     .p-mi-nuit .c-project__detail,
     .p-mi-nuit .c-project__preview {
-        padding-top: calc(var(--space-6) - 2px);
+        padding-top: var(--space-2);
     }
 
     .p-mi-nuit .c-project__detail > .c-project__section-title,
@@ -190,10 +190,10 @@
     }
 
     .p-mi-nuit .c-project__detail {
-        row-gap: calc(var(--space-1) + 2px);
+        row-gap: calc(var(--space-1) + 4px);
     }
 
     .p-mi-nuit .c-project__preview-grid {
-        margin-top: calc(var(--space-4) + 2px);
+        margin-top: calc(var(--space-4) + 4px);
     }
 }
