@@ -2,6 +2,7 @@
 
 /* MI/NUIT / 共通のc-projectを使用し、作品固有の値を定義 */
 .p-mi-nuit {
+    --project-body-font-size: clamp(14px, 1.4vw, 20px);
     --project-visual-width: 960px;
     --project-heading-color: var(--color-primary);
 }
@@ -17,7 +18,7 @@
     margin-top: var(--space-3);
 }
 
-/* Project Overview / 項目と値を同じ中央軸に配置 */
+/* Project Overview / 中央に置く情報ブロック内で項目・内容の列を揃える */
 .p-mi-nuit .c-project__overview > .c-project__section-title {
     text-align: center;
 }
@@ -25,34 +26,35 @@
 .p-mi-nuit .c-project__facts {
     gap: var(--space-4);
     margin-top: var(--space-4);
-    text-align: center;
+    width: min(100%, 640px);
+    margin-inline: auto;
+    text-align: left;
 }
 
 .p-mi-nuit .c-project__facts > div {
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-1);
+    grid-template-columns: clamp(64px, 7vw, 96px) minmax(0, 1fr);
+    gap: clamp(16px, 2vw, 24px);
+    align-items: start;
 }
 
 .p-mi-nuit__tools {
-    --tools-pill-width: clamp(96px, 7vw, 112px);
+    --tools-pill-width: clamp(112px, 8vw, 128px);
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: var(--space-2);
     width: min(100%, calc(var(--tools-pill-width) * 4 + var(--space-2) * 3));
-    margin-inline: auto;
+    margin-inline: 0;
 }
 
 .p-mi-nuit__tools .c-skill-pill {
     flex: 0 0 var(--tools-pill-width);
     min-height: 36px;
     padding: calc(var(--space-1) / 2) var(--space-1);
-    font-size: clamp(14px, 1vw, 16px);
 }
 
 .p-mi-nuit__tools-note {
     margin-top: var(--space-3);
-    font-size: clamp(13px, 1vw, 16px);
     line-height: 1.8;
 }
 
@@ -63,7 +65,6 @@
 
 .p-mi-nuit__copy {
     color: var(--color-secondary);
-    font-size: clamp(14px, 1.25vw, 18px);
     line-height: 1.9;
     letter-spacing: 0;
 }
@@ -112,4 +113,15 @@
     .p-mi-nuit .c-project__preview::before {
         inset-inline-start: 0;
     }
+}
+
+/* 作品説明とOverviewの内容は同じfluid本文サイズ。見出しは既存値を維持。 */
+.p-mi-nuit .c-project__facts dd,
+.p-mi-nuit .c-project__lead,
+.p-mi-nuit .c-project__detail p,
+.p-mi-nuit__copy,
+.p-mi-nuit__target dd,
+.p-mi-nuit__tools-note,
+.p-mi-nuit__tools .c-skill-pill {
+    font-size: var(--project-body-font-size);
 }
