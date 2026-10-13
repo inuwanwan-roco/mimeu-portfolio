@@ -140,27 +140,34 @@
 }
 
 /* スマホConceptの指定行を保持。PCの文言・改行は別領域で維持。 */
-.p-mi-nuit__concept--mobile {
+.p-mi-nuit__concept--mobile,
+.p-mi-nuit__target--mobile {
     display: none;
 }
 
 @media screen and (max-width: 768px) {
-    .p-mi-nuit__concept--desktop {
+    .p-mi-nuit__concept--desktop,
+    .p-mi-nuit__target--desktop {
         display: none;
     }
 
-    .p-mi-nuit__concept--mobile {
-        --concept-sp-font-size: min(17px, calc((100vw - var(--container-gutter) * 2) / 24));
+    .p-mi-nuit {
+        --project-mobile-copy-font-size: min(17px, calc((100vw - var(--container-gutter) * 2) / 24));
+    }
+
+    .p-mi-nuit__concept--mobile,
+    .p-mi-nuit__target--mobile {
         display: block;
         min-width: 0;
         line-height: 1.9;
     }
 
-    .p-mi-nuit .p-mi-nuit__concept--mobile p {
-        font-size: var(--concept-sp-font-size);
+    .p-mi-nuit .p-mi-nuit__concept--mobile p,
+    .p-mi-nuit .p-mi-nuit__target--mobile dd {
+        font-size: var(--project-mobile-copy-font-size);
     }
 
-    .p-mi-nuit__concept-line {
+    .p-mi-nuit__fixed-line {
         display: block;
         white-space: nowrap;
     }
