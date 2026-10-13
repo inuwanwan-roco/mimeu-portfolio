@@ -131,3 +131,10 @@
 .p-mi-nuit .c-project__facts > div:last-child dd {
     font-family: var(--font-ja);
 }
+
+/* MI/NUITのSubのみ、スマートフォンではタイトルと同じ左端へ。 */
+@media screen and (max-width: 768px) {
+    .p-mi-nuit .c-editorial-index ul {
+        justify-content: flex-start;
+    }
+}
