@@ -361,6 +361,19 @@
     transform: translateY(-6px);
 }
 
+/* スマートフォンでは両カテゴリの作品カードを均等な2列で表示 */
+@media screen and (max-width: 768px) {
+    .p-works__grid,
+    .p-works__graphic-preview {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-3);
+    }
+
+    .p-works__gallery-link {
+        grid-column: 1 / -1;
+    }
+}
+
 /* ==================================================
 04. About Me
 ================================================== */

@@ -1503,7 +1503,8 @@ body.is-menu-open {
 
 /* ==================================================
 共通ページ遷移 / Loading・固定メニュー・dialogはレイヤーを分離
-固定Headerの位置を保つため、上下移動はページ本文にだけ適用。
+固定Headerの位置を保つため、filter / transformはラッパーではなく各要素に適用。
+ぼかしは遷移中だけ有効にし、終了後は通常描画へ戻す。
 ================================================== */
 .is-page-preparing body > :is(.l-header, main, .c-page-top, .l-footer) {
     opacity: 0;
@@ -1518,15 +1519,17 @@ body.is-menu-open {
 }
 
 .l-page-transition.is-entering > :is(main, .c-page-top, .l-footer) {
-    animation: page-enter-position 0.6s var(--ease-base) both;
+    animation: page-enter-focus 0.6s var(--ease-base) both;
+    transform-origin: center top;
 }
 
 .l-page-transition.is-leaving {
-    animation: page-leave-opacity 0.3s var(--ease-base) both;
+    animation: page-leave-opacity 0.35s var(--ease-base) both;
 }
 
 .l-page-transition.is-leaving > :is(main, .c-page-top, .l-footer) {
-    animation: page-leave-position 0.3s var(--ease-base) both;
+    animation: page-leave-focus 0.35s var(--ease-base) both;
+    transform-origin: center top;
 }
 
 @keyframes page-enter-opacity {
@@ -1534,9 +1537,23 @@ body.is-menu-open {
     to { opacity: 1; }
 }
 
-@keyframes page-enter-position {
-    from { transform: translateY(8px); }
-    to { transform: translateY(0); }
+/* Headerはぼかしのみ。fixedの基準や高さを変えない。 */
+.l-page-transition.is-entering > .l-header {
+    animation: page-enter-header-focus 0.6s var(--ease-base) both;
+}
+
+.l-page-transition.is-leaving > .l-header {
+    animation: page-leave-header-focus 0.35s var(--ease-base) both;
+}
+
+@keyframes page-enter-focus {
+    from { filter: blur(8px); transform: scale(0.995); }
+    to { filter: blur(0); transform: scale(1); }
+}
+
+@keyframes page-enter-header-focus {
+    from { filter: blur(8px); }
+    to { filter: blur(0); }
 }
 
 @keyframes page-leave-opacity {
@@ -1544,16 +1561,21 @@ body.is-menu-open {
     to { opacity: 0; }
 }
 
-@keyframes page-leave-position {
-    from { transform: translateY(0); }
-    to { transform: translateY(-4px); }
+@keyframes page-leave-focus {
+    from { filter: blur(0); transform: scale(1); }
+    to { filter: blur(6px); transform: scale(1.005); }
+}
+
+@keyframes page-leave-header-focus {
+    from { filter: blur(0); }
+    to { filter: blur(6px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .l-page-transition.is-entering,
     .l-page-transition.is-leaving,
-    .l-page-transition.is-entering > :is(main, .c-page-top, .l-footer),
-    .l-page-transition.is-leaving > :is(main, .c-page-top, .l-footer) {
+    .l-page-transition.is-entering > :is(.l-header, main, .c-page-top, .l-footer),
+    .l-page-transition.is-leaving > :is(.l-header, main, .c-page-top, .l-footer) {
         animation: none;
     }
 }
