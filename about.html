@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- JS無効時は通常表示。ページ本体の初期ちらつきを防止。 -->
+        <script>document.documentElement.classList.add("is-page-preparing");</script>
         <meta name="description" content="Miméu studio・nemimiのプロフィール、経歴、好きなものとデザインへの考え方をご紹介します。">
         <title>About Me | Miméu studio</title>
         <!-- Bodoni Moda -->
@@ -16,7 +18,7 @@
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/common.css">
         <link rel="stylesheet" href="css/about.css">
-        <script src="js/main.js" defer></script>
+        <script src="js/main.js" defer onerror="document.documentElement.classList.remove('is-page-preparing')"></script>
         <script src="js/about.js" defer></script>
     </head>
     <body id="top">

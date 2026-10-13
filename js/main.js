@@ -5,6 +5,7 @@ Miméu studio MAIN SCRIPT
 ================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+    initPageTransitions();
     initLoading();
     initHeader();
     initGlobalMenu();
@@ -29,7 +30,10 @@ function initLoading() {
 
             loading.addEventListener(
                 'transitionend',
-                () => loading.remove(),
+                () => {
+                    loading.remove();
+                    document.dispatchEvent(new Event('mimeu:loading-finished'));
+                },
                 { once: true }
             );
         }, 1800);
@@ -301,4 +305,77 @@ function initGraphicGallery() {
     };
     window.addEventListener('hashchange', revealAnchor);
     window.addEventListener('load', revealAnchor, { once: true });
+}
+
+/* 全ページ共通 / 内部HTMLへの遷移だけを柔らかく切り替える */
+function initPageTransitions() {
+    const page = document.createElement('div');
+    page.className = 'l-page-transition is-waiting';
+    page.inert = true;
+    const contents = [...document.body.children].filter((element) =>
+        element.matches('.l-header, main, .c-page-top, .l-footer')
+    );
+    document.body.insertBefore(page, contents[0] ?? null);
+    contents.forEach((element) => page.append(element));
+    document.documentElement.classList.remove('is-page-preparing');
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let navigationTimer = null;
+    let leaving = false;
+    const reveal = () => {
+        page.inert = false;
+        page.classList.remove('is-waiting', 'is-leaving', 'is-entering');
+        if (!reducedMotion.matches) {
+            // 戻る・進むで復元したページでも新しくフェードを開始する。
+            page.getBoundingClientRect();
+            page.classList.add('is-entering');
+        }
+    };
+    page.addEventListener('animationend', (event) => {
+        if (event.target === page && event.animationName === 'page-enter-opacity') {
+            page.classList.remove('is-entering');
+        }
+    });
+    document.addEventListener('mimeu:loading-finished', reveal, { once: true });
+    if (!document.querySelector('#js-loading')) reveal();
+
+    const normalizePath = (path) => path.endsWith('/') ? `${path}index.html` : path;
+    document.addEventListener('click', (event) => {
+        const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
+        if (!link || event.defaultPrevented || event.button !== 0
+            || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey
+            || link.hasAttribute('download')
+            || (link.target && link.target !== '_self')) return;
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#')) return;
+        const destination = new URL(link.href, location.href);
+        if (destination.origin !== location.origin || !/\.html$/i.test(destination.pathname)) return;
+        if (destination.hash && normalizePath(destination.pathname) === normalizePath(location.pathname)
+            && destination.search === location.search) return;
+        if (reducedMotion.matches) return;
+        event.preventDefault();
+        if (leaving) return;
+        leaving = true;
+        page.classList.remove('is-entering', 'is-waiting');
+        page.classList.add('is-leaving');
+        page.inert = true;
+        navigationTimer = window.setTimeout(() => location.assign(destination.href), 320);
+    });
+
+    // BFCacheに透明な状態を保存せず、復元時も確実に表示する。
+    window.addEventListener('pagehide', () => {
+        window.clearTimeout(navigationTimer);
+        leaving = false;
+        page.inert = false;
+        page.classList.remove('is-entering', 'is-leaving', 'is-waiting');
+    });
+    window.addEventListener('pageshow', (event) => {
+        if (!event.persisted) return;
+        window.clearTimeout(navigationTimer);
+        leaving = false;
+        reveal();
+    });
+    reducedMotion.addEventListener('change', () => {
+        if (reducedMotion.matches) page.classList.remove('is-entering');
+    });
 }

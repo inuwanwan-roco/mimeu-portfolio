@@ -1500,3 +1500,60 @@ body.is-menu-open {
 [hidden] {
     display: none !important;
 }
+
+/* ==================================================
+共通ページ遷移 / Loading・固定メニュー・dialogはレイヤーを分離
+固定Headerの位置を保つため、上下移動はページ本文にだけ適用。
+================================================== */
+.is-page-preparing body > :is(.l-header, main, .c-page-top, .l-footer) {
+    opacity: 0;
+}
+
+.l-page-transition.is-waiting {
+    opacity: 0;
+}
+
+.l-page-transition.is-entering {
+    animation: page-enter-opacity 0.6s var(--ease-base) both;
+}
+
+.l-page-transition.is-entering > :is(main, .c-page-top, .l-footer) {
+    animation: page-enter-position 0.6s var(--ease-base) both;
+}
+
+.l-page-transition.is-leaving {
+    animation: page-leave-opacity 0.3s var(--ease-base) both;
+}
+
+.l-page-transition.is-leaving > :is(main, .c-page-top, .l-footer) {
+    animation: page-leave-position 0.3s var(--ease-base) both;
+}
+
+@keyframes page-enter-opacity {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes page-enter-position {
+    from { transform: translateY(8px); }
+    to { transform: translateY(0); }
+}
+
+@keyframes page-leave-opacity {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes page-leave-position {
+    from { transform: translateY(0); }
+    to { transform: translateY(-4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .l-page-transition.is-entering,
+    .l-page-transition.is-leaving,
+    .l-page-transition.is-entering > :is(main, .c-page-top, .l-footer),
+    .l-page-transition.is-leaving > :is(main, .c-page-top, .l-footer) {
+        animation: none;
+    }
+}
