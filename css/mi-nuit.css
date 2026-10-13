@@ -192,3 +192,10 @@
         margin-top: calc(var(--space-4) + 7px);
     }
 }
+
+/* スマホでもPC / Mobileプレビューを同幅の2列で表示。 */
+@media screen and (max-width: 768px) {
+    .p-mi-nuit .c-project__preview-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
