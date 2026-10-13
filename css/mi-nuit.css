@@ -177,7 +177,7 @@
     }
 }
 
-/* スマホの作品説明見出し：横線直下を16px、本文側は既存より4px広く。 */
+/* スマホの作品説明見出し：横線直下を16px、本文側は当初より7px広く。 */
 @media screen and (max-width: 768px) {
     .p-mi-nuit .c-project__detail,
     .p-mi-nuit .c-project__preview {
@@ -190,10 +190,10 @@
     }
 
     .p-mi-nuit .c-project__detail {
-        row-gap: calc(var(--space-1) + 4px);
+        row-gap: calc(var(--space-1) + 7px);
     }
 
     .p-mi-nuit .c-project__preview-grid {
-        margin-top: calc(var(--space-4) + 4px);
+        margin-top: calc(var(--space-4) + 7px);
     }
 }
