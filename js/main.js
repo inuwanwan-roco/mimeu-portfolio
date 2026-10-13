@@ -359,7 +359,7 @@ function initPageTransitions() {
         page.classList.remove('is-entering', 'is-waiting');
         page.classList.add('is-leaving');
         page.inert = true;
-        navigationTimer = window.setTimeout(() => location.assign(destination.href), 320);
+        navigationTimer = window.setTimeout(() => location.assign(destination.href), 370);
     });
 
     // BFCacheに透明な状態を保存せず、復元時も確実に表示する。
