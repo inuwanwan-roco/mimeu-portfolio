@@ -1308,11 +1308,6 @@ body.is-content-modal-open {
     }
 }
 
-/* PC用改行スマホサイズ時は非表示 */
-@media screen and (max-width: 640px) {
-    .br-sp { display:none; }
-}
-
 .u-visually-hidden {
     position: absolute;
     width: 1px;
