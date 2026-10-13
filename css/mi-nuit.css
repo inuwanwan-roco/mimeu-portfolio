@@ -138,3 +138,30 @@
         justify-content: flex-start;
     }
 }
+
+/* スマホConceptの指定行を保持。PCの文言・改行は別領域で維持。 */
+.p-mi-nuit__concept--mobile {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .p-mi-nuit__concept--desktop {
+        display: none;
+    }
+
+    .p-mi-nuit__concept--mobile {
+        --concept-sp-font-size: min(17px, calc((100vw - var(--container-gutter) * 2) / 24));
+        display: block;
+        min-width: 0;
+        line-height: 1.9;
+    }
+
+    .p-mi-nuit .p-mi-nuit__concept--mobile p {
+        font-size: var(--concept-sp-font-size);
+    }
+
+    .p-mi-nuit__concept-line {
+        display: block;
+        white-space: nowrap;
+    }
+}
