@@ -1579,3 +1579,73 @@ body.is-menu-open {
         animation: none;
     }
 }
+
+/* ==================================================
+共通背景 / 余白に添える光点と細い四方向のきらめき
+================================================== */
+body {
+    /* 負のレイヤーをbodyの背景より前、既存コンテンツより後ろに限定。 */
+    isolation: isolate;
+}
+
+.c-ambient-light {
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+}
+
+.c-ambient-light__spark {
+    --light-size: 12px;
+    position: absolute;
+    left: 2%;
+    top: 19%;
+    width: var(--light-size);
+    height: var(--light-size);
+    background: var(--color-accent);
+    opacity: 0.28;
+    clip-path: polygon(50% 0, 57% 42%, 100% 50%, 57% 58%, 50% 100%, 43% 58%, 0 50%, 43% 42%);
+    animation: ambient-light-drift 9s ease-in-out -2s infinite;
+}
+
+.c-ambient-light__spark--dot {
+    --light-size: 4px;
+    clip-path: none;
+    border-radius: 50%;
+    background: var(--color-surface);
+    animation: none;
+    opacity: 0.8;
+}
+
+.c-ambient-light__spark:nth-child(2) { left: 96%; top: 28%; }
+.c-ambient-light__spark:nth-child(3) { left: 97%; top: 47%; --light-size: 16px; animation-duration: 12s; animation-delay: -7s; }
+.c-ambient-light__spark:nth-child(4) { left: 3%; top: 60%; }
+.c-ambient-light__spark:nth-child(5) { left: 1%; top: 78%; --light-size: 10px; animation-duration: 8s; animation-delay: -5s; }
+.c-ambient-light__spark:nth-child(6) { left: 94%; top: 86%; }
+.c-ambient-light__spark:nth-child(7) { left: 4%; top: 40%; --light-size: 8px; animation-duration: 10s; animation-delay: -8s; }
+.c-ambient-light__spark:nth-child(8) { left: 98%; top: 67%; }
+
+@keyframes ambient-light-drift {
+    0%, 100% { opacity: 0.16; transform: translateY(2px) scale(0.92); }
+    50% { opacity: 0.42; transform: translateY(-2px) scale(1.04); }
+}
+
+@media screen and (max-width: 768px) {
+    .c-ambient-light__spark:nth-child(n + 5) {
+        display: none;
+    }
+
+    .c-ambient-light__spark { left: 6px; --light-size: 9px; }
+    .c-ambient-light__spark:nth-child(2) { left: auto; right: 10px; }
+    .c-ambient-light__spark:nth-child(3) { left: auto; right: 6px; --light-size: 11px; }
+    .c-ambient-light__spark:nth-child(4) { left: 10px; }
+    .c-ambient-light__spark--dot { --light-size: 3px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .c-ambient-light__spark {
+        animation: none;
+    }
+}

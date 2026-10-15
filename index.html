@@ -21,6 +21,17 @@
         <script src="js/main.js" defer onerror="document.documentElement.classList.remove('is-page-preparing')"></script>
     </head>
     <body>
+        <!-- 操作・読み上げに影響しない、共通の背景装飾 -->
+        <div class="c-ambient-light" aria-hidden="true">
+            <span class="c-ambient-light__spark"></span>
+            <span class="c-ambient-light__spark c-ambient-light__spark--dot"></span>
+            <span class="c-ambient-light__spark"></span>
+            <span class="c-ambient-light__spark c-ambient-light__spark--dot"></span>
+            <span class="c-ambient-light__spark"></span>
+            <span class="c-ambient-light__spark c-ambient-light__spark--dot"></span>
+            <span class="c-ambient-light__spark"></span>
+            <span class="c-ambient-light__spark c-ambient-light__spark--dot"></span>
+        </div>
         <!-- Loading / ページ読み込み・更新のたびに表示 -->
         <div class="p-loading" id="js-loading" aria-hidden="true">
             <div class="p-loading__sparkles" aria-hidden="true">
