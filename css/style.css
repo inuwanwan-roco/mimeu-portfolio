@@ -229,13 +229,18 @@
     z-index: 0;
     inset-block-start: clamp(24px, 4vw, 64px);
     inset-inline-end: 0;
+    inset-block-end: 0;
     width: min(52%, 720px);
     min-width: 0;
+    /* 画像をHero本文の高さに収め、下端だけを白い背景へ溶かす。 */
+    -webkit-mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
 }
 
 .p-hero__visual-image {
     width: 100%;
-    min-height: clamp(360px, 50vw, 550px);
+    height: 100%;
+    min-height: 0;
     object-fit: cover;
     border-radius: clamp(120px, 15vw, 240px) clamp(24px, 4vw, 64px);
     background: var(--color-surface);
@@ -274,6 +279,7 @@
 
     .p-hero__visual {
         inset-block-start: var(--space-6);
+        inset-block-end: auto;
         inset-inline-end: var(--space-1);
         width: clamp(176px, 52vw, 240px);
         pointer-events: none;
@@ -293,6 +299,7 @@
         font-size: 0;
         color: transparent;
         min-height: 0;
+        height: auto;
         aspect-ratio: 4 / 5;
         border-radius: clamp(48px, 12vw, 80px) var(--radius-l);
     }
@@ -339,6 +346,12 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
     gap: clamp(24px, 4vw, 56px);
+}
+
+.p-works__grid .c-work-card__image {
+    /* 共通カード枠は保ち、PC・スマートフォンのモックアップ全体を表示。 */
+    object-fit: contain;
+    padding: clamp(var(--space-1), 1vw, var(--space-2));
 }
 
 .p-works__graphic-preview {
