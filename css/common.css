@@ -1649,3 +1649,19 @@ body {
         animation: none;
     }
 }
+
+/* ------------------------------------------
+Profile Visual / 人物の鮮明さを保ち、外周だけを背景へなじませる
+------------------------------------------ */
+.c-profile-visual {
+    --profile-edge-fade: 8%;
+    object-position: 50% 45%;
+    -webkit-mask-image:
+        linear-gradient(to right, transparent, #000 var(--profile-edge-fade), #000 calc(100% - var(--profile-edge-fade)), transparent),
+        linear-gradient(to bottom, transparent, #000 var(--profile-edge-fade), #000 calc(100% - var(--profile-edge-fade)), transparent);
+    mask-image:
+        linear-gradient(to right, transparent, #000 var(--profile-edge-fade), #000 calc(100% - var(--profile-edge-fade)), transparent),
+        linear-gradient(to bottom, transparent, #000 var(--profile-edge-fade), #000 calc(100% - var(--profile-edge-fade)), transparent);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+}
