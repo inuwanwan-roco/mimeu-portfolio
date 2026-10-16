@@ -196,13 +196,18 @@
         background: transparent;
     }
 
+    .p-gallery__modal:has(.p-gallery__expanded--flyer) {
+        /* 表裏と作品情報を切らずに拡大するため、画面上下に16pxずつ残す。 */
+        max-height: calc(100svh - var(--space-4));
+    }
+
     .p-gallery__modal:has(.p-gallery__expanded--flyer) .c-content-modal__content {
         padding-top: var(--space-2);
     }
 
     .p-gallery__expanded--flyer .p-gallery__expanded-media--pair {
         /* 実画像の縦横比に合わせて列幅を絞り、contain内の大きな空白を除く。 */
-        --flyer-image-height: clamp(120px, calc(88svh - 280px), 600px);
+        --flyer-image-height: clamp(120px, calc(100svh - 312px), 720px);
         width: min(100%, calc(var(--flyer-image-height) * 1.41448 + var(--space-3)));
         margin-inline: auto;
         gap: var(--space-3);
