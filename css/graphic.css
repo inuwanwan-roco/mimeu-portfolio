@@ -196,8 +196,22 @@
         background: transparent;
     }
 
+    .p-gallery__modal:has(.p-gallery__expanded--flyer) .c-content-modal__content {
+        padding-top: var(--space-2);
+    }
+
+    .p-gallery__expanded--flyer .p-gallery__expanded-media--pair {
+        /* 実画像の縦横比に合わせて列幅を絞り、contain内の大きな空白を除く。 */
+        --flyer-image-height: clamp(120px, calc(88svh - 280px), 600px);
+        width: min(100%, calc(var(--flyer-image-height) * 1.41448 + var(--space-3)));
+        margin-inline: auto;
+        gap: var(--space-3);
+    }
+
     .p-gallery__expanded--flyer .p-gallery__expanded-image {
-        height: calc(clamp(120px, calc(88svh - 376px), 560px) * 1.1);
+        width: 100%;
+        height: auto;
+        object-fit: contain;
     }
 
     .p-gallery__expanded:has(.p-gallery__expanded-media--pair) > .p-gallery__meta {
