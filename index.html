@@ -432,8 +432,8 @@
                         </p>
                     </header>
                     <div class="p-contact__content">
-                        <!-- デザイン確認用フォーム。実際のメール送信は未接続 -->
-                        <form class="p-contact__form" id="js-contact-form" action="#" method="post">
+                        <!-- FormspreeへAJAX送信。送信状態はフォーム内のライブ領域で通知。 -->
+                        <form class="p-contact__form" id="js-contact-form" action="https://formspree.io/f/maeqadad" method="post">
                             <label class="p-contact__field">
                                 <span class="p-contact__label">お名前</span>
                                 <input class="p-contact__input" type="text" name="name" autocomplete="name" placeholder="例）山田 花子" required>
@@ -462,7 +462,10 @@
                                 <span class="p-contact__label">お問い合わせ内容</span>
                                 <textarea class="p-contact__textarea" name="message" rows="5" placeholder="どんなことでもお気軽にご相談ください" required></textarea>
                             </label>
-                            <button class="c-button p-contact__submit" type="submit">送信する</button>
+                            <div class="p-contact__actions">
+                                <button class="c-button p-contact__submit" type="submit">送信する</button>
+                                <p class="p-contact__status" id="contact-status" role="status" aria-live="polite" aria-atomic="true" hidden></p>
+                            </div>
                         </form>
                         <div class="p-contact__links">
                             <a class="p-contact__link" href="mailto:mimeu.studio@gmail.com">

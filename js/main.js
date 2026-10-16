@@ -149,15 +149,71 @@ function initAccordion() {
 
 /* ------------------------------------------
 Contact Form
-現在はデザイン確認用。実送信機能は未接続。
+Formspreeへページ遷移なしで送信。入力検証・状態通知・二重送信防止。
 ------------------------------------------ */
 
 function initContactForm() {
     const form = document.querySelector('#js-contact-form');
     if (!form) return;
 
-    form.addEventListener('submit', (event) => {
+    const button = form.querySelector('button[type="submit"]');
+    const status = form.querySelector('#contact-status');
+    if (!button || !status) return;
+
+    const idleLabel = button.textContent;
+    let submitting = false;
+    const showStatus = (message, state) => {
+        status.hidden = false;
+        status.textContent = message;
+        status.dataset.state = state;
+    };
+
+    form.addEventListener('submit', async (event) => {
         event.preventDefault();
+        if (submitting || !form.reportValidity()) return;
+
+        // 必須のテキスト項目は、空白だけの入力も送信しない。
+        const emptyField = [...form.querySelectorAll('input[required], textarea[required]')]
+            .find((field) => !field.value.trim());
+        if (emptyField) {
+            emptyField.setCustomValidity('入力してください。');
+            emptyField.reportValidity();
+            emptyField.addEventListener('input', () => emptyField.setCustomValidity(''), { once: true });
+            return;
+        }
+
+        const data = new FormData(form);
+        const controller = new AbortController();
+        const timeout = window.setTimeout(() => controller.abort(), 30000);
+        submitting = true;
+        button.disabled = true;
+        button.setAttribute('aria-busy', 'true');
+        button.textContent = 'Sending...';
+        showStatus('送信中です。しばらくお待ちください。', 'sending');
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: data,
+                headers: { Accept: 'application/json' },
+                signal: controller.signal
+            });
+            if (!response.ok) {
+                showStatus('送信できませんでした。時間をおいてもう一度お試しください。', 'error');
+                return;
+            }
+            form.reset();
+            showStatus('Thank you!\nメッセージを送信しました。', 'success');
+        } catch {
+            // 通信断・タイムアウト時は入力を保持し、自動再送による重複を避ける。
+            showStatus('送信結果を確認できませんでした。時間をおいてもう一度お試しください。', 'error');
+        } finally {
+            window.clearTimeout(timeout);
+            submitting = false;
+            button.disabled = false;
+            button.removeAttribute('aria-busy');
+            button.textContent = idleLabel;
+        }
     });
 }
 
