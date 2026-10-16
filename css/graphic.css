@@ -137,6 +137,47 @@
     border-radius: var(--radius-l);
 }
 
+/* 表裏2枚を持つ作品だけ、PCで横長・画面内に収まる表示へ。 */
+@media screen and (min-width: 769px) {
+    .p-gallery__modal:has(.p-gallery__expanded-media--pair) {
+        width: min(92vw, 1200px);
+        max-height: 88svh;
+    }
+
+    .p-gallery__modal:has(.p-gallery__expanded-media--pair) .c-content-modal__panel {
+        padding-bottom: var(--space-3);
+    }
+
+    .p-gallery__expanded:has(.p-gallery__expanded-media--pair) {
+        gap: var(--space-3);
+    }
+
+    .p-gallery__expanded-media--pair {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+    }
+
+    .p-gallery__expanded-media--pair .p-gallery__expanded-image {
+        /* 見出し・閉じるボタン・ラベル・作品情報の高さを確保する。 */
+        height: clamp(120px, calc(88svh - 310px), 560px);
+        object-fit: contain;
+        background: transparent;
+    }
+
+    .p-gallery__expanded:has(.p-gallery__expanded-media--pair) > .p-gallery__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2) var(--space-5);
+        margin-top: 0;
+    }
+
+    .p-gallery__expanded:has(.p-gallery__expanded-media--pair) > .p-gallery__meta > div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-1);
+    }
+}
+
 @media screen and (max-width: 768px) {
     .p-gallery .c-editorial-index ul {
         justify-content: flex-start;
