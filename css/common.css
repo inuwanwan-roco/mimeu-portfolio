@@ -1014,6 +1014,31 @@ Back To Top
     margin: calc(-1 * var(--space-6)) auto var(--space-2);
 }
 
+.c-project__visual-link {
+    display: block;
+}
+
+.c-project__visual-link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: var(--space-1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .c-project__visual-link {
+        transition: opacity var(--transition-base);
+    }
+
+    .c-project__visual-link:hover {
+        opacity: 0.9;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .c-project__visual-link {
+        transition: none;
+    }
+}
+
 .c-project__mockup {
     width: 100%;
     aspect-ratio: 1948 / 1300;

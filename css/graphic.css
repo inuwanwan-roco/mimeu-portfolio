@@ -67,8 +67,9 @@
 .p-gallery__meta {
     display: grid;
     gap: var(--space-1);
-    margin-top: var(--space-2);
-    font-size: 0.875rem;
+    margin-top: var(--space-3);
+    font-size: 1rem;
+    text-align: center;
     color: var(--color-secondary);
     overflow-wrap: anywhere;
 }
@@ -145,7 +146,7 @@
     }
 
     .p-gallery__modal:has(.p-gallery__expanded-media--pair) .c-content-modal__panel {
-        padding-bottom: var(--space-3);
+        padding-bottom: var(--space-2);
     }
 
     .p-gallery__expanded:has(.p-gallery__expanded-media--pair) {
@@ -168,13 +169,19 @@
         display: flex;
         flex-wrap: wrap;
         gap: var(--space-2) var(--space-5);
-        margin-top: 0;
+        justify-content: center;
+        margin-top: var(--space-1);
     }
 
     .p-gallery__expanded:has(.p-gallery__expanded-media--pair) > .p-gallery__meta > div {
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--space-1);
+        display: block;
+    }
+
+    .p-gallery__expanded--banner .p-gallery__expanded-image {
+        /* タイトル・作品情報・余白を除いた画面の高さに正方形を収める。 */
+        width: min(100%, clamp(120px, calc(100svh - 480px), 560px));
+        margin-inline: auto;
+        object-fit: contain;
     }
 }
 
