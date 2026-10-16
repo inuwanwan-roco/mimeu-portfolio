@@ -208,7 +208,7 @@
             <section class="p-about-detail__philosophy" aria-labelledby="philosophy-title">
                 <h2 class="u-font-en" id="philosophy-title">Design Philosophy</h2>
                 <p class="p-about-detail__philosophy-subtitle">何を意識して、どう行動しているか</p>
-                <div class="p-about-detail__principles">
+                <div class="p-about-detail__principles" id="philosophy-slides">
                     <article class="p-about-detail__principle">
                         <h3>01 伝わる</h3>
                         <p>「誰に、何を届けたいのか」を考える。</p>
@@ -224,6 +224,14 @@
                         <p>「細かな部分まで、最後まで妥協しない。」</p>
                         <p>文字間や余白、配置、フォント、色などの<br>小さな違和感を見逃さず、最後まで丁寧に<br class="p-about-detail__desktop-break"><span class="p-about-detail__text-phrase">仕上げることを</span><br class="u-sp-only">大切にしています。</p>
                     </article>
+                </div>
+                <div class="p-about-detail__carousel-controls" hidden>
+                    <div class="p-about-detail__carousel-dots" role="group" aria-label="Design Philosophyのスライド選択">
+                        <button class="p-about-detail__carousel-dot" type="button" aria-label="01 伝わるを表示" aria-controls="philosophy-slides" aria-current="true"></button>
+                        <button class="p-about-detail__carousel-dot" type="button" aria-label="02 使いやすいを表示" aria-controls="philosophy-slides"></button>
+                        <button class="p-about-detail__carousel-dot" type="button" aria-label="03 細部まで丁寧を表示" aria-controls="philosophy-slides"></button>
+                    </div>
+                    <button class="p-about-detail__carousel-playback" type="button" aria-controls="philosophy-slides" aria-pressed="false">一時停止</button>
                 </div>
             </section>
         </main>

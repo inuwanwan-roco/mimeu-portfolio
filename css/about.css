@@ -673,3 +673,85 @@ LIKES modal / 添付Desktop・Mobileカンプの構成
         transform: none;
     }
 }
+
+/* Design Philosophy / MI/NUIT NEWSと同じネイティブScroll Snap方式 */
+@media screen and (max-width: 768px) {
+    .p-about-detail__principles.is-carousel {
+        position: relative;
+        display: flex;
+        gap: var(--space-3);
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        cursor: grab;
+    }
+
+    .p-about-detail__principles.is-carousel::-webkit-scrollbar {
+        display: none;
+    }
+
+    .p-about-detail__principles.is-carousel > .p-about-detail__principle {
+        flex: 0 0 100%;
+        min-width: 0;
+        overflow-wrap: anywhere;
+        scroll-snap-align: start;
+    }
+
+    .p-about-detail__principles.is-dragging,
+    .p-about-detail__principles.is-jumping {
+        scroll-snap-type: none;
+    }
+
+    .p-about-detail__principles.is-dragging {
+        cursor: grabbing;
+        user-select: none;
+    }
+
+    .p-about-detail__carousel-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-2);
+        margin-top: var(--space-2);
+    }
+
+    .p-about-detail__carousel-dots {
+        display: flex;
+        gap: var(--space-1);
+    }
+
+    .p-about-detail__carousel-dot {
+        display: grid;
+        place-items: center;
+        width: var(--space-4);
+        height: var(--space-4);
+        border-radius: var(--radius-pill);
+    }
+
+    .p-about-detail__carousel-dot::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--color-accent);
+    }
+
+    .p-about-detail__carousel-dot[aria-current="true"]::before {
+        background: var(--color-primary);
+    }
+
+    .p-about-detail__carousel-playback {
+        min-height: var(--space-4);
+        padding-inline: var(--space-1);
+        color: var(--color-secondary);
+        font-size: 0.75rem;
+    }
+
+    .p-about-detail__principles.is-carousel:focus-visible,
+    .p-about-detail__carousel-dot:focus-visible,
+    .p-about-detail__carousel-playback:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+    }
+}
