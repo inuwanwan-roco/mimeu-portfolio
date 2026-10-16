@@ -64,17 +64,17 @@
     font-size: 0.875rem;
 }
 
-.p-gallery__item-title {
-    margin-top: var(--space-1);
-    font-size: clamp(18px, 1.7vw, 24px);
-    font-weight: 400;
-    line-height: 1.5;
-}
-
 .p-gallery__meta {
-    margin-top: var(--space-1);
+    display: grid;
+    gap: var(--space-1);
+    margin-top: var(--space-2);
     font-size: 0.875rem;
     color: var(--color-secondary);
+    overflow-wrap: anywhere;
+}
+
+.p-gallery__meta dt {
+    color: var(--color-primary);
 }
 
 .p-gallery__trigger {
@@ -103,14 +103,35 @@
 
 .p-gallery__expanded {
     display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-6);
     align-items: center;
 }
 
+.p-gallery__expanded-media {
+    display: grid;
+    gap: var(--space-3);
+    min-width: 0;
+}
+
+.p-gallery__expanded-media--pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.p-gallery__expanded-figure {
+    min-width: 0;
+}
+
+.p-gallery__side-label {
+    margin-top: var(--space-1);
+    text-align: center;
+    font-size: 0.875rem;
+    letter-spacing: 0.12em;
+}
+
 .p-gallery__expanded-image {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    height: auto;
     object-fit: contain;
     background: var(--color-surface);
     border-radius: var(--radius-l);
@@ -136,8 +157,14 @@
 
     .p-gallery__filter {
         min-width: 0;
-        flex: 1;
+        flex: 0 1 auto;
+        white-space: nowrap;
         padding-inline: var(--space-1);
+    }
+
+    /* 表裏を読める大きさで確認できるよう、スマホのモーダル内は縦並び。 */
+    .p-gallery__expanded-media--pair {
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .p-gallery__expanded {

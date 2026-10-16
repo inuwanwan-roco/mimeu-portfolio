@@ -136,56 +136,69 @@
                     <br>クリックで拡大表示します。
                 </p>
             </header>
-            <!-- 素材のカテゴリ確定後、各作品のdata-categoryをbanner / flier / logoに設定してください。 -->
+            <!-- 各作品のdata-categoryに対応するカテゴリーで絞り込み。 -->
             <div class="p-gallery__filters" role="group" aria-label="作品カテゴリ">
                 <button class="p-gallery__filter u-font-en" type="button" data-gallery-filter="all" aria-pressed="true">ALL</button>
+                <button class="p-gallery__filter u-font-en" type="button" data-gallery-filter="flyer" aria-pressed="false">FLYER</button>
+                <button class="p-gallery__filter u-font-en" type="button" data-gallery-filter="name-card" aria-pressed="false">NAME CARD</button>
                 <button class="p-gallery__filter u-font-en" type="button" data-gallery-filter="banner" aria-pressed="false">BANNER</button>
-                <button class="p-gallery__filter u-font-en" type="button" data-gallery-filter="flier" aria-pressed="false">FLIER</button>
                 <button class="p-gallery__filter u-font-en" type="button" data-gallery-filter="logo" aria-pressed="false">LOGO</button>
             </div>
             <p class="p-gallery__empty" hidden role="status">このカテゴリの作品は準備中です。</p>
             <!-- このページは最大6作品。追加作品の次ページ・ページネーションは別工程。 -->
             <div class="p-gallery__grid">
-                <article class="p-gallery__item" id="graphic-01" data-category="">
-                    <!-- Graphic Work 01の実画像を入れる。TOPの既存アンカーIDを維持。 -->
-                    <img class="p-gallery__image" src="../assets/images/works/graphic-01.webp" width="360" height="270" alt="Graphic Work 01" loading="lazy">
-                    <h2 class="p-gallery__item-title u-font-en" id="graphic-title-01">WORK TITLE 01</h2>
-                    <p class="p-gallery__meta u-font-en">Category / Tools</p>
+                <article class="p-gallery__item" id="graphic-01" data-category="flyer">
+                    <img class="p-gallery__image" src="../assets/images/3.works/01flyer-front.webp" width="2754" height="3894" alt="フライヤーデザイン 表面" loading="lazy">
+                    <h2 class="u-visually-hidden" id="graphic-title-01">01 / FLYER</h2>
+                    <dl class="p-gallery__meta u-font-en">
+                        <div><dt>Category</dt><dd>FLYER</dd></div>
+                        <div><dt>Tools</dt><dd>Illustrator / ChatGPT</dd></div>
+                    </dl>
                     <button class="p-gallery__trigger" type="button" data-artwork="01" aria-haspopup="dialog" aria-controls="gallery-dialog" aria-labelledby="graphic-title-01"></button>
                 </article>
-                <article class="p-gallery__item" id="graphic-02" data-category="">
-                    <!-- Graphic Work 02の実画像を入れる。TOPの既存アンカーIDを維持。 -->
-                    <img class="p-gallery__image" src="../assets/images/works/graphic-02.webp" width="360" height="270" alt="Graphic Work 02" loading="lazy">
-                    <h2 class="p-gallery__item-title u-font-en" id="graphic-title-02">WORK TITLE 02</h2>
-                    <p class="p-gallery__meta u-font-en">Category / Tools</p>
+                <article class="p-gallery__item" id="graphic-02" data-category="name-card">
+                    <img class="p-gallery__image" src="../assets/images/3.works/02namecard-front.webp" width="483" height="278" alt="名刺デザイン 表面" loading="lazy">
+                    <h2 class="u-visually-hidden" id="graphic-title-02">02 / NAME CARD</h2>
+                    <dl class="p-gallery__meta u-font-en">
+                        <div><dt>Category</dt><dd>NAME CARD</dd></div>
+                        <div><dt>Tools</dt><dd>Illustrator</dd></div>
+                    </dl>
                     <button class="p-gallery__trigger" type="button" data-artwork="02" aria-haspopup="dialog" aria-controls="gallery-dialog" aria-labelledby="graphic-title-02"></button>
                 </article>
-                <article class="p-gallery__item" id="graphic-03" data-category="">
-                    <!-- Graphic Work 03の実画像を入れる。TOPの既存アンカーIDを維持。 -->
-                    <img class="p-gallery__image" src="../assets/images/works/graphic-03.webp" width="360" height="270" alt="Graphic Work 03" loading="lazy">
-                    <h2 class="p-gallery__item-title u-font-en" id="graphic-title-03">WORK TITLE 03</h2>
-                    <p class="p-gallery__meta u-font-en">Category / Tools</p>
+                <article class="p-gallery__item" id="graphic-03" data-category="banner">
+                    <img class="p-gallery__image" src="../assets/images/3.works/03graphic-banner1.webp" width="2160" height="2160" alt="バナーデザイン 03" loading="lazy">
+                    <h2 class="u-visually-hidden" id="graphic-title-03">03 / BANNER</h2>
+                    <dl class="p-gallery__meta u-font-en">
+                        <div><dt>Category</dt><dd>BANNER</dd></div>
+                        <div><dt>Tools</dt><dd>Photoshop / ChatGPT</dd></div>
+                    </dl>
                     <button class="p-gallery__trigger" type="button" data-artwork="03" aria-haspopup="dialog" aria-controls="gallery-dialog" aria-labelledby="graphic-title-03"></button>
                 </article>
-                <article class="p-gallery__item" id="graphic-04" data-category="">
-                    <!-- Graphic Work 04の実画像を入れる。TOPの既存アンカーIDを維持。 -->
-                    <img class="p-gallery__image" src="../assets/images/works/graphic-04.webp" width="360" height="270" alt="Graphic Work 04" loading="lazy">
-                    <h2 class="p-gallery__item-title u-font-en" id="graphic-title-04">WORK TITLE 04</h2>
-                    <p class="p-gallery__meta u-font-en">Category / Tools</p>
+                <article class="p-gallery__item" id="graphic-04" data-category="banner">
+                    <img class="p-gallery__image" src="../assets/images/3.works/04graphic-banner2.webp" width="2160" height="2160" alt="バナーデザイン 04" loading="lazy">
+                    <h2 class="u-visually-hidden" id="graphic-title-04">04 / BANNER</h2>
+                    <dl class="p-gallery__meta u-font-en">
+                        <div><dt>Category</dt><dd>BANNER</dd></div>
+                        <div><dt>Tools</dt><dd>Photoshop / ChatGPT</dd></div>
+                    </dl>
                     <button class="p-gallery__trigger" type="button" data-artwork="04" aria-haspopup="dialog" aria-controls="gallery-dialog" aria-labelledby="graphic-title-04"></button>
                 </article>
-                <article class="p-gallery__item" id="graphic-05" data-category="">
-                    <!-- Graphic Work 05の実画像を入れる。TOPの既存アンカーIDを維持。 -->
-                    <img class="p-gallery__image" src="../assets/images/works/graphic-05.webp" width="360" height="270" alt="Graphic Work 05" loading="lazy">
-                    <h2 class="p-gallery__item-title u-font-en" id="graphic-title-05">WORK TITLE 05</h2>
-                    <p class="p-gallery__meta u-font-en">Category / Tools</p>
+                <article class="p-gallery__item" id="graphic-05" data-category="banner">
+                    <img class="p-gallery__image" src="../assets/images/3.works/05graphic-banner3.webp" width="2160" height="2160" alt="バナーデザイン 05" loading="lazy">
+                    <h2 class="u-visually-hidden" id="graphic-title-05">05 / BANNER</h2>
+                    <dl class="p-gallery__meta u-font-en">
+                        <div><dt>Category</dt><dd>BANNER</dd></div>
+                        <div><dt>Tools</dt><dd>Photoshop / ChatGPT</dd></div>
+                    </dl>
                     <button class="p-gallery__trigger" type="button" data-artwork="05" aria-haspopup="dialog" aria-controls="gallery-dialog" aria-labelledby="graphic-title-05"></button>
                 </article>
-                <article class="p-gallery__item" id="graphic-06" data-category="">
-                    <!-- Graphic Work 06の実画像を入れる。TOPの既存アンカーIDを維持。 -->
-                    <img class="p-gallery__image" src="../assets/images/works/graphic-06.webp" width="360" height="270" alt="Graphic Work 06" loading="lazy">
-                    <h2 class="p-gallery__item-title u-font-en" id="graphic-title-06">WORK TITLE 06</h2>
-                    <p class="p-gallery__meta u-font-en">Category / Tools</p>
+                <article class="p-gallery__item" id="graphic-06" data-category="logo">
+                    <img class="p-gallery__image" src="../assets/images/3.works/06graphic-logo1.webp" width="1301" height="320" alt="ロゴデザイン" loading="lazy">
+                    <h2 class="u-visually-hidden" id="graphic-title-06">06 / LOGO</h2>
+                    <dl class="p-gallery__meta u-font-en">
+                        <div><dt>Category</dt><dd>LOGO</dd></div>
+                        <div><dt>Tools</dt><dd>Illustrator</dd></div>
+                    </dl>
                     <button class="p-gallery__trigger" type="button" data-artwork="06" aria-haspopup="dialog" aria-controls="gallery-dialog" aria-labelledby="graphic-title-06"></button>
                 </article>
             </div>
@@ -244,62 +257,90 @@
         </dialog>
         <template id="gallery-content-01">
             <div class="p-gallery__expanded">
-                <!-- Graphic Work 01の高解像度画像を入れる。現段階ではカードと同じsrcを使用。 -->
-                <img class="p-gallery__expanded-image" src="../assets/images/works/graphic-01.webp" width="360" height="270" alt="Graphic Work 01の拡大表示">
-                <div class="p-gallery__expanded-info">
-                    <p class="p-gallery__meta u-font-en">Category / Tools</p>
-                    <!-- 制作意図・ターゲット・工夫したポイントをここに追加してください。 -->
+                <div class="p-gallery__expanded-media p-gallery__expanded-media--pair">
+                    <figure class="p-gallery__expanded-figure">
+                        <img class="p-gallery__expanded-image" src="../assets/images/3.works/01flyer-front.webp" width="2754" height="3894" alt="フライヤーデザイン 表面">
+                        <figcaption class="p-gallery__side-label u-font-en">FRONT</figcaption>
+                    </figure>
+                    <figure class="p-gallery__expanded-figure">
+                        <img class="p-gallery__expanded-image" src="../assets/images/3.works/01flyer-back.webp" width="2754" height="3894" alt="フライヤーデザイン 裏面">
+                        <figcaption class="p-gallery__side-label u-font-en">BACK</figcaption>
+                    </figure>
                 </div>
+                <dl class="p-gallery__meta u-font-en">
+                    <div><dt>Category</dt><dd>FLYER</dd></div>
+                    <div><dt>Tools</dt><dd>Illustrator / ChatGPT</dd></div>
+                </dl>
             </div>
         </template>
         <template id="gallery-content-02">
             <div class="p-gallery__expanded">
-                <!-- Graphic Work 02の高解像度画像を入れる。現段階ではカードと同じsrcを使用。 -->
-                <img class="p-gallery__expanded-image" src="../assets/images/works/graphic-02.webp" width="360" height="270" alt="Graphic Work 02の拡大表示">
-                <div class="p-gallery__expanded-info">
-                    <p class="p-gallery__meta u-font-en">Category / Tools</p>
-                    <!-- 制作意図・ターゲット・工夫したポイントをここに追加してください。 -->
+                <div class="p-gallery__expanded-media p-gallery__expanded-media--pair">
+                    <figure class="p-gallery__expanded-figure">
+                        <img class="p-gallery__expanded-image" src="../assets/images/3.works/02namecard-front.webp" width="483" height="278" alt="名刺デザイン 表面">
+                        <figcaption class="p-gallery__side-label u-font-en">FRONT</figcaption>
+                    </figure>
+                    <figure class="p-gallery__expanded-figure">
+                        <img class="p-gallery__expanded-image" src="../assets/images/3.works/02namecard-back.webp" width="482" height="276" alt="名刺デザイン 裏面">
+                        <figcaption class="p-gallery__side-label u-font-en">BACK</figcaption>
+                    </figure>
                 </div>
+                <dl class="p-gallery__meta u-font-en">
+                    <div><dt>Category</dt><dd>NAME CARD</dd></div>
+                    <div><dt>Tools</dt><dd>Illustrator</dd></div>
+                </dl>
             </div>
         </template>
         <template id="gallery-content-03">
             <div class="p-gallery__expanded">
-                <!-- Graphic Work 03の高解像度画像を入れる。現段階ではカードと同じsrcを使用。 -->
-                <img class="p-gallery__expanded-image" src="../assets/images/works/graphic-03.webp" width="360" height="270" alt="Graphic Work 03の拡大表示">
-                <div class="p-gallery__expanded-info">
-                    <p class="p-gallery__meta u-font-en">Category / Tools</p>
-                    <!-- 制作意図・ターゲット・工夫したポイントをここに追加してください。 -->
+                <div class="p-gallery__expanded-media">
+                    <figure class="p-gallery__expanded-figure">
+                        <img class="p-gallery__expanded-image" src="../assets/images/3.works/03graphic-banner1.webp" width="2160" height="2160" alt="バナーデザイン 03">
+                    </figure>
                 </div>
+                <dl class="p-gallery__meta u-font-en">
+                    <div><dt>Category</dt><dd>BANNER</dd></div>
+                    <div><dt>Tools</dt><dd>Photoshop / ChatGPT</dd></div>
+                </dl>
             </div>
         </template>
         <template id="gallery-content-04">
             <div class="p-gallery__expanded">
-                <!-- Graphic Work 04の高解像度画像を入れる。現段階ではカードと同じsrcを使用。 -->
-                <img class="p-gallery__expanded-image" src="../assets/images/works/graphic-04.webp" width="360" height="270" alt="Graphic Work 04の拡大表示">
-                <div class="p-gallery__expanded-info">
-                    <p class="p-gallery__meta u-font-en">Category / Tools</p>
-                    <!-- 制作意図・ターゲット・工夫したポイントをここに追加してください。 -->
+                <div class="p-gallery__expanded-media">
+                    <figure class="p-gallery__expanded-figure">
+                        <img class="p-gallery__expanded-image" src="../assets/images/3.works/04graphic-banner2.webp" width="2160" height="2160" alt="バナーデザイン 04">
+                    </figure>
                 </div>
+                <dl class="p-gallery__meta u-font-en">
+                    <div><dt>Category</dt><dd>BANNER</dd></div>
+                    <div><dt>Tools</dt><dd>Photoshop / ChatGPT</dd></div>
+                </dl>
             </div>
         </template>
         <template id="gallery-content-05">
             <div class="p-gallery__expanded">
-                <!-- Graphic Work 05の高解像度画像を入れる。現段階ではカードと同じsrcを使用。 -->
-                <img class="p-gallery__expanded-image" src="../assets/images/works/graphic-05.webp" width="360" height="270" alt="Graphic Work 05の拡大表示">
-                <div class="p-gallery__expanded-info">
-                    <p class="p-gallery__meta u-font-en">Category / Tools</p>
-                    <!-- 制作意図・ターゲット・工夫したポイントをここに追加してください。 -->
+                <div class="p-gallery__expanded-media">
+                    <figure class="p-gallery__expanded-figure">
+                        <img class="p-gallery__expanded-image" src="../assets/images/3.works/05graphic-banner3.webp" width="2160" height="2160" alt="バナーデザイン 05">
+                    </figure>
                 </div>
+                <dl class="p-gallery__meta u-font-en">
+                    <div><dt>Category</dt><dd>BANNER</dd></div>
+                    <div><dt>Tools</dt><dd>Photoshop / ChatGPT</dd></div>
+                </dl>
             </div>
         </template>
         <template id="gallery-content-06">
             <div class="p-gallery__expanded">
-                <!-- Graphic Work 06の高解像度画像を入れる。現段階ではカードと同じsrcを使用。 -->
-                <img class="p-gallery__expanded-image" src="../assets/images/works/graphic-06.webp" width="360" height="270" alt="Graphic Work 06の拡大表示">
-                <div class="p-gallery__expanded-info">
-                    <p class="p-gallery__meta u-font-en">Category / Tools</p>
-                    <!-- 制作意図・ターゲット・工夫したポイントをここに追加してください。 -->
+                <div class="p-gallery__expanded-media">
+                    <figure class="p-gallery__expanded-figure">
+                        <img class="p-gallery__expanded-image" src="../assets/images/3.works/06graphic-logo1.webp" width="1301" height="320" alt="ロゴデザイン">
+                    </figure>
                 </div>
+                <dl class="p-gallery__meta u-font-en">
+                    <div><dt>Category</dt><dd>LOGO</dd></div>
+                    <div><dt>Tools</dt><dd>Illustrator</dd></div>
+                </dl>
             </div>
         </template>
     </body>

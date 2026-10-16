@@ -389,7 +389,7 @@
 .p-works__graphic-image {
     width: 100%;
     aspect-ratio: 4 / 3;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: var(--radius-l);
     background: var(--color-surface);
     transition: transform var(--transition-base);
