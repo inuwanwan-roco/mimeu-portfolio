@@ -357,10 +357,13 @@
 /* 名前と画像を同じGrid行に置き、文字サイズの変化にも追従。 */
 @media screen and (min-width: 769px) {
     .p-about-detail__profile {
+        --profile-inline-shift: clamp(var(--space-2), 2vw, var(--space-4));
         grid-row: 2 / span 4;
         display: grid;
         grid-template-rows: subgrid;
         margin-top: 0;
+        /* 両側のmarginを相殺し、幅とSubgridの縦位置を保って中央へ寄せる。 */
+        margin-inline: var(--profile-inline-shift) calc(-1 * var(--profile-inline-shift));
     }
 
     .p-about-detail__profile-label {
