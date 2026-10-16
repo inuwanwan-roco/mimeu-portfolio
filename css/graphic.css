@@ -159,6 +159,11 @@
         gap: var(--space-3);
     }
 
+    .p-gallery__modal .c-content-modal__content {
+        /* タイトルの行ボックス下に約12pxの共通余白を確保。 */
+        padding-top: var(--space-1);
+    }
+
     .p-gallery__modal .p-gallery__meta {
         margin-top: 0;
         font-size: 1rem;
@@ -191,6 +196,10 @@
         background: transparent;
     }
 
+    .p-gallery__expanded--flyer .p-gallery__expanded-image {
+        height: calc(clamp(120px, calc(88svh - 376px), 560px) * 1.1);
+    }
+
     .p-gallery__expanded:has(.p-gallery__expanded-media--pair) > .p-gallery__meta {
         display: grid;
         gap: var(--space-1);
@@ -210,7 +219,8 @@
         height: 100%;
         display: grid;
         grid-template-rows: auto minmax(0, 1fr);
-        padding-bottom: var(--space-3);
+        /* 上部に足した8pxを下端で調整し、バナーの画像サイズを保つ。 */
+        padding-bottom: var(--space-2);
     }
 
     .p-gallery__modal:has(.p-gallery__expanded--banner) .c-content-modal__content {
