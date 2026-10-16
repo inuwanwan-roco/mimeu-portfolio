@@ -140,6 +140,32 @@
 
 /* 表裏2枚を持つ作品だけ、PCで横長・画面内に収まる表示へ。 */
 @media screen and (min-width: 769px) {
+    /* タイトルを閉じるボタンと同じ上部領域へ収め、画像の開始位置を上げる。 */
+    .p-gallery__modal .c-content-modal__panel {
+        position: relative;
+        display: flow-root;
+    }
+
+    .p-gallery__modal .c-content-modal__title {
+        position: absolute;
+        inset-block-start: var(--space-3);
+        inset-inline: clamp(24px, 4vw, 48px) var(--space-12);
+        margin: 0;
+        font-size: calc(clamp(28px, 4vw, 40px) - 3px);
+        line-height: 1.2;
+    }
+
+    .p-gallery__modal .p-gallery__expanded {
+        gap: var(--space-3);
+    }
+
+    .p-gallery__modal .p-gallery__meta {
+        margin-top: 0;
+        font-size: 1rem;
+        line-height: 1.6;
+        gap: var(--space-1);
+    }
+
     .p-gallery__modal:has(.p-gallery__expanded-media--pair) {
         width: min(92vw, 1200px);
         max-height: 88svh;
@@ -168,7 +194,7 @@
     .p-gallery__expanded:has(.p-gallery__expanded-media--pair) > .p-gallery__meta {
         display: grid;
         gap: var(--space-1);
-        margin-top: var(--space-1);
+        margin-top: 0;
     }
 
     .p-gallery__expanded:has(.p-gallery__expanded-media--pair) > .p-gallery__meta > div {
@@ -183,12 +209,8 @@
     .p-gallery__modal:has(.p-gallery__expanded--banner) .c-content-modal__panel {
         height: 100%;
         display: grid;
-        grid-template-rows: auto auto minmax(0, 1fr);
+        grid-template-rows: auto minmax(0, 1fr);
         padding-bottom: var(--space-3);
-    }
-
-    .p-gallery__modal:has(.p-gallery__expanded--banner) .c-content-modal__title {
-        margin-bottom: var(--space-2);
     }
 
     .p-gallery__modal:has(.p-gallery__expanded--banner) .c-content-modal__content {
@@ -203,10 +225,7 @@
     }
 
     .p-gallery__expanded--banner > .p-gallery__meta {
-        /* 16pxの文字は維持し、情報の行間とグループ間隔だけを圧縮する。 */
         margin-top: 0;
-        gap: 0;
-        line-height: 1.15;
     }
 
     .p-gallery__expanded--banner .p-gallery__expanded-media,
