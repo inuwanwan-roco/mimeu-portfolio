@@ -203,7 +203,10 @@
     }
 
     .p-gallery__expanded--banner > .p-gallery__meta {
+        /* 16pxの文字は維持し、情報の行間とグループ間隔だけを圧縮する。 */
         margin-top: 0;
+        gap: 0;
+        line-height: 1.15;
     }
 
     .p-gallery__expanded--banner .p-gallery__expanded-media,
