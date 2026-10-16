@@ -557,7 +557,7 @@
 }
 
 .p-skills__title-image {
-    width: calc(439.4px - 2px);
+    width: calc(439.4px - 4px);
 }
 
 .p-skills__divider {
@@ -985,7 +985,7 @@
     }
 
     .p-skills__title-image {
-        width: calc(var(--sp-title-reference-width) * 0.912 - 2px);
+        width: calc(var(--sp-title-reference-width) * 0.912 - 4px);
     }
 
     .p-contact__title-image {
