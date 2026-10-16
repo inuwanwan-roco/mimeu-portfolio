@@ -699,6 +699,8 @@ LIKES modal / 添付Desktop・Mobileカンプの構成
     }
 
     .p-about-detail__principles.is-dragging,
+    .p-about-detail__principles.is-swiping,
+    .p-about-detail__principles.is-animating,
     .p-about-detail__principles.is-jumping {
         scroll-snap-type: none;
     }

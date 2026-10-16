@@ -38,6 +38,12 @@ function initPhilosophyCarousel() {
     let autoplayTimer = 0;
     let settleTimer = 0;
     let measuredWidth = 0;
+    let motionFrame = 0;
+    const cancelMotion = () => {
+        cancelAnimationFrame(motionFrame);
+        motionFrame = 0;
+        list.classList.remove('is-animating');
+    };
     const stop = () => clearTimeout(autoplayTimer);
     const offset = (index) => slides[index].offsetLeft - slides[0].offsetLeft;
     const nearest = () => slides.reduce((best, card, index) =>
@@ -91,8 +97,32 @@ function initPhilosophyCarousel() {
         if (!active) return;
         stop();
         clearTimeout(settleTimer);
-        list.scrollTo({ left: offset(index), behavior: reducedMotion.matches ? 'instant' : 'smooth' });
-        settle();
+        const from = list.scrollLeft;
+        cancelMotion();
+        list.classList.add('is-animating');
+        const to = offset(index);
+        if (reducedMotion.matches || Math.abs(to - from) < 1) {
+            cancelMotion();
+            jumpTo(index);
+            finish();
+            return;
+        }
+        // 自動・ドット・ドラッグ後の位置合わせを同じ1秒の動きに統一。
+        // 始端・終端の速度が0になるSine easingで、急発進・急停止を避ける。
+        const started = performance.now();
+        list.scrollTo({ left: from, behavior: 'instant' });
+        const animate = (now) => {
+            const progress = Math.min((now - started) / 1000, 1);
+            const eased = (1 - Math.cos(Math.PI * progress)) / 2;
+            list.scrollTo({ left: from + (to - from) * eased, behavior: 'instant' });
+            if (progress < 1) motionFrame = requestAnimationFrame(animate);
+            else {
+                motionFrame = 0;
+                list.classList.remove('is-animating');
+                finish();
+            }
+        };
+        motionFrame = requestAnimationFrame(animate);
     };
     const makeClone = (card) => {
         const clone = card.cloneNode(true);
@@ -105,12 +135,13 @@ function initPhilosophyCarousel() {
     const configure = () => {
         stop();
         clearTimeout(settleTimer);
+        cancelMotion();
         drag = null;
         touching = false;
         list.querySelectorAll('[data-philosophy-clone]').forEach((clone) => clone.remove());
         active = mobile.matches;
         list.classList.toggle('is-carousel', active);
-        list.classList.remove('is-dragging', 'is-jumping');
+        list.classList.remove('is-dragging', 'is-jumping', 'is-swiping');
         controls.hidden = !active;
         if (active) {
             list.prepend(makeClone(cards.at(-1)));
@@ -143,7 +174,7 @@ function initPhilosophyCarousel() {
         schedule();
     });
     list.addEventListener('scroll', () => {
-        if (!active) return;
+        if (!active || motionFrame) return;
         stop();
         settle();
     }, { passive: true });
@@ -155,6 +186,7 @@ function initPhilosophyCarousel() {
     list.addEventListener('pointerdown', (event) => {
         if (!active) return;
         stop();
+        cancelMotion();
         if (event.pointerType !== 'mouse' || event.button !== 0) return;
         drag = { x: event.clientX, scroll: list.scrollLeft };
         list.setPointerCapture(event.pointerId);
@@ -168,21 +200,31 @@ function initPhilosophyCarousel() {
     const release = () => {
         if (!drag) return;
         drag = null;
-        list.classList.remove('is-dragging');
         if (active) moveTo(nearest());
+        list.classList.remove('is-dragging');
     };
     list.addEventListener('pointerup', release);
     list.addEventListener('pointercancel', release);
     list.addEventListener('lostpointercapture', release);
-    list.addEventListener('touchstart', () => { touching = true; stop(); }, { passive: true });
-    const releaseTouch = () => { touching = false; if (active) settle(); };
+    list.addEventListener('touchstart', () => {
+        if (!active) return;
+        touching = true;
+        stop();
+        cancelMotion();
+        list.classList.add('is-swiping');
+    }, { passive: true });
+    const releaseTouch = () => {
+        touching = false;
+        if (active) moveTo(nearest());
+        list.classList.remove('is-swiping');
+    };
     list.addEventListener('touchend', releaseTouch, { passive: true });
     list.addEventListener('touchcancel', releaseTouch, { passive: true });
     section.addEventListener('focusin', stop);
     section.addEventListener('focusout', () => queueMicrotask(schedule));
     document.addEventListener('visibilitychange', schedule);
-    window.addEventListener('pagehide', stop);
-    window.addEventListener('pageshow', schedule);
+    window.addEventListener('pagehide', () => { stop(); cancelMotion(); });
+    window.addEventListener('pageshow', () => { if (active) jumpTo(current + 1); schedule(); });
     new IntersectionObserver(([entry]) => {
         visible = entry.isIntersecting;
         schedule();
@@ -190,10 +232,15 @@ function initPhilosophyCarousel() {
     new ResizeObserver(() => {
         if (!active || Math.abs(measuredWidth - list.clientWidth) < 0.5) return;
         measuredWidth = list.clientWidth;
+        cancelMotion();
         jumpTo(current + 1);
         schedule();
     }).observe(list);
     mobile.addEventListener('change', configure);
-    reducedMotion.addEventListener('change', () => { stop(); if (active) { finish(); update(); } });
+    reducedMotion.addEventListener('change', () => {
+        stop();
+        cancelMotion();
+        if (active) { jumpTo(nearest()); finish(); update(); }
+    });
     configure();
 }
