@@ -160,16 +160,14 @@
 
     .p-gallery__expanded-media--pair .p-gallery__expanded-image {
         /* 見出し・閉じるボタン・ラベル・作品情報の高さを確保する。 */
-        height: clamp(120px, calc(88svh - 310px), 560px);
+        height: clamp(120px, calc(88svh - 376px), 560px);
         object-fit: contain;
         background: transparent;
     }
 
     .p-gallery__expanded:has(.p-gallery__expanded-media--pair) > .p-gallery__meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--space-2) var(--space-5);
-        justify-content: center;
+        display: grid;
+        gap: var(--space-1);
         margin-top: var(--space-1);
     }
 
@@ -177,11 +175,44 @@
         display: block;
     }
 
+    /* バナーのみ、実際の見出し・情報の高さを引いた残り領域を画像へ配分。 */
+    .p-gallery__modal:has(.p-gallery__expanded--banner) {
+        height: calc(100svh - var(--space-6));
+    }
+
+    .p-gallery__modal:has(.p-gallery__expanded--banner) .c-content-modal__panel {
+        height: 100%;
+        display: grid;
+        grid-template-rows: auto auto minmax(0, 1fr);
+    }
+
+    .p-gallery__modal:has(.p-gallery__expanded--banner) .c-content-modal__content {
+        min-height: 0;
+    }
+
+    .p-gallery__expanded--banner {
+        height: 100%;
+        min-height: 0;
+        grid-template-rows: minmax(0, 1fr) auto;
+        gap: var(--space-6);
+    }
+
+    .p-gallery__expanded--banner > .p-gallery__meta {
+        margin-top: 0;
+    }
+
+    .p-gallery__expanded--banner .p-gallery__expanded-media,
+    .p-gallery__expanded--banner .p-gallery__expanded-figure {
+        height: 100%;
+        min-height: 0;
+    }
+
     .p-gallery__expanded--banner .p-gallery__expanded-image {
-        /* タイトル・作品情報・余白を除いた画面の高さに正方形を収める。 */
-        width: min(100%, clamp(120px, calc(100svh - 480px), 560px));
+        width: auto;
+        height: 100%;
         margin-inline: auto;
         object-fit: contain;
+        background: transparent;
     }
 }
 
