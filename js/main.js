@@ -162,10 +162,29 @@ function initContactForm() {
 
     const idleLabel = button.textContent;
     let submitting = false;
+    let successTimer = null;
+    let fadeTimer = null;
     const showStatus = (message, state) => {
+        // 再送信やエラー表示に、前回成功時のタイマーを持ち越さない。
+        window.clearTimeout(successTimer);
+        window.clearTimeout(fadeTimer);
+        status.classList.remove('is-fading');
         status.hidden = false;
         status.textContent = message;
         status.dataset.state = state;
+        if (state !== 'success') return;
+
+        successTimer = window.setTimeout(() => {
+            if (status.dataset.state !== 'success') return;
+            status.classList.add('is-fading');
+            const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 400;
+            fadeTimer = window.setTimeout(() => {
+                status.hidden = true;
+                status.textContent = '';
+                delete status.dataset.state;
+                status.classList.remove('is-fading');
+            }, duration);
+        }, 10000);
     };
 
     form.addEventListener('submit', async (event) => {
