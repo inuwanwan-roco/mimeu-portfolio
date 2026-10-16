@@ -616,7 +616,8 @@ LIKES modal / 添付Desktop・Mobileカンプの構成
 }
 
 .p-likes-modal__body {
-    width: min(100%, 480px);
+    width: fit-content;
+    max-width: min(100%, 480px);
     min-height: var(--space-16);
     margin: var(--space-2) auto 0;
     text-align: left;
@@ -658,6 +659,8 @@ LIKES modal / 添付Desktop・Mobileカンプの構成
 
     .p-likes-modal__body {
         margin-top: var(--space-4);
+        /* モーダル両側の余白を除き、指定の最長19文字を追加折り返しなく収める。 */
+        font-size: clamp(14px, calc((100vw - 100px) / 20), 16px);
     }
 }
 
